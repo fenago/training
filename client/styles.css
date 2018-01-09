@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("assets/styles/theme-style.css");
+@import url("assets/styles/theme-color.css");
+
+.input-group {
+  margin-bottom: 15px;
+}
+.bg-white{
+}
+#header{
+  position: relative;
+  border:none;
+}
+.content{
+  height: 71vh;
+}

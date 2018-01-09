@@ -1,0 +1,23 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="content" *ngIf="!isLoading">
+  <div class="card-block">
+    <form #accountForm="ngForm" class="form-login form-wrapper form-narrow" (ngSubmit)="save(user)">
+      <div class="form-group">
+        <span class="input-group-addon">
+          <i class="fa fa-user"></i> username</span>
+        <input class="form-control" type="text" name="username" [(ngModel)]="user.username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <span class="input-group-addon">
+          <i class="fa fa-envelope"></i> Email</span>
+        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!accountForm.form.valid">
+        <i class="fa fa-save"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
