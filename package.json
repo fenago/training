@@ -3,6 +3,7 @@
   "version": "5.0.3",
   "license": "MIT",
   "author": "Davide Violante",
+  "enhanced-resolve": "3.3.0",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "angular-cli": {},
   "engines": {
