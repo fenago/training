@@ -1,0 +1,16 @@
+<div class="course-form" aria-label="syllabus">
+  <input [(ngModel)]="chapterName"/><button (click)="addChapter()">add chapter</button>
+  <mat-tab-group>
+    <mat-tab label="{{i}}-{{chapter.title}}" *ngFor="let chapter of course.content.chapters; let i = index">
+        <input [(ngModel)]="lessonName"/><button (click)="addLesson(i)">add lesson</button>
+      <mat-tab-group>
+
+        <mat-tab label="{{i}}.{{j}}-{{lesson.title}}" *ngFor="let lesson of chapter.lessons; let j = index">
+          <div [froalaEditor]="options"  [(froalaModel)]="lesson.content">Hello, Froala!</div>
+          <input type="file">
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

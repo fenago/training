@@ -1,0 +1,31 @@
+<div class="content colored">
+  <mat-tab-group>
+    <mat-tab label="course" [selectedIndex]="currentTab">
+      <form class="course-form" [formGroup]="addCourseForm" (ngSubmit)="submit(course)" enctype="multipart/form-data">
+        <mat-form-field class="row">
+          <textarea matInput name="title" formControlName="title" placeholder="Title"></textarea>
+        </mat-form-field>
+        <mat-form-field class="row">
+          <input matInput name="price" type="number" formControlName="price" placeholder="Price">
+        </mat-form-field>
+        <mat-form-field class="row">
+          <input matInput name="eta" type="number" formControlName="eta" placeholder="Estimated time">
+        </mat-form-field>
+        <mat-form-field class="row">
+          <textarea matInput name="title" formControlName="description" placeholder="Description"></textarea>
+        </mat-form-field>
+        <div class="row">
+          <label>cover photo</label>
+          <input type="file" (change)="setImage($event)">
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="syllabus">
+      <app-add-syllabus [course]="course" ></app-add-syllabus>
+    </mat-tab>
+    <mat-tab label="content">
+      <div><app-add-content [course]="course" ></app-add-content></div>
+    </mat-tab>
+  </mat-tab-group>
+  <button (click)="submit()">{{course._id}}</button>
+</div>

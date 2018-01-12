@@ -1,0 +1,14 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+<nav class="navbar navbar-dark bg-primary" mat-tab-nav-bar>
+  <div class="nav navbar-nav">
+    <a routerLink="/publish/new" class="nav-item nav-link" mat-tab-link  routerLinkActive="active">
+      <i class="fa fa-home"></i> Add
+    </a>
+    <a routerLink="/publish/unPublishedList" class="nav-item nav-link" routerLinkActive="active">
+      <i class="fa fa-list"></i> un-published list
+    </a>
+  </div>
+</nav>
+<router-outlet></router-outlet>

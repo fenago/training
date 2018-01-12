@@ -1,0 +1,22 @@
+.course-form{
+  width:90%;
+  height: 90%;
+  margin-top:2%;
+  margin-left:5%;
+  padding: 50px 50px 50px 50px;
+  background-color: white;
+  border-radius:5px 5px 5px 5px;
+  -webkit-box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);
+  -moz-box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);
+  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);
+}
+.content{
+  border:solid #00ADBB;
+}
+.row{
+  width:100%;
+}
+
+.col{
+  width:50%;
+}

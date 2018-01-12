@@ -8,6 +8,11 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { UsersComponent } from './admin/users/users.component';
+import { PublishComponent } from './admin/publish/publish.component';
+import { AddCourseComponent } from './admin/publish/add-course/add-course.component';
+import { AddSyllabusComponent } from './admin/publish/add-syllabus/add-syllabus.component';
+import { AddContentComponent } from './admin/publish/add-content/add-content.component';
+import { UnPublishedListComponent } from './admin/publish/un-published-list/un-published-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -23,13 +28,22 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardLogin] },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin] },
+  {
+    path: 'publish', component: PublishComponent, children: [
+      { path: '', component: UnPublishedListComponent },
+      { path: 'new', component: AddCourseComponent },
+      { path: 'new/:id', component: AddSyllabusComponent },
+      { path: 'unPublishedList', component: UnPublishedListComponent }
+    ]
+  },
+  // { path: 'publish', component: PublishComponent, canActivate: [AuthGuardAdmin] },
   { path: 'notfound', component: NotFoundComponent },
   { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 
-export class RoutingModule {}
+export class RoutingModule { }

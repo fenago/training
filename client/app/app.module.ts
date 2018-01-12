@@ -1,6 +1,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MaterialModule } from './material.module';
+import { FileUploadModule } from 'ng2-file-upload';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { RoutingModule } from './routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { courseService } from './services/course.service';
 import { UserService } from './services/user.service';
@@ -19,6 +23,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './admin/users/users.component';
+import { PublishComponent } from './admin/publish/publish.component';
+import { AddSyllabusComponent } from './admin/publish/add-syllabus/add-syllabus.component';
+import { AddContentComponent } from './admin/publish/add-content/add-content.component';
+import { AddCourseComponent } from './admin/publish/add-course/add-course.component';
+import { UnPublishedListComponent } from './admin/publish/un-published-list/un-published-list.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +43,20 @@ import { UsersComponent } from './admin/users/users.component';
     FooterComponent,
     DashboardComponent,
     UsersComponent,
+    PublishComponent,
+    AddSyllabusComponent,
+    AddContentComponent,
+    AddCourseComponent,
+    UnPublishedListComponent
   ],
   imports: [
     RoutingModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FileUploadModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     AuthService,

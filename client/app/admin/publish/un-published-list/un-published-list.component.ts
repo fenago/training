@@ -1,23 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { courseService } from '../services/course.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { course } from '../shared/models/course.model';
+import { courseService } from '../../../services/course.service';
+import { ToastComponent } from '../../../shared/toast/toast.component';
+import { course } from '../../../shared/models/course.model';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  selector: 'app-un-published-list',
+  templateUrl: './un-published-list.component.html',
+  styleUrls: ['./un-published-list.component.css']
 })
-export class courseComponent implements OnInit {
-
+export class UnPublishedListComponent implements OnInit {
+  @Input()
   course = new course();
+
   courses: course[] = [];
   isLoading = true;
   isEditing = false;
 
   addcourseForm: FormGroup;
+  name = new FormControl('', Validators.required);
+  age = new FormControl('', Validators.required);
+  weight = new FormControl('', Validators.required);
 
   constructor(private courseservice: courseService,
     private formBuilder: FormBuilder,
@@ -26,45 +30,24 @@ export class courseComponent implements OnInit {
   ngOnInit() {
     this.getcourses();
     this.addcourseForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      price: ['', Validators.required],
-      eta: ['', Validators.required],
-      description: ['', Validators.required],
-      image: null
+      name: this.name,
+      age: this.age,
+      weight: this.weight
     });
   }
 
   getcourses() {
-    this.courseservice.getcourses().subscribe(
-      data => this.courses = data,
+    this.courseservice.getcoursesShallow().subscribe(
+      data => {
+      this.courses = data;
+      console.log(data);
+    },
       error => console.log(error),
       () => this.isLoading = false
     );
   }
-  onFileChange(event) {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      reader.readAsDataURL(file);
-      this.isLoading = true;
-      console.log(this.addcourseForm);
-      reader.onload = () => {
-        console.log(this.addcourseForm);
-        this.addcourseForm.get('image').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        }, {
-          emitModelToViewChange: false
-        });
-        console.log(this.addcourseForm);
-        this.isLoading = false;
-      };
-    }
-  }
 
   addcourse() {
-    console.log(this.addcourseForm.value);
     this.courseservice.addcourse(this.addcourseForm.value).subscribe(
       res => {
         this.courses.push(res);
