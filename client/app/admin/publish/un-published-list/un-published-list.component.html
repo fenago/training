@@ -25,6 +25,9 @@
           <td>{{course.price}}</td>
           <td>{{course.eta}}</td>
           <td>
+              <button class="btn btn-sm btn-primary" (click)="publish(course)">
+                  <i class="fa fa-check"></i> publish
+                </button>
             <button class="btn btn-sm btn-warning">
               <i class="fa fa-pencil"></i>
               <a [routerLink]="['/publish/new', course._id]" class="nav-item nav-link" routerLinkActive="active">

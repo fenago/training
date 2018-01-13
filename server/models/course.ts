@@ -1,11 +1,26 @@
 import * as mongoose from 'mongoose';
 
-const catSchema = new mongoose.Schema({
-  name: String,
-  weight: Number,
-  age: Number
+const courseSchema = new mongoose.Schema({
+  title: String,
+  image: Object,
+  price: Number,
+  eta: String,
+  description: String,
+  isPublished: Boolean,
+  userCount: Number,
+  syllabus: String,
+  content: {
+    chapters : [{
+      title: String,
+      lessons: [{
+        title: String,
+        content: String,
+        image : Object
+      }]
+    }]
+  }
 });
 
-const Cat = mongoose.model('Cat', catSchema);
+const course = mongoose.model('course', courseSchema);
 
-export default Cat;
+export default course;
