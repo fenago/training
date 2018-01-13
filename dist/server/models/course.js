@@ -1,11 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
-var catSchema = new mongoose.Schema({
-    name: String,
-    weight: Number,
-    age: Number
+var courseSchema = new mongoose.Schema({
+    title: String,
+    image: Object,
+    price: Number,
+    eta: String,
+    description: String,
+    isPublished: Boolean,
+    userCount: Number,
+    syllabus: String,
+    content: {
+        chapters: [{
+                title: String,
+                lessons: [{
+                        title: String,
+                        content: String,
+                        image: Object
+                    }]
+            }]
+    }
 });
-var Cat = mongoose.model('Cat', catSchema);
-exports.default = Cat;
+var course = mongoose.model('course', courseSchema);
+exports.default = course;
 //# sourceMappingURL=course.js.map

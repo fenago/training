@@ -36,9 +36,9 @@
                   <i class="fa fa-upload"></i> Publish
                 </a>
                 <a routerLink="/login" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-                  <i class="fa fa-sign-in"></i> Login
+                  <i class="fa fa-sign-in"></i> Logins
                 </a>
-                <a routerLink="/register"  mat-tab-linkclass="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
+                <a routerLink="/register"  mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
                   <i class="fa fa-user-plus"></i> Register
                 </a>
                 <a routerLink="/account" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
