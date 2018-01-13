@@ -19,7 +19,7 @@
       <tbody *ngIf="!isEditing">
         <tr *ngFor="let course of courses">
           <td>
-            <img src="data:{{course.image.filetype}};base64,{{course.image.value}}">
+            <img *ngIf="course.image" src="data:{{course.image.filetype}};base64,{{course.image.value}}">
           </td>
           <td>{{course.title}}</td>
           <td>{{course.price}}</td>
