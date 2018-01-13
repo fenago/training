@@ -32,7 +32,7 @@ const routes: Routes = [
     path: 'publish', component: PublishComponent, children: [
       { path: '', component: UnPublishedListComponent },
       { path: 'new', component: AddCourseComponent },
-      { path: 'new/:id', component: AddSyllabusComponent },
+      { path: 'new/:id', component: AddCourseComponent },
       { path: 'unPublishedList', component: UnPublishedListComponent }
     ]
   },

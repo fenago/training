@@ -32,8 +32,8 @@ export class courseService {
     return this.http.post('/api/course/upload', formData);
   }
 
-  getcourse(course: course): Observable<course> {
-    return this.http.get<course>(`/api/course/${course._id}`);
+  getcourse(courseId: string): Observable<course> {
+    return this.http.get<course>(`/api/course/${courseId}`);
   }
 
   editcourse(course: course): Observable<string> {

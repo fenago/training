@@ -1,4 +1,41 @@
-<div class="content">
-<h1>Dashboard</h1>
-<h3>welcome user</h3>
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">{{course._id}}</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>image</th>
+          <th>Title</th>
+          <th>price</th>
+          <th>ETA</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="courses.length === 0">
+        <tr>
+          <td colspan="4">There are no courses in the DB. Add a new course below.</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let course of courses">
+          <td>
+            <img src="data:{{course.image.filetype}};base64,{{course.image.value}}">
+          </td>
+          <td>{{course.title}}</td>
+          <td>{{course.price}}</td>
+          <td>{{course.eta}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning">
+              <i class="fa fa-pencil"></i>
+              <a [routerLink]="['/publish/new', course._id]" class="nav-item nav-link" routerLinkActive="active">
+                Edit
+              </a>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deletecourse(course)">
+              <i class="fa fa-trash"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

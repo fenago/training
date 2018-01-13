@@ -14,7 +14,8 @@
   border:none;
 }
 .content{
-  height: 71vh;
+  height: 100%;
+  min-height: 71vh;
 }
 .colored{
   background-color: #00ADBB

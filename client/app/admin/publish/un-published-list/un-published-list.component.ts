@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { courseService } from '../../../services/course.service';
 import { ToastComponent } from '../../../shared/toast/toast.component';
@@ -25,7 +26,8 @@ export class UnPublishedListComponent implements OnInit {
 
   constructor(private courseservice: courseService,
     private formBuilder: FormBuilder,
-    public toast: ToastComponent) { }
+    public toast: ToastComponent,
+    private router: Router) { }
 
   ngOnInit() {
     this.getcourses();
@@ -39,47 +41,22 @@ export class UnPublishedListComponent implements OnInit {
   getcourses() {
     this.courseservice.getcoursesShallow().subscribe(
       data => {
-      this.courses = data;
-      console.log(data);
-    },
+        this.courses = data;
+        console.log(data);
+      },
       error => console.log(error),
       () => this.isLoading = false
     );
   }
 
-  addcourse() {
-    this.courseservice.addcourse(this.addcourseForm.value).subscribe(
-      res => {
-        this.courses.push(res);
-        this.addcourseForm.reset();
-        this.toast.setMessage('item added successfully.', 'success');
-      },
-      error => console.log(error)
-    );
-  }
-
-  enableEditing(course: course) {
-    this.isEditing = true;
-    this.course = course;
-  }
-
-  cancelEditing() {
-    this.isEditing = false;
-    this.course = new course();
-    this.toast.setMessage('item editing cancelled.', 'warning');
-    // reload the courses to reset the editing
-    this.getcourses();
-  }
-
-  editcourse(course: course) {
-    this.courseservice.editcourse(course).subscribe(
-      () => {
-        this.isEditing = false;
-        this.course = course;
-        this.toast.setMessage('item edited successfully.', 'success');
-      },
-      error => console.log(error)
-    );
+  publish(course: course) {
+    this.courseservice.getcourse(course._id).subscribe( response => {
+      response.isPublished = true;
+      this.courseservice.editcourse(response).subscribe( res => {
+        console.log(res);
+        this.getcourses();
+      });
+    });
   }
 
   deletecourse(course: course) {

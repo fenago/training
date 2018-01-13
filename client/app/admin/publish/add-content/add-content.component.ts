@@ -12,8 +12,8 @@ export class AddContentComponent implements OnInit {
   @Input()
   course: any;
   options: any;
-  chapterName: String;
-  lessonName: String;
+  chapterName: String = 'Add title';
+  lessonName: String = 'Add title';
   constructor( private courseService: courseService, private toast: ToastComponent) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class AddContentComponent implements OnInit {
       title: this.chapterName,
       lessons: []
     });
-    this.chapterName = '';
+    this.chapterName = 'Add title';
   }
 
   addLesson(i) {
@@ -44,7 +44,11 @@ export class AddContentComponent implements OnInit {
       content: '',
       image: ''
     });
-    this.lessonName = '';
+    this.lessonName = 'Add title';
+  }
+
+  removePlaceholder(event) {
+    event.target.value = event.target.value === 'Add title' ? '' : event.target.value;
   }
 
 
