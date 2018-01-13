@@ -378,7 +378,6 @@
 .header-dark .header,
 .header.header-dark {
   background-color: #292b2c;
-  border-bottom: 1px solid #5a5f61;
   color: #f0f0f0;
 }
 
@@ -1849,7 +1848,6 @@ html {
 /* line 12, assets/scss/core/_typography.scss */
 
 body {
-  position: relative;
   overflow-x: hidden;
 }
 

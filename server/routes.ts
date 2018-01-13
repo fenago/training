@@ -4,6 +4,8 @@ import CourseCtrl from './controllers/course';
 import UserCtrl from './controllers/user';
 import course from './models/course';
 import User from './models/user';
+const multer  = require('multer');
+const upload = multer({ dest: './client/assets/uploads' });
 
 export default function setRoutes(app) {
 
@@ -16,6 +18,7 @@ export default function setRoutes(app) {
   router.route('/courses').get(courseCtrl.getAll);
   router.route('/courses/count').get(courseCtrl.count);
   router.route('/course').post(courseCtrl.insert);
+  router.route('/courses/shallow').get(courseCtrl.getAllShallow);
   router.route('/course/:id').get(courseCtrl.get);
   router.route('/course/:id').put(courseCtrl.update);
   router.route('/course/:id').delete(courseCtrl.delete);

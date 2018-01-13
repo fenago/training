@@ -1,0 +1,1 @@
+{"version":3,"file":"syllabus.js","sourceRoot":"","sources":["../../../server/models/syllabus.ts"],"names":[],"mappings":";;AAAA,mCAAqC;AAErC,IAAM,cAAc,GAAG,IAAI,QAAQ,CAAC,MAAM,CAAC;IACzC,KAAK,EAAE,MAAM;IACb,IAAI,EAAE,MAAM;IACZ,MAAM,EAAE,MAAM;CACf,CAAC,CAAC;AAEH,IAAM,QAAQ,GAAG,QAAQ,CAAC,KAAK,CAAC,UAAU,EAAE,cAAc,CAAC,CAAC;AAE5D,kBAAe,QAAQ,CAAC"}

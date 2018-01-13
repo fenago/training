@@ -1,9 +1,9 @@
 <app-toast [message]="toast.message">
 </app-toast>
-<div id="content">
-  <div class="container">
+<div class="content colored">
+  <div>
     <!-- Login form -->
-    <form class="form-login form-wrapper form-narrow" [formGroup]="loginForm" (ngSubmit)="login()">
+    <form class="form form-login form-wrapper form-narrow" [formGroup]="loginForm" (ngSubmit)="login()">
         <h3 class="text">Login</h3>
         <br>
       <div class="form-group" [ngClass]="setClassEmail()">

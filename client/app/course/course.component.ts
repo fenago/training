@@ -18,20 +18,19 @@ export class courseComponent implements OnInit {
   isEditing = false;
 
   addcourseForm: FormGroup;
-  name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
 
   constructor(private courseservice: courseService,
-              private formBuilder: FormBuilder,
-              public toast: ToastComponent) { }
+    private formBuilder: FormBuilder,
+    public toast: ToastComponent) { }
 
   ngOnInit() {
     this.getcourses();
     this.addcourseForm = this.formBuilder.group({
-      name: this.name,
-      age: this.age,
-      weight: this.weight
+      title: ['', Validators.required],
+      price: ['', Validators.required],
+      eta: ['', Validators.required],
+      description: ['', Validators.required],
+      image: null
     });
   }
 
@@ -42,8 +41,30 @@ export class courseComponent implements OnInit {
       () => this.isLoading = false
     );
   }
+  onFileChange(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      this.isLoading = true;
+      console.log(this.addcourseForm);
+      reader.onload = () => {
+        console.log(this.addcourseForm);
+        this.addcourseForm.get('image').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        }, {
+          emitModelToViewChange: false
+        });
+        console.log(this.addcourseForm);
+        this.isLoading = false;
+      };
+    }
+  }
 
   addcourse() {
+    console.log(this.addcourseForm.value);
     this.courseservice.addcourse(this.addcourseForm.value).subscribe(
       res => {
         this.courses.push(res);

@@ -2,18 +2,17 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { courseService } from '../services/course.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { course } from '../shared/models/course.model';
-
+import { courseService } from '../../../services/course.service';
+import { ToastComponent } from '../../../shared/toast/toast.component';
+import { course } from '../../../shared/models/course.model';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-un-published-list',
+  templateUrl: './un-published-list.component.html',
+  styleUrls: ['./un-published-list.component.css']
 })
-export class DashboardComponent implements OnInit {
-
+export class UnPublishedListComponent implements OnInit {
+  @Input()
   course = new course();
 
   courses: course[] = [];
@@ -40,7 +39,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getcourses() {
-    this.courseservice.getcourses().subscribe(
+    this.courseservice.getcoursesShallow().subscribe(
       data => {
         this.courses = data;
         console.log(data);
@@ -48,6 +47,16 @@ export class DashboardComponent implements OnInit {
       error => console.log(error),
       () => this.isLoading = false
     );
+  }
+
+  publish(course: course) {
+    this.courseservice.getcourse(course._id).subscribe( response => {
+      response.isPublished = true;
+      this.courseservice.editcourse(response).subscribe( res => {
+        console.log(res);
+        this.getcourses();
+      });
+    });
   }
 
   deletecourse(course: course) {
