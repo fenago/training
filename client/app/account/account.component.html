@@ -15,7 +15,12 @@
           <i class="fa fa-envelope"></i> Email</span>
         <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!accountForm.form.valid">
+      <div class="form-group">
+        <span class="input-group-addon">
+          <i class="fa fa-envelope"></i>password</span>
+        <input class="form-control" type="password" name="password" [(ngModel)]="user.password" placeholder="Password" required>
+      </div>
+      <button class="btn btn-primary" type="submit">
         <i class="fa fa-save"></i> Save
       </button>
     </form>

@@ -97,7 +97,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/account/account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-loading [condition]=\"isLoading\"></app-loading>\r\n\r\n<app-toast [message]=\"toast.message\"></app-toast>\r\n\r\n<div class=\"content\" *ngIf=\"!isLoading\">\r\n  <div class=\"card-block\">\r\n    <form #accountForm=\"ngForm\" class=\"form-login form-wrapper form-narrow\" (ngSubmit)=\"save(user)\">\r\n      <div class=\"form-group\">\r\n        <span class=\"input-group-addon\">\r\n          <i class=\"fa fa-user\"></i> username</span>\r\n        <input class=\"form-control\" type=\"text\" name=\"username\" [(ngModel)]=\"user.username\" placeholder=\"Username\" required>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <span class=\"input-group-addon\">\r\n          <i class=\"fa fa-envelope\"></i> Email</span>\r\n        <input class=\"form-control\" type=\"email\" name=\"email\" [(ngModel)]=\"user.email\" placeholder=\"Email\" required>\r\n      </div>\r\n      <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!accountForm.form.valid\">\r\n        <i class=\"fa fa-save\"></i> Save\r\n      </button>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<app-loading [condition]=\"isLoading\"></app-loading>\r\n\r\n<app-toast [message]=\"toast.message\"></app-toast>\r\n\r\n<div class=\"content\" *ngIf=\"!isLoading\">\r\n  <div class=\"card-block\">\r\n    <form #accountForm=\"ngForm\" class=\"form-login form-wrapper form-narrow\" (ngSubmit)=\"save(user)\">\r\n      <div class=\"form-group\">\r\n        <span class=\"input-group-addon\">\r\n          <i class=\"fa fa-user\"></i> username</span>\r\n        <input class=\"form-control\" type=\"text\" name=\"username\" [(ngModel)]=\"user.username\" placeholder=\"Username\" required>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <span class=\"input-group-addon\">\r\n          <i class=\"fa fa-envelope\"></i> Email</span>\r\n        <input class=\"form-control\" type=\"email\" name=\"email\" [(ngModel)]=\"user.email\" placeholder=\"Email\" required>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <span class=\"input-group-addon\">\r\n          <i class=\"fa fa-envelope\"></i>password</span>\r\n        <input class=\"form-control\" type=\"password\" name=\"password\" [(ngModel)]=\"user.password\" placeholder=\"Password\" required>\r\n      </div>\r\n      <button class=\"btn btn-primary\" type=\"submit\">\r\n        <i class=\"fa fa-save\"></i> Save\r\n      </button>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -896,7 +896,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__material_module__["a" /* MaterialModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__["FileUploadModule"],
                 __WEBPACK_IMPORTED_MODULE_3_angular_froala_wysiwyg__["a" /* FroalaEditorModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_3_angular_froala_wysiwyg__["b" /* FroalaViewModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_3_angular_froala_wysiwyg__["b" /* FroalaViewModule */].forRoot(),
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_9__services_auth_service__["a" /* AuthService */],

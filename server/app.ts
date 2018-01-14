@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // } else {
 //   mongodbURI = process.env.MONGODB_URI;
 //   app.use(morgan('dev'));
-}
+//}
 
 mongoose.Promise = global.Promise;
 const mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });

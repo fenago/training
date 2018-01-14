@@ -56,7 +56,7 @@ import { UnPublishedListComponent } from './admin/publish/un-published-list/un-p
     MaterialModule,
     FileUploadModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
   ],
   providers: [
     AuthService,
