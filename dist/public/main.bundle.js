@@ -1975,6 +1975,7 @@ var UserService = (function () {
         return this.http.post('/api/user', user);
     };
     UserService.prototype.login = function (credentials) {
+        console.log(credentials);
         return this.http.post('/api/login', credentials);
     };
     UserService.prototype.getUsers = function () {

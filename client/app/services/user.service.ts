@@ -14,6 +14,7 @@ export class UserService {
   }
 
   login(credentials): Observable<any> {
+    console.log(credentials);
     return this.http.post<any>('/api/login', credentials);
   }
 
