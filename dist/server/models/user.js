@@ -49,12 +49,10 @@ userSchema.methods.comparePassword = function (candidatePassword, callback) {
     if (candidatePassword == this.password) {
         callback(null, true);
     }
-    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-        if (err) {
-            return callback(err);
-        }
-        callback(null, isMatch);
-    });
+    // bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    //   if (err) { return callback(err); }
+    //   callback(null, isMatch);
+    // });
 };
 // Omit the password when returning a user
 userSchema.set('toJSON', {
