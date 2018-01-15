@@ -27,6 +27,7 @@ var UserCtrl = (function (_super) {
                     if (!isMatch) {
                         return res.sendStatus(403);
                     }
+                    console.log(isMatch);
                     var token = jwt.sign({ user: user }, process.env.SECRET_TOKEN); // , { expiresIn: 10 } seconds
                     res.status(200).json({ token: token });
                 });

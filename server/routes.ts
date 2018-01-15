@@ -4,6 +4,7 @@ import CourseCtrl from './controllers/course';
 import UserCtrl from './controllers/user';
 import course from './models/course';
 import User from './models/user';
+import MiddleWare from './middlewares';
 const multer  = require('multer');
 const upload = multer({ dest: './client/assets/uploads' });
 
@@ -13,6 +14,9 @@ export default function setRoutes(app) {
 
   const courseCtrl = new CourseCtrl();
   const userCtrl = new UserCtrl();
+  const middleWare = new MiddleWare();
+
+  router.route('/user/:id').put(middleWare.hash);
 
   // courses
   router.route('/courses').get(courseCtrl.getAll);

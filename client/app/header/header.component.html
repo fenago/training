@@ -32,7 +32,7 @@
                 <a routerLink="/dashboard" mat-tab-link class="nav-item nav-link" *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   <i class="fa fa-book"></i> Dashboard
                 </a>
-                <a routerLink="/publish" mat-tab-link class="nav-item nav-link" *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                <a routerLink="/publish" mat-tab-link class="nav-item nav-link" *ngIf="auth.loggedIn && auth.isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   <i class="fa fa-upload"></i> Publish
                 </a>
                 <a routerLink="/login" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">

@@ -3,12 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var course_1 = require("./controllers/course");
 var user_1 = require("./controllers/user");
+var middlewares_1 = require("./middlewares");
 var multer = require('multer');
 var upload = multer({ dest: './client/assets/uploads' });
 function setRoutes(app) {
     var router = express.Router();
     var courseCtrl = new course_1.default();
     var userCtrl = new user_1.default();
+    var middleWare = new middlewares_1.default();
+    router.route('/user/:id').put(middleWare.hash);
     // courses
     router.route('/courses').get(courseCtrl.getAll);
     router.route('/courses/count').get(courseCtrl.count);
