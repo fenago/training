@@ -166,7 +166,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:98%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:1%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -179,7 +179,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/add-content/add-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"course-form\" aria-label=\"syllabus\">\r\n  <legend>chapters</legend>\r\n  <br>\r\n  <mat-tab-group>\r\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\r\n      <ng-template mat-tab-label>\r\n        {{i+1}}-\r\n        <input matInput [(ngModel)]=\"chapter.title\">\r\n      </ng-template>\r\n      <legend>lessons</legend>\r\n      <mat-tab-group>\r\n\r\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\r\n          <ng-template mat-tab-label>\r\n            {{i+1}}.{{j+1}}-\r\n            <input matInput [(ngModel)]=\"lesson.title\">\r\n          </ng-template>\r\n          <div [froalaEditor]=\"options\" [(froalaModel)]=\"lesson.content\">Hello, Froala!</div>\r\n          <input type=\"file\">\r\n        </mat-tab>\r\n        <mat-tab>\r\n          <ng-template mat-tab-label>\r\n              <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"lessonName\"  />\r\n              <button class=\"btn\" (click)=\"addLesson(i)\"><i class=\"fa fa-plus\"></i></button>\r\n          </ng-template>\r\n        </mat-tab>\r\n\r\n      </mat-tab-group>\r\n    </mat-tab>\r\n    <mat-tab>\r\n      <ng-template mat-tab-label>\r\n          <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"chapterName\"/>\r\n        <button class=\"btn\" (click)=\"addChapter()\">\r\n            <i class=\"fa fa-plus\"></i>\r\n          </button>\r\n      </ng-template>\r\n    </mat-tab>\r\n  </mat-tab-group>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"course-form\" aria-label=\"syllabus\">\r\n  <legend>chapters</legend>\r\n  <br>\r\n  <mat-tab-group>\r\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\r\n      <ng-template mat-tab-label>\r\n        {{i+1}}-\r\n        <input matInput [(ngModel)]=\"chapter.title\">\r\n      </ng-template>\r\n      <legend>lessons</legend>\r\n      <mat-tab-group>\r\n\r\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\r\n          <ng-template mat-tab-label>\r\n            {{i+1}}.{{j+1}}-\r\n            <input matInput [(ngModel)]=\"lesson.title\">\r\n          </ng-template>\r\n          <quill-editor [(ngModel)]=\"lesson.content\" theme=\"snow\"></quill-editor>\r\n          <br>\r\n\r\n          <input type=\"file\">\r\n        </mat-tab>\r\n        <mat-tab>\r\n          <ng-template mat-tab-label>\r\n              <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"lessonName\"  />\r\n              <button class=\"btn\" (click)=\"addLesson(i)\"><i class=\"fa fa-plus\"></i></button>\r\n          </ng-template>\r\n        </mat-tab>\r\n\r\n      </mat-tab-group>\r\n    </mat-tab>\r\n    <mat-tab>\r\n      <ng-template mat-tab-label>\r\n          <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"chapterName\"/>\r\n        <button class=\"btn\" (click)=\"addChapter()\">\r\n            <i class=\"fa fa-plus\"></i>\r\n          </button>\r\n      </ng-template>\r\n    </mat-tab>\r\n  </mat-tab-group>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -407,7 +407,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/add-syllabus/add-syllabus.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"course-form\" aria-label=\"syllabus\">\r\n  <div class=\"row\">\r\n    <legend> Syllabus </legend>\r\n      <div [froalaEditor]=\"options\" [(froalaModel)]=\"course.syllabus\">Hello, Froala!</div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<div class=\"course-form\" aria-label=\"syllabus\">\r\n  <div class=\"row\">\r\n    <legend> Syllabus </legend>\r\n       <quill-editor [(ngModel)]=\"course.syllabus\" theme=\"snow\"></quill-editor>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -805,31 +805,32 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular_froala_wysiwyg__ = __webpack_require__("../../../../angular-froala-wysiwyg/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routing_module__ = __webpack_require__("../../../../../client/app/routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__ = __webpack_require__("../../../../../client/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_course_service__ = __webpack_require__("../../../../../client/app/services/course.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_user_service__ = __webpack_require__("../../../../../client/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_login_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_auth_guard_admin_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-admin.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__("../../../../../client/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__course_course_component__ = __webpack_require__("../../../../../client/app/course/course.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__about_about_component__ = __webpack_require__("../../../../../client/app/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__register_register_component__ = __webpack_require__("../../../../../client/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__login_login_component__ = __webpack_require__("../../../../../client/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__logout_logout_component__ = __webpack_require__("../../../../../client/app/logout/logout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__account_account_component__ = __webpack_require__("../../../../../client/app/account/account.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__not_found_not_found_component__ = __webpack_require__("../../../../../client/app/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__header_header_component__ = __webpack_require__("../../../../../client/app/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__footer_footer_component__ = __webpack_require__("../../../../../client/app/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dashboard_dashboard_component__ = __webpack_require__("../../../../../client/app/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__admin_users_users_component__ = __webpack_require__("../../../../../client/app/admin/users/users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__admin_publish_publish_component__ = __webpack_require__("../../../../../client/app/admin/publish/publish.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__admin_publish_add_syllabus_add_syllabus_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-syllabus/add-syllabus.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__admin_publish_add_content_add_content_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-content/add-content.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__admin_publish_add_course_add_course_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-course/add-course.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__admin_publish_un_published_list_un_published_list_component__ = __webpack_require__("../../../../../client/app/admin/publish/un-published-list/un-published-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_quill__ = __webpack_require__("../../../../ngx-quill/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__routing_module__ = __webpack_require__("../../../../../client/app/routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__ = __webpack_require__("../../../../../client/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_course_service__ = __webpack_require__("../../../../../client/app/services/course.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_user_service__ = __webpack_require__("../../../../../client/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_auth_guard_login_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_auth_guard_admin_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-admin.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_component__ = __webpack_require__("../../../../../client/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__course_course_component__ = __webpack_require__("../../../../../client/app/course/course.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__about_about_component__ = __webpack_require__("../../../../../client/app/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__register_register_component__ = __webpack_require__("../../../../../client/app/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__login_login_component__ = __webpack_require__("../../../../../client/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__logout_logout_component__ = __webpack_require__("../../../../../client/app/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__account_account_component__ = __webpack_require__("../../../../../client/app/account/account.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__not_found_not_found_component__ = __webpack_require__("../../../../../client/app/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__header_header_component__ = __webpack_require__("../../../../../client/app/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__footer_footer_component__ = __webpack_require__("../../../../../client/app/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__dashboard_dashboard_component__ = __webpack_require__("../../../../../client/app/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__admin_users_users_component__ = __webpack_require__("../../../../../client/app/admin/users/users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__admin_publish_publish_component__ = __webpack_require__("../../../../../client/app/admin/publish/publish.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__admin_publish_add_syllabus_add_syllabus_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-syllabus/add-syllabus.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__admin_publish_add_content_add_content_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-content/add-content.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__admin_publish_add_course_add_course_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-course/add-course.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__admin_publish_un_published_list_un_published_list_component__ = __webpack_require__("../../../../../client/app/admin/publish/un-published-list/un-published-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -865,48 +866,50 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__course_course_component__["a" /* courseComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__account_account_component__["a" /* AccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__not_found_not_found_component__["a" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__admin_users_users_component__["a" /* UsersComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__admin_publish_publish_component__["a" /* PublishComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__admin_publish_add_syllabus_add_syllabus_component__["a" /* AddSyllabusComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__admin_publish_add_content_add_content_component__["a" /* AddContentComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__admin_publish_add_course_add_course_component__["a" /* AddCourseComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__admin_publish_un_published_list_un_published_list_component__["a" /* UnPublishedListComponent */]
+                __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__course_course_component__["a" /* courseComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__about_about_component__["a" /* AboutComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__account_account_component__["a" /* AccountComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__not_found_not_found_component__["a" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__admin_users_users_component__["a" /* UsersComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__admin_publish_publish_component__["a" /* PublishComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__admin_publish_add_syllabus_add_syllabus_component__["a" /* AddSyllabusComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__admin_publish_add_content_add_content_component__["a" /* AddContentComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__admin_publish_add_course_add_course_component__["a" /* AddCourseComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__admin_publish_un_published_list_un_published_list_component__["a" /* UnPublishedListComponent */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__routing_module__["a" /* RoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__["a" /* SharedModule */],
-                __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__routing_module__["a" /* RoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__["a" /* SharedModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__material_module__["a" /* MaterialModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__["FileUploadModule"],
                 __WEBPACK_IMPORTED_MODULE_3_angular_froala_wysiwyg__["a" /* FroalaEditorModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_3_angular_froala_wysiwyg__["b" /* FroalaViewModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_4_ngx_quill__["a" /* QuillModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_9__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_login_service__["a" /* AuthGuardLogin */],
-                __WEBPACK_IMPORTED_MODULE_11__services_auth_guard_admin_service__["a" /* AuthGuardAdmin */],
-                __WEBPACK_IMPORTED_MODULE_7__services_course_service__["a" /* courseService */],
-                __WEBPACK_IMPORTED_MODULE_8__services_user_service__["a" /* UserService */]
+                __WEBPACK_IMPORTED_MODULE_10__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_11__services_auth_guard_login_service__["a" /* AuthGuardLogin */],
+                __WEBPACK_IMPORTED_MODULE_12__services_auth_guard_admin_service__["a" /* AuthGuardAdmin */],
+                __WEBPACK_IMPORTED_MODULE_8__services_course_service__["a" /* courseService */],
+                __WEBPACK_IMPORTED_MODULE_9__services_user_service__["a" /* UserService */]
             ],
             schemas: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["CUSTOM_ELEMENTS_SCHEMA"]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;

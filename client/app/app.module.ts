@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { QuillModule } from 'ngx-quill';
 
 import { RoutingModule } from './routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,6 +58,7 @@ import { UnPublishedListComponent } from './admin/publish/un-published-list/un-p
     FileUploadModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
+    QuillModule
   ],
   providers: [
     AuthService,

@@ -1,6 +1,6 @@
-<form class="course-form" aria-label="syllabus">
+<div class="course-form" aria-label="syllabus">
   <div class="row">
     <legend> Syllabus </legend>
-      <div [froalaEditor]="options" [(froalaModel)]="course.syllabus">Hello, Froala!</div>
+       <quill-editor [(ngModel)]="course.syllabus" theme="snow"></quill-editor>
   </div>
-</form>
+</div>

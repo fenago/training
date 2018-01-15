@@ -15,7 +15,9 @@
             {{i+1}}.{{j+1}}-
             <input matInput [(ngModel)]="lesson.title">
           </ng-template>
-          <div [froalaEditor]="options" [(froalaModel)]="lesson.content">Hello, Froala!</div>
+          <quill-editor [(ngModel)]="lesson.content" theme="snow"></quill-editor>
+          <br>
+
           <input type="file">
         </mat-tab>
         <mat-tab>
