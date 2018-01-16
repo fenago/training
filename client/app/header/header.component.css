@@ -1,1 +1,11 @@
-
+.header-brand{
+  background-color:white;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+}
+.header-inner{
+  width:95%;
+}
+.nav-item a{
+  font-size:14px;
+}

@@ -7,10 +7,8 @@
         <div class="header-inner container">
           <!--branding/logo -->
           <div class="header-brand">
-            <a class="header-brand-text" href="index.html" title="Home">
-              <h1 class="h2">
-                <span class="header-brand-text-alt">Trainer</span><span class="header-brand-text-alt">.</span>
-              </h1>
+            <a href="/" title="Home">
+              <img src="../assets/img/logo.png">
             </a>
           </div>
           <!-- other header content -->
@@ -24,31 +22,31 @@
           <nav class="navbar navbar-dark bg-primary" mat-tab-nav-bar>
               <div class="nav navbar-nav">
                 <a routerLink="/" class="nav-item nav-link" mat-tab-link *ngIf="!auth.isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  <i class="fa fa-home"></i> About
+                 <h5><i class="fa fa-home"></i> About</h5>
                 </a>
                 <!-- <a routerLink="/cats" class="nav-item nav-link" routerLinkActive="active">
                   <i class="fa fa-list"></i> Cats
                 </a> -->
                 <a routerLink="/dashboard" mat-tab-link class="nav-item nav-link" *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  <i class="fa fa-book"></i> Dashboard
+                  <h5><i class="fa fa-book"></i> Dashboard</h5>
                 </a>
                 <a routerLink="/publish" mat-tab-link class="nav-item nav-link" *ngIf="auth.loggedIn && auth.isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  <i class="fa fa-upload"></i> Publish
+                  <h5><i class="fa fa-upload"></i> Publish</h5>
                 </a>
                 <a routerLink="/login" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-                  <i class="fa fa-sign-in"></i> Logins
+                  <h5><i class="fa fa-sign-in"></i> Logins</h5>
                 </a>
                 <a routerLink="/register"  mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-                  <i class="fa fa-user-plus"></i> Register
+                  <h5><i class="fa fa-user-plus"></i> Register</h5>
                 </a>
                 <a routerLink="/account" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-                  <i class="fa fa-user"></i> Profile
+                  <h5><i class="fa fa-user"></i> Profile</h5>
                 </a>
                 <a routerLink="/users" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin">
-                  <i class="fa fa-group"></i> users
+                  <h5><i class="fa fa-group"></i> users</h5>
                 </a>
                 <a routerLink="/logout" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-                  <i class="fa fa-sign-out"></i> Logout
+                  <h5><i class="fa fa-sign-out"></i> Logout</h5>
                 </a>
               </div>
             </nav>

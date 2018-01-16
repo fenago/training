@@ -2,3 +2,19 @@
   margin: 0 auto;
   font-size: 20px;
 }
+img{
+  width:30%;
+  height: 20%;
+  margin-left: 70%;
+}
+.bg-white{
+  background-image: url('../../assets/img/mountains.jpeg');
+  background-size: 100% 100%;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+}
+.about{
+  border-radius : 5px 5px 5px 5px;
+  background-color: rgba(223,152,48,0.7);
+}
+

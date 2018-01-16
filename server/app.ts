@@ -15,7 +15,7 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
- const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
+  const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
 
 // let mongodbURI;
 // if (process.env.NODE_ENV === 'test') {
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // } else {
 //   mongodbURI = process.env.MONGODB_URI;
 //   app.use(morgan('dev'));
-//}
+// }
 
 mongoose.Promise = global.Promise;
 const mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });

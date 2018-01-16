@@ -1,5 +1,5 @@
 <app-toast [message]="toast.message"></app-toast>
-<div id="content">
+<div class="content colored">
   <div class="container">
     <!-- signup form -->
     <form class="form-login form-wrapper form-narrow" [formGroup]="registerForm" (ngSubmit)="register()">
@@ -18,7 +18,7 @@
         <input type="password" id="login-password-page" class="form-control password" name="password" formControlName="password"
           placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary">signup</button>
+      <button type="submit" class="btn">signup</button>
     </form>
   </div>
 </div>

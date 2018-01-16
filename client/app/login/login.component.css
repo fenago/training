@@ -1,12 +1,26 @@
-.form{
+.form {
   background-color: white;
-  border-radius: 2px 2px 2px 2px;
+  border-radius: 5px 5px 5px 5px;
   margin-top: 10%;
   padding: 30px 30px 30px 30px;
+  -webkit-box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
+  -moz-box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
+  box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
 }
-.text{
+
+.text {
   text-align: center;
+  color:#DF9830;
 }
-.btn{
+
+.btn {
   width: 100%;
+}
+
+img {
+  width: 30%;
+  height: 20%;
+  margin-left: 70%;
+  float: right;
+  z-index: 12;
 }
