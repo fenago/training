@@ -166,7 +166,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -268,7 +268,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.submit{\r\n  margin-left: 90%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.submit{\r\n  margin-left: 90%;\r\n}\r\nimg{\r\n  max-width: 10%;\r\n  max-height: 10%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -281,7 +281,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/add-course/add-course.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content colored\">\r\n  <mat-tab-group>\r\n    <mat-tab label=\"course\" [selectedIndex]=\"currentTab\">\r\n      <div class=\"course-form\">\r\n        <legend>Course details</legend>\r\n        <mat-form-field class=\"row\">\r\n          <textarea matInput [(ngModel)]=\"course.title\" placeholder=\"Title\"></textarea>\r\n        </mat-form-field>\r\n        <mat-form-field class=\"row\">\r\n          <input matInput type=\"number\" [(ngModel)]=\"course.price\" placeholder=\"Price\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"row\">\r\n          <input matInput type=\"number\" [(ngModel)]=\"course.eta\" placeholder=\"Estimated time\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"row\">\r\n          <textarea matInput [(ngModel)]=\"course.description\" placeholder=\"Description\"></textarea>\r\n        </mat-form-field>\r\n        <div class=\"row\">\r\n          <label>cover photo</label>\r\n          <input type=\"file\" (change)=\"setImage($event)\">\r\n        </div>\r\n      </div>\r\n    </mat-tab>\r\n    <mat-tab label=\"syllabus\">\r\n      <app-add-syllabus [course]=\"course\" ></app-add-syllabus>\r\n    </mat-tab>\r\n    <mat-tab label=\"content\">\r\n      <div><app-add-content [course]=\"course\" ></app-add-content></div>\r\n    </mat-tab>\r\n  </mat-tab-group>\r\n  <button class=\"submit btn btn-success\" (click)=\"submit()\">submit</button>\r\n</div>\r\n"
+module.exports = "<div class=\"content colored\">\r\n  <mat-tab-group>\r\n    <mat-tab label=\"course\" [selectedIndex]=\"currentTab\">\r\n      <div class=\"course-form\">\r\n        <legend>Course details</legend>\r\n        <mat-form-field class=\"row\">\r\n          <textarea matInput [(ngModel)]=\"course.title\" placeholder=\"Title\"></textarea>\r\n        </mat-form-field>\r\n        <mat-form-field class=\"row\">\r\n          <input matInput type=\"number\" [(ngModel)]=\"course.price\" placeholder=\"Price\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"row\">\r\n          <input matInput type=\"number\" [(ngModel)]=\"course.eta\" placeholder=\"Estimated time\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"row\">\r\n          <textarea matInput [(ngModel)]=\"course.description\" placeholder=\"Description\"></textarea>\r\n        </mat-form-field>\r\n        <div class=\"row\">\r\n          <label>cover photo</label>\r\n          <input type=\"file\" (change)=\"setImage($event)\">\r\n        </div>\r\n        <div *ngIf=\"imgUrl\" class=\"row\">\r\n          <br>\r\n          <img [src]=\"imgUrl\">\r\n          <br>\r\n        </div>\r\n      </div>\r\n    </mat-tab>\r\n    <mat-tab label=\"syllabus\">\r\n      <app-add-syllabus [course]=\"course\"></app-add-syllabus>\r\n    </mat-tab>\r\n    <mat-tab label=\"content\">\r\n      <div>\r\n        <app-add-content [course]=\"course\"></app-add-content>\r\n      </div>\r\n    </mat-tab>\r\n  </mat-tab-group>\r\n  <button class=\"submit btn btn-success\" (click)=\"submit()\">submit</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -336,32 +336,48 @@ var AddCourseComponent = (function () {
         var _this = this;
         var reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {
-            var file_1 = event.target.files[0];
-            reader.readAsDataURL(file_1);
-            reader.onload = function () {
-                _this.course.image = {
-                    filename: file_1.name,
-                    filetype: file_1.type,
-                    value: reader.result.split(',')[1]
-                };
+            var file = event.target.files[0];
+            reader.onload = function (e) {
+                _this.imgUrl = e.target.result;
             };
+            reader.readAsDataURL(event.target.files[0]);
+            this.course.image = file;
         }
     };
     AddCourseComponent.prototype.submit = function () {
         var _this = this;
+        var file = {
+            image: this.course.image ? this.course.image : null,
+            courseId: this.course._id ? this.course._id : null
+        };
+        this.course.image = typeof (this.course.image) === 'string' ? this.course.image : '';
         if (typeof (this.course._id) === 'string') {
             this.CourseService.editcourse(this.course).subscribe(function (res) {
-                console.log(res);
-                _this.toast.setMessage('course edited successfully.', 'success');
-            });
+                if (file.image) {
+                    _this.CourseService.uploadTitleImage(file).subscribe(function (response) {
+                        _this.toast.setMessage('Image uploaded successfully.', 'success');
+                    });
+                }
+                else {
+                    _this.toast.setMessage('course edited successfully.', 'success');
+                }
+            }, function (error) { return console.log(error); });
         }
         else {
             this.course.isPublished = false;
             this.CourseService.addcourse(this.course).subscribe(function (res) {
-                console.log(res);
+                if (file.image) {
+                    file.courseId = res._id;
+                    _this.course = res;
+                    _this.course.image = './uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
+                    _this.CourseService.uploadTitleImage(file).subscribe(function (response) {
+                        console.log(_this.course);
+                        _this.CourseService.editcourse(_this.course).subscribe(function (Res) {
+                            _this.toast.setMessage('course added successfully.', 'success');
+                        });
+                    });
+                }
                 _this.course = res;
-                _this.currentTab = 2;
-                _this.toast.setMessage('course added successfully.', 'success');
             }, function (error) { return console.log(error); });
         }
     };
@@ -394,7 +410,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);\r\n}\r\n.content{\r\n  border:solid #00ADBB;\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);\r\n}\r\n.content{\r\n  border:solid #00ADBB;\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -553,7 +569,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "img{\r\n  width: 30%;\r\n  height:30%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -566,7 +582,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/un-published-list/un-published-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"!isLoading\">\r\n  <h4 class=\"card-header\">{{course._id}}</h4>\r\n  <div class=\"card-block\">\r\n    <table class=\"table table-bordered table-striped\">\r\n      <thead class=\"thead-default\">\r\n        <tr>\r\n          <th>image</th>\r\n          <th>Title</th>\r\n          <th>price</th>\r\n          <th>ETA</th>\r\n          <th>Actions</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody *ngIf=\"courses.length === 0\">\r\n        <tr>\r\n          <td colspan=\"4\">There are no courses in the DB. Add a new course below.</td>\r\n        </tr>\r\n      </tbody>\r\n      <tbody *ngIf=\"!isEditing\">\r\n        <tr *ngFor=\"let course of courses\">\r\n          <td>\r\n            <img *ngIf=\"course.image\" src=\"data:{{course.image.filetype}};base64,{{course.image.value}}\">\r\n          </td>\r\n          <td>{{course.title}}</td>\r\n          <td>{{course.price}}</td>\r\n          <td>{{course.eta}}</td>\r\n          <td>\r\n              <button class=\"btn btn-sm btn-primary\" (click)=\"publish(course)\">\r\n                  <i class=\"fa fa-check\"></i> publish\r\n                </button>\r\n            <button class=\"btn btn-sm btn-warning\">\r\n              <i class=\"fa fa-pencil\"></i>\r\n              <a [routerLink]=\"['/publish/new', course._id]\" class=\"nav-item nav-link\" routerLinkActive=\"active\">\r\n                Edit\r\n              </a>\r\n            </button>\r\n            <button class=\"btn btn-sm btn-danger\" (click)=\"deletecourse(course)\">\r\n              <i class=\"fa fa-trash\"></i> Delete</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"card\" *ngIf=\"!isLoading\">\r\n  <h4 class=\"card-header\">{{course._id}}</h4>\r\n  <div class=\"card-block\">\r\n    <table class=\"table table-bordered table-striped\">\r\n      <thead class=\"thead-default\">\r\n        <tr>\r\n          <th>image</th>\r\n          <th>Title</th>\r\n          <th>price</th>\r\n          <th>ETA</th>\r\n          <th>Actions</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody *ngIf=\"courses.length === 0\">\r\n        <tr>\r\n          <td colspan=\"4\">There are no courses in the DB. Add a new course below.</td>\r\n        </tr>\r\n      </tbody>\r\n      <tbody *ngIf=\"!isEditing\">\r\n        <tr *ngFor=\"let course of courses\">\r\n          <td>\r\n            <img *ngIf=\"course.image\" src=\"{{course.image}}\">\r\n          </td>\r\n          <td>{{course.title}}</td>\r\n          <td>{{course.price}}</td>\r\n          <td>{{course.eta}}</td>\r\n          <td>\r\n              <button class=\"btn btn-sm btn-primary\" (click)=\"publish(course)\">\r\n                  <i class=\"fa fa-check\"></i> publish\r\n                </button>\r\n            <button class=\"btn btn-sm btn-warning\">\r\n              <i class=\"fa fa-pencil\"></i>\r\n              <a [routerLink]=\"['/publish/new', course._id]\" class=\"nav-item nav-link\" routerLinkActive=\"active\">\r\n                Edit\r\n              </a>\r\n            </button>\r\n            <button class=\"btn btn-sm btn-danger\" (click)=\"deletecourse(course)\">\r\n              <i class=\"fa fa-trash\"></i> Delete</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1077,7 +1093,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "img{\r\n  width:30%;\r\n  height: 30%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1090,7 +1106,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"!isLoading\">\r\n  <h4 class=\"card-header\">{{course._id}}</h4>\r\n  <div class=\"card-block\">\r\n    <table class=\"table table-bordered table-striped\">\r\n      <thead class=\"thead-default\">\r\n        <tr>\r\n          <th>image</th>\r\n          <th>Title</th>\r\n          <th>price</th>\r\n          <th>ETA</th>\r\n          <th>Actions</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody *ngIf=\"courses.length === 0\">\r\n        <tr>\r\n          <td colspan=\"4\">There are no courses in the DB. Add a new course below.</td>\r\n        </tr>\r\n      </tbody>\r\n      <tbody *ngIf=\"!isEditing\">\r\n        <tr *ngFor=\"let course of courses\">\r\n          <td>\r\n            <img *ngIf=\"course.image\" src=\"data:{{course.image.filetype}};base64,{{course.image.value}}\">\r\n          </td>\r\n          <td>{{course.title}}</td>\r\n          <td>{{course.price}}</td>\r\n          <td>{{course.eta}}</td>\r\n          <td>\r\n            <button class=\"btn btn-sm btn-warning\">\r\n              <i class=\"fa fa-pencil\"></i>\r\n              <a [routerLink]=\"['/publish/new', course._id]\" class=\"nav-item nav-link\" routerLinkActive=\"active\">\r\n                Edit\r\n              </a>\r\n            </button>\r\n            <button class=\"btn btn-sm btn-danger\" (click)=\"deletecourse(course)\">\r\n              <i class=\"fa fa-trash\"></i> Delete</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"card\" *ngIf=\"!isLoading\">\r\n  <h4 class=\"card-header\">{{course._id}}</h4>\r\n  <div class=\"card-block\">\r\n    <table class=\"table table-bordered table-striped\">\r\n      <thead class=\"thead-default\">\r\n        <tr>\r\n          <th>image</th>\r\n          <th>Title</th>\r\n          <th>price</th>\r\n          <th>ETA</th>\r\n          <th>Actions</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody *ngIf=\"courses.length === 0\">\r\n        <tr>\r\n          <td colspan=\"4\">There are no courses in the DB. Add a new course below.</td>\r\n        </tr>\r\n      </tbody>\r\n      <tbody *ngIf=\"!isEditing\">\r\n        <tr *ngFor=\"let course of courses\">\r\n          <td>\r\n            <img *ngIf=\"course.image\" src=\"{{course.image}}\">\r\n          </td>\r\n          <td>{{course.title}}</td>\r\n          <td>{{course.price}}</td>\r\n          <td>{{course.eta}}</td>\r\n          <td>\r\n            <button class=\"btn btn-sm btn-warning\">\r\n              <i class=\"fa fa-pencil\"></i>\r\n              <a [routerLink]=\"['/publish/new', course._id]\" class=\"nav-item nav-link\" routerLinkActive=\"active\">\r\n                Edit\r\n              </a>\r\n            </button>\r\n            <button class=\"btn btn-sm btn-danger\" (click)=\"deletecourse(course)\">\r\n              <i class=\"fa fa-trash\"></i> Delete</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1924,18 +1940,20 @@ var courseService = (function () {
         return this.http.get('/api/courses/count');
     };
     courseService.prototype.addcourse = function (data) {
+        console.log('insert', data);
         return this.http.post('/api/course', data);
     };
-    courseService.prototype.uploadImage = function (file) {
-        console.log(file);
+    courseService.prototype.uploadTitleImage = function (file) {
+        console.log('image', file);
         var formData = new FormData();
-        formData.append('userfile', file, file.filename);
-        return this.http.post('/api/course/upload', formData);
+        formData.append('image', file.image);
+        return this.http.post("/api/course/upload/" + file.courseId, formData);
     };
     courseService.prototype.getcourse = function (courseId) {
         return this.http.get("/api/course/" + courseId);
     };
     courseService.prototype.editcourse = function (course) {
+        console.log('edit', course);
         return this.http.put("/api/course/" + course._id, course, { responseType: 'text' });
     };
     courseService.prototype.deletecourse = function (course) {

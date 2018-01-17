@@ -4,14 +4,27 @@ var express = require("express");
 var course_1 = require("./controllers/course");
 var user_1 = require("./controllers/user");
 var middlewares_1 = require("./middlewares");
+var path = require('path');
 var multer = require('multer');
-var upload = multer({ dest: './client/assets/uploads' });
+var storage = multer.diskStorage({
+    destination: './uploads/title/',
+    filename: function (req, file, cb) {
+        cb(null, req.params.courseId + path.extname(file.originalname));
+    }
+});
 function setRoutes(app) {
+    var upload = multer({ storage: storage });
     var router = express.Router();
     var courseCtrl = new course_1.default();
     var userCtrl = new user_1.default();
     var middleWare = new middlewares_1.default();
     router.route('/user/:id').put(middleWare.hash);
+    router.route('/course/upload/:courseId').post(function (req, res) {
+        console.log(req.params);
+        upload.single('image')(req, res, function (err) {
+            res.json(err);
+        });
+    });
     // courses
     router.route('/courses').get(courseCtrl.getAll);
     router.route('/courses/count').get(courseCtrl.count);

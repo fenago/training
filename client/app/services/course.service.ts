@@ -21,15 +21,15 @@ export class courseService {
   }
 
   addcourse(data): Observable<course> {
-
+    console.log('insert', data);
     return this.http.post<course>('/api/course', data);
   }
 
-  uploadImage(file): Observable<any> {
-    console.log(file);
+  uploadTitleImage(file): Observable<any> {
+    console.log('image', file);
     const formData = new FormData();
-    formData.append('userfile', file , file.filename );
-    return this.http.post('/api/course/upload', formData);
+    formData.append('image', file.image);
+    return this.http.post(`/api/course/upload/${file.courseId}`, formData);
   }
 
   getcourse(courseId: string): Observable<course> {
@@ -37,6 +37,7 @@ export class courseService {
   }
 
   editcourse(course: course): Observable<string> {
+    console.log('edit', course);
     return this.http.put(`/api/course/${course._id}`, course, { responseType: 'text' });
   }
 

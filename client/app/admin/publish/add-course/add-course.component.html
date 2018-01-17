@@ -19,13 +19,20 @@
           <label>cover photo</label>
           <input type="file" (change)="setImage($event)">
         </div>
+        <div *ngIf="imgUrl" class="row">
+          <br>
+          <img [src]="imgUrl">
+          <br>
+        </div>
       </div>
     </mat-tab>
     <mat-tab label="syllabus">
-      <app-add-syllabus [course]="course" ></app-add-syllabus>
+      <app-add-syllabus [course]="course"></app-add-syllabus>
     </mat-tab>
     <mat-tab label="content">
-      <div><app-add-content [course]="course" ></app-add-content></div>
+      <div>
+        <app-add-content [course]="course"></app-add-content>
+      </div>
     </mat-tab>
   </mat-tab-group>
   <button class="submit btn btn-success" (click)="submit()">submit</button>

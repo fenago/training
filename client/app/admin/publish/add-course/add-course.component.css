@@ -6,9 +6,9 @@
   padding: 50px 50px 50px 50px;
   background-color: white;
   border-radius:5px 5px 5px 5px;
-  -webkit-box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);
-  -moz-box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);
-  box-shadow: -4px 25px 38px 4px rgba(7,125,133,1);
+  -webkit-box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
+  -moz-box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
+  box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
 }
 .row{
   width:100%;
@@ -19,4 +19,8 @@
 }
 .submit{
   margin-left: 90%;
+}
+img{
+  max-width: 10%;
+  max-height: 10%;
 }

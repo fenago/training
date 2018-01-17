@@ -17,6 +17,7 @@ export class AddCourseComponent implements OnInit {
   course: course = new course();
   addCourseForm: FormGroup;
   currentTab = 2;
+  imgUrl: string;
 
   constructor(private CourseService: courseService,
     private toast: ToastComponent,
@@ -24,7 +25,7 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if (typeof(params['id']) === 'string') {
+      if (typeof (params['id']) === 'string') {
         console.log('hello');
         this.CourseService.getcourse(params['id']).subscribe(res => {
           this.course = res;
@@ -41,31 +42,47 @@ export class AddCourseComponent implements OnInit {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.course.image = {
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        };
+
+      reader.onload = (e: any) => {
+        this.imgUrl = e.target.result;
       };
+      reader.readAsDataURL(event.target.files[0]);
+
+      this.course.image = file;
     }
   }
 
   submit() {
+    const file = {
+      image: this.course.image ? this.course.image : null,
+      courseId: this.course._id ? this.course._id : null
+    };
+    this.course.image = typeof(this.course.image) === 'string' ? this.course.image : '' ;
     if (typeof (this.course._id) === 'string') {
       this.CourseService.editcourse(this.course).subscribe(res => {
-        console.log(res);
-        this.toast.setMessage('course edited successfully.', 'success');
-      });
+        if (file.image) {
+          this.CourseService.uploadTitleImage(file).subscribe(response => {
+            this.toast.setMessage('Image uploaded successfully.', 'success');
+          });
+        } else { this.toast.setMessage('course edited successfully.', 'success'); }
+      },
+        error => console.log(error));
     } else {
       this.course.isPublished = false;
       this.CourseService.addcourse(this.course).subscribe(
         res => {
-          console.log(res);
+          if (file.image) {
+            file.courseId = res._id;
+            this.course = res;
+            this.course.image =  './uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
+            this.CourseService.uploadTitleImage(file).subscribe(response => {
+              console.log(this.course);
+              this.CourseService.editcourse(this.course).subscribe(Res => {
+                this.toast.setMessage('course added successfully.', 'success');
+              });
+            });
+          }
           this.course = res;
-          this.currentTab = 2;
-          this.toast.setMessage('course added successfully.', 'success');
         },
         error => console.log(error)
       );

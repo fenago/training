@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var courseSchema = new mongoose.Schema({
     title: String,
-    image: Object,
+    image: String,
     price: Number,
     eta: String,
     description: String,
@@ -16,7 +16,7 @@ var courseSchema = new mongoose.Schema({
                 lessons: [{
                         title: String,
                         content: String,
-                        image: Object
+                        image: String
                     }]
             }]
     }

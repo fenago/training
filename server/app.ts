@@ -12,10 +12,10 @@ dotenv.load({ path: '.env' });
 app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-  const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
+ const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
 
 // let mongodbURI;
 // if (process.env.NODE_ENV === 'test') {

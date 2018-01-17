@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 const courseSchema = new mongoose.Schema({
   title: String,
-  image: Object,
+  image: String,
   price: Number,
   eta: String,
   description: String,
@@ -15,7 +15,7 @@ const courseSchema = new mongoose.Schema({
       lessons: [{
         title: String,
         content: String,
-        image : Object
+        image : String
       }]
     }]
   }
