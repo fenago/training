@@ -3,16 +3,7 @@ import BaseCtrl from './base';
 import course from '../models/course';
 const multer = require('multer');
 const fs = require('fs');
-const dir = './client/assets/uploads/';
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, dir);
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now());
-  }
-});
 
 export default class CourseCtrl extends BaseCtrl {
   model = course;
@@ -26,9 +17,9 @@ export default class CourseCtrl extends BaseCtrl {
       if (err) {
         return console.error(err);
       }
-      if (!fs.existsSync(dir + item._id)) {
-        fs.mkdirSync(dir + item._id);
-      }
+      // if (!fs.existsSync(dir + item._id)) {
+      //   fs.mkdirSync(dir + item._id);
+      // }
       res.status(200).json(item);
     });
   }
