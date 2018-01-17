@@ -74,7 +74,7 @@ export class AddCourseComponent implements OnInit {
           if (file.image) {
             file.courseId = res._id;
             this.course = res;
-            this.course.image =  './uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
+            this.course.image =  './public/uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
             this.CourseService.uploadTitleImage(file).subscribe(response => {
               console.log(this.course);
               this.CourseService.editcourse(this.course).subscribe(Res => {

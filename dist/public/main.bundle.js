@@ -369,7 +369,7 @@ var AddCourseComponent = (function () {
                 if (file.image) {
                     file.courseId = res._id;
                     _this.course = res;
-                    _this.course.image = './uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
+                    _this.course.image = './public/uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
                     _this.CourseService.uploadTitleImage(file).subscribe(function (response) {
                         console.log(_this.course);
                         _this.CourseService.editcourse(_this.course).subscribe(function (Res) {
