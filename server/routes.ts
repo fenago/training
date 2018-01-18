@@ -6,7 +6,6 @@ import course from './models/course';
 import User from './models/user';
 import MiddleWare from './middlewares';
 const path = require('path');
-
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: './public/uploads/title/',
@@ -24,12 +23,6 @@ export default function setRoutes(app) {
   const middleWare = new MiddleWare();
 
   router.route('/user/:id').put(middleWare.hash);
-  router.route('/course/upload/:courseId').post((req, res) => {
-    console.log(req.params);
-    upload.single('image')(req, res , (err) => {
-      res.json(err);
-    });
-  });
 
   // courses
   router.route('/courses').get(courseCtrl.getAll);

@@ -25,12 +25,11 @@
           <td>{{course.price}}</td>
           <td>{{course.eta}}</td>
           <td>
-            <button class="btn btn-sm btn-warning">
-              <i class="fa fa-pencil"></i>
-              <a [routerLink]="['/publish/new', course._id]" class="nav-item nav-link" routerLinkActive="active">
-                Edit
-              </a>
-            </button>
+
+            <a [routerLink]="['/publish/new', course._id]" class="nav-item nav-link" routerLinkActive="active">
+              <button class="btn btn-sm btn-warning">
+                <i class="fa fa-pencil"></i> Edit</button>
+            </a>
             <button class="btn btn-sm btn-danger" (click)="deletecourse(course)">
               <i class="fa fa-trash"></i> Delete</button>
           </td>

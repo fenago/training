@@ -30,6 +30,12 @@ export default class CourseCtrl extends BaseCtrl {
       res.status(200).json(docs);
     });
   }
+  getAll = (req, res) => {
+    this.model.find({ isPublished: true }, {syllabus: 0, content: 0 }, (err, docs) => {
+      if (err) { return console.error(err); }
+      res.status(200).json(docs);
+    });
+  }
 
   // uploadImage = (req, res) => {
   //   const upload = multer({ storage: storage }).single('userPhoto');

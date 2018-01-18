@@ -20,7 +20,12 @@
 .submit{
   margin-left: 90%;
 }
+
 img{
-  max-width: 10%;
-  max-height: 10%;
+  max-width: 15%;
+  max-height: 15%;
+  margin-bottom:2px;
+}
+.buffer{
+  height:50px;
 }

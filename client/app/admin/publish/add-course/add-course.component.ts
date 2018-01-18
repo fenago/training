@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { course } from '../../../shared/models/course.model';
 import { courseService } from '../../../services/course.service';
 import { ToastComponent } from '../../../shared/toast/toast.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Form } from '@angular/forms/src/directives/form_interface';
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
+import { Cloudinary } from '@cloudinary/angular-5.x';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,74 +15,101 @@ import { ActivatedRoute } from '@angular/router';
 export class AddCourseComponent implements OnInit {
   @Input()
   course: course = new course();
-  addCourseForm: FormGroup;
-  currentTab = 2;
-  imgUrl: string;
+  imgPreview: string;
+  private uploader: FileUploader;
+  private cloudResponse: any;
+  isLoading = false;
 
   constructor(private CourseService: courseService,
     private toast: ToastComponent,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private cloudinary: Cloudinary) { }
 
   ngOnInit() {
+    /*
+     * Cloudinary configuration
+     */
+    // Create the file uploader, wire it to upload to your account
+    const uploaderOptions: FileUploaderOptions = {
+      url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
+      autoUpload: false,
+      // Use xhrTransport in favor of iframeTransport
+      isHTML5: true,
+      // XHR request headers
+      headers: [
+        {
+          name: 'X-Requested-With',
+          value: 'XMLHttpRequest'
+        }
+      ]
+    };
+    // initialize uploader
+    this.uploader = new FileUploader(uploaderOptions);
+
+    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      // Add Cloudinary's unsigned upload preset to the upload form
+      form.append('upload_preset', this.cloudinary.config().upload_preset);
+      // Add file to upload
+      form.append('file', fileItem);
+
+      // Use default "withCredentials" value for CORS requests
+      fileItem.withCredentials = false;
+      return { fileItem, form };
+    };
+
+    // on upload callback of image
+    this.uploader.onCompleteItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) => {
+      this.cloudResponse = JSON.parse(response);
+      this.course.image = this.cloudResponse.url;
+      this.isLoading = false;
+      this.toast.setMessage('image uploaded successfully.', 'success');
+    };
+
+    /*
+     * initialize course if it is selected to be edited from courses list.
+     */
     this.route.params.subscribe(params => {
       if (typeof (params['id']) === 'string') {
-        console.log('hello');
         this.CourseService.getcourse(params['id']).subscribe(res => {
           this.course = res;
-          console.log(res);
+          this.imgPreview = this.course.image;
         });
       }
     });
   }
 
   /*
-   * @Description: sets the file from the input to the image field in this.addCourseForm
+   * @Description: read the Base64 from the selected image stream, this base64 will be used
+   * to display the preview of the image
    */
-  setImage(event) {
+  previewImage(event) {
+
     const reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
+    reader.readAsDataURL(this.uploader.queue[this.uploader.queue.length - 1]._file);
+    reader.onload = (e: any) => {
+      this.imgPreview = reader.result;
+    };
 
-      reader.onload = (e: any) => {
-        this.imgUrl = e.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
+  }
 
-      this.course.image = file;
-    }
+  uploadImage() {
+    this.isLoading = true;
+    this.uploader.queue[this.uploader.queue.length - 1].upload();
   }
 
   submit() {
-    const file = {
-      image: this.course.image ? this.course.image : null,
-      courseId: this.course._id ? this.course._id : null
-    };
-    this.course.image = typeof(this.course.image) === 'string' ? this.course.image : '' ;
+    console.log(this.course);
     if (typeof (this.course._id) === 'string') {
       this.CourseService.editcourse(this.course).subscribe(res => {
-        if (file.image) {
-          this.CourseService.uploadTitleImage(file).subscribe(response => {
-            this.toast.setMessage('Image uploaded successfully.', 'success');
-          });
-        } else { this.toast.setMessage('course edited successfully.', 'success'); }
+        this.toast.setMessage('course edited successfully.', 'success');
       },
         error => console.log(error));
     } else {
       this.course.isPublished = false;
       this.CourseService.addcourse(this.course).subscribe(
         res => {
-          if (file.image) {
-            file.courseId = res._id;
-            this.course = res;
-            this.course.image =  './public/uploads/title/' + res._id + '.' + file.image.type.split('/')[1];
-            this.CourseService.uploadTitleImage(file).subscribe(response => {
-              console.log(this.course);
-              this.CourseService.editcourse(this.course).subscribe(Res => {
-                this.toast.setMessage('course added successfully.', 'success');
-              });
-            });
-          }
           this.course = res;
+          this.toast.setMessage('course added successfully.', 'success');
         },
         error => console.log(error)
       );

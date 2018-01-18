@@ -43,6 +43,14 @@ var CourseCtrl = (function (_super) {
                 res.status(200).json(docs);
             });
         };
+        _this.getAll = function (req, res) {
+            _this.model.find({ isPublished: true }, { syllabus: 0, content: 0 }, function (err, docs) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.status(200).json(docs);
+            });
+        };
         return _this;
         // uploadImage = (req, res) => {
         //   const upload = multer({ storage: storage }).single('userPhoto');

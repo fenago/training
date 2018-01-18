@@ -4,6 +4,10 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { QuillModule } from 'ngx-quill';
 
+import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
+import cloudinaryConfiguration from './cloudinary.config';
+import * as cloudinary from 'cloudinary-core';
+
 import { RoutingModule } from './routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
@@ -58,6 +62,7 @@ import { UnPublishedListComponent } from './admin/publish/un-published-list/un-p
     FileUploadModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
+    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
     QuillModule
   ],
   providers: [

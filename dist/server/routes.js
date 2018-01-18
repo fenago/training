@@ -7,7 +7,7 @@ var middlewares_1 = require("./middlewares");
 var path = require('path');
 var multer = require('multer');
 var storage = multer.diskStorage({
-    destination: './uploads/title/',
+    destination: './public/uploads/title/',
     filename: function (req, file, cb) {
         cb(null, req.params.courseId + path.extname(file.originalname));
     }
@@ -19,12 +19,6 @@ function setRoutes(app) {
     var userCtrl = new user_1.default();
     var middleWare = new middlewares_1.default();
     router.route('/user/:id').put(middleWare.hash);
-    router.route('/course/upload/:courseId').post(function (req, res) {
-        console.log(req.params);
-        upload.single('image')(req, res, function (err) {
-            res.json(err);
-        });
-    });
     // courses
     router.route('/courses').get(courseCtrl.getAll);
     router.route('/courses/count').get(courseCtrl.count);

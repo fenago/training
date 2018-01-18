@@ -20,3 +20,10 @@
 .chaptersList{
   width: 10%;
 }
+.buffer{
+  height:30px;
+}
+img{
+  max-width: 15%;
+  max-height: 15%;
+}

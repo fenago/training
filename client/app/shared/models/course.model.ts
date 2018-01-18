@@ -8,12 +8,14 @@ export class course {
   isPublished?: Boolean;
   userCount?: Number;
   syllabus?: String;
+  syllabusFile?: String;
   content?: {
     chapters: [{
       title: String,
       lessons: [{
         title: String,
         content: String,
+        contentFile: String,
         image: Object
       }]
     }]
