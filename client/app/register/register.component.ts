@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    this.registerForm.value.role = 'user';
     this.userService.register(this.registerForm.value).subscribe(
       res => {
         this.toast.setMessage('you successfully registered!', 'success');

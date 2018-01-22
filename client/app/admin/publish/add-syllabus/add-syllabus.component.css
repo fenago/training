@@ -6,9 +6,9 @@
   padding: 50px 50px 50px 50px;
   background-color: white;
   border-radius:5px 5px 5px 5px;
-  -webkit-box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
-  -moz-box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
-  box-shadow: 10px 10px 23px 6px rgba(168, 113, 36, 1);
+  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
+  -moz-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
+  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
 }
 .content{
   border:solid #00ADBB;

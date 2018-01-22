@@ -22,10 +22,13 @@ function setRoutes(app) {
     // courses
     router.route('/courses').get(courseCtrl.getAll);
     router.route('/courses/count').get(courseCtrl.count);
+    router.route('/course/syllabus/:id').get(courseCtrl.getSyllabus);
+    router.route('/course/content/:id').get(courseCtrl.getContent);
     router.route('/course').post(courseCtrl.insert);
     router.route('/courses/shallow').get(courseCtrl.getAllShallow);
     router.route('/course/:id').get(courseCtrl.get);
     router.route('/course/:id').put(courseCtrl.update);
+    router.route('/course/addUser/:id').put(courseCtrl.addUser);
     router.route('/course/:id').delete(courseCtrl.delete);
     // Users
     router.route('/login').post(userCtrl.login);

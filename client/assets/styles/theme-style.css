@@ -2175,7 +2175,7 @@ small img {
 
 #header {
   z-index: 1000;
-  position: relative;
+  position: fixed;
   color: #eeeeee;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -2431,7 +2431,7 @@ small img {
 
 .header {
   background: white;
-  border-bottom: 1px solid rgba(85, 167, 154, 0.6);
+  /* border-bottom: 1px solid rgba(85, 167, 154, 0.6); */
   color: #1b1b1b;
   height: auto;
   padding: 25px 0 25px 0;

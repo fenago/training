@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import { courseComponent } from './course/course.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
+import { SyllabusComponent } from './syllabus/syllabus.component';
+import { ContentComponent } from './content/content.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
+  { path: 'syllabus/:id', component: SyllabusComponent, canActivate: [AuthGuardLogin] },
+  { path: 'content/:id', component: ContentComponent, canActivate: [AuthGuardLogin] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardLogin] },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin] },
   {

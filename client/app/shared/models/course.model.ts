@@ -7,6 +7,7 @@ export class course {
   description?: String;
   isPublished?: Boolean;
   userCount?: Number;
+  users?: [String];
   syllabus?: String;
   syllabusFile?: String;
   content?: {

@@ -51,6 +51,31 @@ var CourseCtrl = (function (_super) {
                 res.status(200).json(docs);
             });
         };
+        _this.getSyllabus = function (req, res) {
+            _this.model.findOne({ _id: req.params.id }, { content: 0 }, function (err, item) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.status(200).json(item);
+            });
+        };
+        _this.getContent = function (req, res) {
+            _this.model.findOne({ _id: req.params.id }, { syllabus: 0 }, function (err, docs) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.status(200).json(docs);
+            });
+        };
+        _this.addUser = function (req, res) {
+            console.log(req.body);
+            _this.model.update({ _id: req.params.id }, { $push: { users: req.body.userId } }, function (err) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.sendStatus(200);
+            });
+        };
         return _this;
         // uploadImage = (req, res) => {
         //   const upload = multer({ storage: storage }).single('userPhoto');

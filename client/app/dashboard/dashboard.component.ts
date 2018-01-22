@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { courseService } from '../services/course.service';
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { course } from '../shared/models/course.model';
 
@@ -15,6 +17,7 @@ import { course } from '../shared/models/course.model';
 export class DashboardComponent implements OnInit {
 
   course = new course();
+  myCoursesToggle = false;
 
   courses: course[] = [];
   isLoading = true;
@@ -25,10 +28,12 @@ export class DashboardComponent implements OnInit {
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);
 
-  constructor(private courseservice: courseService,
+  constructor(private CourseService: courseService,
     private formBuilder: FormBuilder,
     public toast: ToastComponent,
-    private router: Router) { }
+    private router: Router,
+    private UserService: UserService,
+    private AuthService: AuthService) { }
 
   ngOnInit() {
     this.getcourses();
@@ -40,7 +45,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getcourses() {
-    this.courseservice.getcourses().subscribe(
+    this.CourseService.getcourses().subscribe(
       data => {
         this.courses = data;
         console.log(data);
@@ -50,9 +55,21 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  purchase(i) {
+    const payload = {
+      courseId: this.courses[i]._id,
+      userId: this.AuthService.currentUser._id
+    };
+
+    this.CourseService.addUser(payload).subscribe(res => {
+      this.courses[i].users.push(payload.userId);
+      this.toast.setMessage('course purchased.', 'success');
+    });
+  }
+
   deletecourse(course: course) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.courseservice.deletecourse(course).subscribe(
+      this.CourseService.deletecourse(course).subscribe(
         () => {
           const pos = this.courses.map(elem => elem._id).indexOf(course._id);
           this.courses.splice(pos, 1);

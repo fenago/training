@@ -7,9 +7,18 @@ import { User } from '../shared/models/user.model';
 @Injectable()
 export class UserService {
 
+  user: User;
+
   constructor(private http: HttpClient) { }
 
+  /*
+  * @note: to increase security, the condition is used to prevent
+     any one signing up as admin through client-side
+  *
+  */
+
   register(user: User): Observable<User> {
+    user.role = user.role === 'admin' ? 'user' : 'user';
     return this.http.post<User>('/api/user', user);
   }
 

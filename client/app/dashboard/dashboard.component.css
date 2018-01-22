@@ -1,4 +1,54 @@
-img{
-  width:30%;
-  height: 30%;
+img {
+  -webkit-box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);
+  border: solid 10px white;
+}
+
+.center {
+  text-align: center;
+  border-bottom: solid 3px #00AD88;
+  height: 50px;
+}
+.actions{
+  border-bottom:3px solid #df8930;
+  padding-bottom: 5px;
+}
+.btn {
+  background-color: #00AD88;
+  width: 100%;
+  height: 90%;
+  border-radius: 50px 50px 50px 50px;
+  font-size: 18px;
+  border: solid 1px #00AD88;
+  transition: background-color 200ms linear;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #00AD88;
+  border: solid 1px #00AD88;
+  transition: background-color 200ms linear;
+}
+
+.btn-buy {
+  background-color: #4d9de0;
+  width: 100%;
+  height: 90%;
+  color: white;
+  border-radius: 50px 50px 50px 50px;
+  font-size: 18px;
+  border: solid 1px #4d9de0;
+  transition: background-color 200ms linear;
+}
+
+.btn-buy:hover {
+  background-color: white;
+  color: #4d9de0;
+  border: solid 1px #4d9de0;
+  transition: background-color 200ms linear;
+}
+
+h5 {
+  margin-top: 10px;
 }

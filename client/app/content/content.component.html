@@ -1,0 +1,39 @@
+<div class="content" *ngIf="course">
+  <mat-tab-group>
+    <mat-tab *ngFor="let chapter of course.content.chapters; let i = index">
+      <ng-template mat-tab-label>
+        {{i+1}}-{{chapter.title}}
+      </ng-template>
+      <mat-tab-group>
+        <mat-tab *ngFor="let lesson of chapter.lessons; let j = index">
+          <ng-template mat-tab-label>
+            {{i+1}}.{{j+1}}-{{lesson.title}}
+          </ng-template>
+          <div class="buffer20">
+          </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">
+                <mat-slider min="1" [(ngModel)]="dividerRatio" tickInterval="1" max="11" step="1" thumb-label="true"></mat-slider>
+              </div>
+              <div class="col-lg-4"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-{{dividerRatio}}" id="material">
+                <div *ngIf="lesson.content" [innerHTML]="lesson.content"></div>
+                <iframe class="frame" [src]="lesson.contentFile | safe" *ngIf="lesson.contentFile" frameborder="0"></iframe>
+              </div>
+              <div class="col-lg-{{12-dividerRatio}}" id="image">
+                <img *ngIf="lesson.image" src="{{lesson.image}}">
+              </div>
+            </div>
+
+            <div class="buffer50"></div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</div>

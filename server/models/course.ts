@@ -9,15 +9,16 @@ const courseSchema = new mongoose.Schema({
   isPublished: Boolean,
   userCount: Number,
   syllabus: String,
+  users: [String],
   syllabusFile: String,
   content: {
-    chapters : [{
+    chapters: [{
       title: String,
       lessons: [{
         title: String,
         content: String,
         contentFile: String,
-        image : String
+        image: String
       }]
     }]
   }

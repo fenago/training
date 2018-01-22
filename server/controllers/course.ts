@@ -25,15 +25,34 @@ export default class CourseCtrl extends BaseCtrl {
   }
 
   getAllShallow = (req, res) => {
-    this.model.find({ isPublished: false }, {syllabus: 0, content: 0 }, (err, docs) => {
+    this.model.find({ isPublished: false }, { syllabus: 0, content: 0 }, (err, docs) => {
       if (err) { return console.error(err); }
       res.status(200).json(docs);
     });
   }
   getAll = (req, res) => {
-    this.model.find({ isPublished: true }, {syllabus: 0, content: 0 }, (err, docs) => {
+    this.model.find({ isPublished: true }, { syllabus: 0, content: 0 }, (err, docs) => {
       if (err) { return console.error(err); }
       res.status(200).json(docs);
+    });
+  }
+  getSyllabus = (req, res) => {
+    this.model.findOne({ _id: req.params.id }, { content: 0 }, (err, item) => {
+      if (err) { return console.error(err); }
+      res.status(200).json(item);
+    });
+  }
+  getContent = (req, res) => {
+    this.model.findOne({ _id: req.params.id }, { syllabus: 0 }, (err, docs) => {
+      if (err) { return console.error(err); }
+      res.status(200).json(docs);
+    });
+  }
+  addUser = (req, res) => {
+    console.log(req.body);
+    this.model.update({ _id: req.params.id }, { $push: { users: req.body.userId } }, (err) => {
+      if (err) { return console.error(err); }
+      res.sendStatus(200);
     });
   }
 

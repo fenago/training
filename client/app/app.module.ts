@@ -1,7 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { FileUploadModule } from 'ng2-file-upload';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { QuillModule } from 'ngx-quill';
 
 import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
@@ -33,6 +32,9 @@ import { AddSyllabusComponent } from './admin/publish/add-syllabus/add-syllabus.
 import { AddContentComponent } from './admin/publish/add-content/add-content.component';
 import { AddCourseComponent } from './admin/publish/add-course/add-course.component';
 import { UnPublishedListComponent } from './admin/publish/un-published-list/un-published-list.component';
+import { SyllabusComponent } from './syllabus/syllabus.component';
+import { SafePipe } from './shared/safe.pipe';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,10 @@ import { UnPublishedListComponent } from './admin/publish/un-published-list/un-p
     AddSyllabusComponent,
     AddContentComponent,
     AddCourseComponent,
-    UnPublishedListComponent
+    UnPublishedListComponent,
+    SyllabusComponent,
+    SafePipe,
+    ContentComponent
   ],
   imports: [
     RoutingModule,
@@ -60,8 +65,6 @@ import { UnPublishedListComponent } from './admin/publish/un-published-list/un-p
     BrowserAnimationsModule,
     MaterialModule,
     FileUploadModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
     CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
     QuillModule
   ],
