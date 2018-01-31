@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
       token: (token) => {
         token.price = Number(this.courses[i].price) * 100;
         token.currency = 'usd';
-        token.description = 'single course purchase';
+        token.description = 'single course purchase - ' + this.courses[i].title;
         this.CourseService.payment(token).subscribe(res => {
           if (res.failure_code) {
             this.toast.setMessage('transaction failed please try again or contact administrator.', 'warning');

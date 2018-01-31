@@ -5,9 +5,16 @@
       <mat-form-field class="row">
         <textarea matInput [(ngModel)]="course.title" placeholder="Title"></textarea>
       </mat-form-field>
-      <mat-form-field class="row">
-        <input matInput type="number" [(ngModel)]="course.price" placeholder="Price">
-      </mat-form-field>
+      <div class="row">
+        <mat-slide-toggle [(ngModel)]="priceFree" color="primary">
+          Free
+        </mat-slide-toggle>
+      </div>
+      <div class="row" *ngIf="!priceFree">
+        <mat-form-field>
+          <input matInput type="number" [(ngModel)]="course.price" placeholder="Price">
+        </mat-form-field>
+      </div>
       <mat-form-field class="row">
         <input matInput type="number" [(ngModel)]="course.eta" placeholder="Estimated time in hours">
       </mat-form-field>
@@ -50,8 +57,21 @@
 <div style=" height:20px">
 
 </div>
-<p style="margin-left:5%"><i class="fa fa-warning"> Make it sure to upload all files and images before pressing Save</i></p>
-<button class="submit btn btn-primary" style="margin-right:5px" (click)="submit()"> SAVE</button>
+<p style="margin-left:5%">
+  <i class="fa fa-warning"> Make it sure to upload all files and images before pressing Save</i>
+</p>
+<div class="row">
+  <div class="col-md-5">
+  </div>
+  <div class="col-md-1">
+    <button class="submit btn btn-primary" style="margin-right:5px" (click)="submit(false)"> SAVE</button>
+  </div>
+  <div class="col-md-1">
+    <button class="submit btn btn-primary" style="margin-right:5px" (click)="submit(true)"> SAVE & PUBLISH</button>
+  </div>
+  <div class="col-md-5">
+  </div>
+</div>
 <div style=" height:20px">
 
-  </div>
+</div>

@@ -19,6 +19,7 @@ export class AddCourseComponent implements OnInit {
   private uploader: FileUploader;
   private cloudResponse: any;
   isLoading = false;
+  priceFree: Boolean;
 
   constructor(private CourseService: courseService,
     private toast: ToastComponent,
@@ -97,15 +98,15 @@ export class AddCourseComponent implements OnInit {
     this.uploader.queue[this.uploader.queue.length - 1].upload();
   }
 
-  submit() {
-    console.log(this.course);
+  submit(publish) {
+    this.course.price = this.priceFree ? 0 : this.course.price;
     if (typeof (this.course._id) === 'string') {
       this.CourseService.editcourse(this.course).subscribe(res => {
         this.toast.setMessage('course edited successfully.', 'success');
       },
         error => console.log(error));
     } else {
-      this.course.isPublished = false;
+      this.course.isPublished = publish;
       this.CourseService.addcourse(this.course).subscribe(
         res => {
           this.course = res;
