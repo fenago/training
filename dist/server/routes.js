@@ -30,6 +30,8 @@ function setRoutes(app) {
     router.route('/course/:id').put(courseCtrl.update);
     router.route('/course/addUser/:id').put(courseCtrl.addUser);
     router.route('/course/:id').delete(courseCtrl.delete);
+    router.route('/course/payment').post(courseCtrl.payment);
+    router.route('/course/getUsers/:id').get(courseCtrl.getUsers);
     // Users
     router.route('/login').post(userCtrl.login);
     router.route('/users').get(userCtrl.getAll);

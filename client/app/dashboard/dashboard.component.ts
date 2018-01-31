@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
 
   course = new course();
   myCoursesToggle = false;
+  self: any;
 
   courses: course[] = [];
   isLoading = true;
@@ -33,9 +34,11 @@ export class DashboardComponent implements OnInit {
     public toast: ToastComponent,
     private router: Router,
     private UserService: UserService,
-    private AuthService: AuthService) { }
+    private AuthService: AuthService) {
+  }
 
   ngOnInit() {
+    this.self = this;
     this.getcourses();
     this.addcourseForm = this.formBuilder.group({
       name: this.name,
@@ -55,17 +58,61 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  purchase(i) {
-    const payload = {
-      courseId: this.courses[i]._id,
-      userId: this.AuthService.currentUser._id
-    };
-
-    this.CourseService.addUser(payload).subscribe(res => {
-      this.courses[i].users.push(payload.userId);
-      this.toast.setMessage('course purchased.', 'success');
+  cb(token) {
+    console.log(self);
+    console.log(this);
+    this.CourseService.payment(token).subscribe(res => {
+      console.log(res);
     });
   }
+  purchase(i) {
+    const handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_c16HmKTycQKMFABeEadOKH2Z',
+      locale: 'auto',
+      token: (token) => {
+        token.price = Number(this.courses[i].price) * 100;
+        token.currency = 'usd';
+        token.description = 'single course purchase';
+        this.CourseService.payment(token).subscribe(res => {
+          if (res.failure_code) {
+            this.toast.setMessage('transaction failed please try again or contact administrator.', 'warning');
+          } else {
+            const payload = {
+              courseId: this.courses[i]._id,
+              userId: this.AuthService.currentUser._id
+            };
+            this.CourseService.addUser(payload).subscribe(res2 => {
+              if (res2) {
+                this.courses[i].users.push(payload.userId);
+                this.toast.setMessage('course purchased.', 'success');
+              } else {
+                this.toast.setMessage('failed to purchase he course please contact administrator.', 'warning');
+              }
+            });
+          }
+        });
+      }
+    });
+
+
+    handler.open({
+      name: this.courses[i].title,
+      description: 'single course purchase',
+      amount: Number(this.courses[i].price) * 100
+    });
+
+  }
+
+  // const payload = {
+  //   courseId: this.courses[i]._id,
+  //   userId: this.AuthService.currentUser._id
+  // };
+
+  // this.CourseService.addUser(payload).subscribe(res => {
+  //   this.courses[i].users.push(payload.userId);
+  //   this.toast.setMessage('course purchased.', 'success');
+  // });
+
 
   deletecourse(course: course) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {

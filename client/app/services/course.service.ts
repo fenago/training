@@ -31,6 +31,10 @@ export class courseService {
     formData.append('image', file.image);
     return this.http.post(`/api/course/upload/${file.courseId}`, formData);
   }
+  payment(token): Observable<any> {
+    console.log(token);
+    return this.http.post('/api/course/payment', token);
+  }
 
   getcourse(courseId: string): Observable<course> {
     return this.http.get<course>(`/api/course/${courseId}`);
@@ -40,6 +44,9 @@ export class courseService {
   }
   getContent(courseId: string): Observable<course> {
     return this.http.get<course>(`/api/course/content/${courseId}`);
+  }
+  getUsers(courseId: string ): Observable<course> {
+    return this.http.get<course>(`/api/course/getUsers/${courseId}`);
   }
 
   editcourse(course: course): Observable<string> {

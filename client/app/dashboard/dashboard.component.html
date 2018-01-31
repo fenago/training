@@ -45,8 +45,7 @@
             </div>
             <div class="col-lg-3 center">
               <button class="btn btn-buy" *ngIf="course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin" (click)="purchase(i)">Purchase</button>
-              <button class="btn btn-buy" [routerLink]="['/content',course._id]" *ngIf="course.users.indexOf(AuthService.currentUser._id) >= 0 && !AuthService.isAdmin"
-                (click)="purchase(i)">View course</button>
+              <button class="btn btn-buy" [routerLink]="['/content',course._id]" *ngIf="course.users.indexOf(AuthService.currentUser._id) >= 0 && !AuthService.isAdmin">View course</button>
               <button class="btn btn-buy" [routerLink]="['/publish/new',course._id]" *ngIf="AuthService.isAdmin">Edit course</button>
             </div>
           </div>

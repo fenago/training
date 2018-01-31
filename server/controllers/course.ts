@@ -1,6 +1,7 @@
 
 import BaseCtrl from './base';
 import course from '../models/course';
+const stripe = require('stripe')('sk_test_fzOuPmOwYtBlc1eb3pNozIO0');
 const multer = require('multer');
 const fs = require('fs');
 
@@ -20,6 +21,13 @@ export default class CourseCtrl extends BaseCtrl {
       // if (!fs.existsSync(dir + item._id)) {
       //   fs.mkdirSync(dir + item._id);
       // }
+      res.status(200).json(item);
+    });
+  }
+
+  getUsers = (req, res) => {
+    this.model.findOne({ _id: req.params.id } , { syllabus: 0, content: 0 }, (err, item) => {
+      if (err) { return console.error(err); }
       res.status(200).json(item);
     });
   }
@@ -53,6 +61,22 @@ export default class CourseCtrl extends BaseCtrl {
     this.model.update({ _id: req.params.id }, { $push: { users: req.body.userId } }, (err) => {
       if (err) { return console.error(err); }
       res.sendStatus(200);
+    });
+  }
+  payment = (req, res) => {
+    const token = req.body;
+    console.log(req.body);
+    stripe.charges.create({
+      amount: token.price,
+      currency: token.currency,
+      description: token.description,
+      source: token.id,
+    }, function (err, charge) {
+      // asynchronously called
+      if (err) {
+        res.json(err);
+      }
+      res.json(charge);
     });
   }
 

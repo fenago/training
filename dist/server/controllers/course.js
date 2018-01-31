@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_1 = require("./base");
 var course_1 = require("../models/course");
+var stripe = require('stripe')('sk_test_fzOuPmOwYtBlc1eb3pNozIO0');
 var multer = require('multer');
 var fs = require('fs');
 var CourseCtrl = (function (_super) {
@@ -32,6 +33,14 @@ var CourseCtrl = (function (_super) {
                 // if (!fs.existsSync(dir + item._id)) {
                 //   fs.mkdirSync(dir + item._id);
                 // }
+                res.status(200).json(item);
+            });
+        };
+        _this.getUsers = function (req, res) {
+            _this.model.findOne({ _id: req.params.id }, { syllabus: 0, content: 0 }, function (err, item) {
+                if (err) {
+                    return console.error(err);
+                }
                 res.status(200).json(item);
             });
         };
@@ -74,6 +83,22 @@ var CourseCtrl = (function (_super) {
                     return console.error(err);
                 }
                 res.sendStatus(200);
+            });
+        };
+        _this.payment = function (req, res) {
+            var token = req.body;
+            console.log(req.body);
+            stripe.charges.create({
+                amount: token.price,
+                currency: token.currency,
+                description: token.description,
+                source: token.id,
+            }, function (err, charge) {
+                // asynchronously called
+                if (err) {
+                    res.json(err);
+                }
+                res.json(charge);
             });
         };
         return _this;
