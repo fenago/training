@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var bodyParser = require("body-parser");
 var dotenv = require("dotenv");
 var express = require("express");
-var morgan = require("morgan");
 var mongoose = require("mongoose");
 var path = require("path");
 var routes_1 = require("./routes");
@@ -15,15 +14,14 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
-var mongodbURI;
-if (process.env.NODE_ENV === 'test') {
-    mongodbURI = process.env.MONGODB_TEST_URI;
-}
-else {
-    mongodbURI = process.env.MONGODB_URI;
-    app.use(morgan('dev'));
-}
+var mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
+// let mongodbURI;
+// if (process.env.NODE_ENV === 'test') {
+//   mongodbURI = process.env.MONGODB_TEST_URI;
+// } else {
+//   mongodbURI = process.env.MONGODB_URI;
+//   app.use(morgan('dev'));
+// }
 mongoose.Promise = global.Promise;
 var mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });
 mongodb
