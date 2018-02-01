@@ -16,7 +16,6 @@ app.use(bodyParser({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
  const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
 
 // let mongodbURI;

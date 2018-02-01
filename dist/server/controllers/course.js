@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_1 = require("./base");
 var course_1 = require("../models/course");
-var stripe = require('stripe')('sk_test_fzOuPmOwYtBlc1eb3pNozIO0');
+var stripe = require('stripe')('sk_test_HMDGpZwmHEavh8xi8fQCgrwL');
 var multer = require('multer');
 var fs = require('fs');
 var CourseCtrl = (function (_super) {

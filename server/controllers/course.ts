@@ -1,7 +1,7 @@
 
 import BaseCtrl from './base';
 import course from '../models/course';
-const stripe = require('stripe')('sk_test_fzOuPmOwYtBlc1eb3pNozIO0');
+const stripe = require('stripe')('sk_test_HMDGpZwmHEavh8xi8fQCgrwL');
 const multer = require('multer');
 const fs = require('fs');
 
@@ -26,7 +26,7 @@ export default class CourseCtrl extends BaseCtrl {
   }
 
   getUsers = (req, res) => {
-    this.model.findOne({ _id: req.params.id } , { syllabus: 0, content: 0 }, (err, item) => {
+    this.model.findOne({ _id: req.params.id }, { syllabus: 0, content: 0 }, (err, item) => {
       if (err) { return console.error(err); }
       res.status(200).json(item);
     });

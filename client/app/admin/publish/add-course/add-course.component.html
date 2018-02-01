@@ -12,7 +12,7 @@
       </div>
       <div class="row" *ngIf="!priceFree">
         <mat-form-field>
-          <input matInput type="number" [(ngModel)]="course.price" placeholder="Price">
+          <input matInput type="number" [(ngModel)]="course.price" placeholder="Price in USD">
         </mat-form-field>
       </div>
       <mat-form-field class="row">
@@ -40,7 +40,7 @@
         <br>
       </div>
       <div class="row">
-        <button *ngIf="imgPreview && !isLoading" class="btn" (click)="uploadImage()">upload image</button>
+        <button *ngIf="imgPreview && !isLoading" class="btn" (click)="uploadImage()">upload course logo</button>
       </div>
       <div class="buffer"></div>
     </div>

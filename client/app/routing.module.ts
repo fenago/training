@@ -28,9 +28,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
+  { path: 'account/:id', component: AccountComponent, canActivate: [AuthGuardLogin, AuthGuardAdmin] },
   { path: 'syllabus/:id', component: SyllabusComponent, canActivate: [AuthGuardLogin] },
   { path: 'content/:id', component: ContentComponent, canActivate: [AuthGuardLogin] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardLogin] },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin] },
   {
     path: 'publish', component: PublishComponent, children: [

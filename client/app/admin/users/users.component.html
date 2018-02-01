@@ -26,6 +26,9 @@
             <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-trash"></i>
             </button>
+            <button class="btn btn-sm btn-danger"  [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
+              <i class="fa fa-edit"></i>
+            </button>
           </td>
         </tr>
       </tbody>

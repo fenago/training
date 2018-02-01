@@ -39,8 +39,9 @@ export class UserService {
     return this.http.post<User>('/api/user', user);
   }
 
-  getUser(user: User): Observable<User> {
-    return this.http.get<User>(`/api/user/${user._id}`);
+  getUser(user: any): Observable<User> {
+    user = typeof (user) === 'object' ? user._id : user;
+    return this.http.get<User>(`/api/user/${user}`);
   }
 
   editUser(user: User): Observable<string> {

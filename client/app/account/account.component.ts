@@ -3,6 +3,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../shared/models/user.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -15,15 +16,32 @@ export class AccountComponent implements OnInit {
   isLoading = true;
 
   constructor(private auth: AuthService,
-              public toast: ToastComponent,
-              private userService: UserService) { }
+    public toast: ToastComponent,
+    private userService: UserService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getUser();
+    this.route.params.subscribe(params => {
+      console.log(params);
+      if (params['id']) {
+        this.userService.getUser(params['id']).subscribe(res => {
+          this.getSelectedUser(res);
+        });
+      } else {
+        this.getUser();
+      }
+    });
   }
 
   getUser() {
     this.userService.getUser(this.auth.currentUser).subscribe(
+      data => this.user = data,
+      error => console.log(error),
+      () => this.isLoading = false
+    );
+  }
+  getSelectedUser(user) {
+    this.userService.getUser(user).subscribe(
       data => this.user = data,
       error => console.log(error),
       () => this.isLoading = false
