@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
   }
 
   scroll() {
-    console.log(document.documentElement.scrollTop);
     if (document.documentElement.scrollTop < 40) {
       document.getElementById('header').style.opacity = '1';
     } else {

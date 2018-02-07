@@ -1,7 +1,10 @@
 <app-toast [message]="toast.message"></app-toast>
 <div class="content" *ngIf="!isLoading">
- <div class="loader" *ngIf="isLoading"></div>
-  <h4 class="card-header">Registered users ({{users.length}}) <a routerLink="/register" class="btn btn-primary"><i class="fa fa-plus"></i> new</a></h4>
+  <div class="loader" *ngIf="isLoading"></div>
+  <h4 class="card-header">Registered users ({{users.length}})
+    <a routerLink="/register" class="btn btn-primary">
+      <i class="fa fa-plus"></i> new</a>
+  </h4>
   <div class="card-block">
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
@@ -18,7 +21,7 @@
         </tr>
       </tbody>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users" (click)="selectUser(user)">
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
@@ -26,7 +29,66 @@
             <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-trash"></i>
             </button>
-            <button class="btn btn-sm btn-danger"  [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
+            <button class="btn btn-sm btn-danger" [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <legend *ngIf="selectedUser">REWARDED COUPANS ( {{selectedUser.username}} )</legend>
+    <legend *ngIf="!selectedUser">REWARDED COUPANS</legend>
+    <table class="table table-bordered">
+      <thead class="thead-default">
+        <tr>
+          <th>Id</th>
+          <th>amount</th>
+          <th>courses</th>
+          <th></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="selectedUser==null || selectedUser.coupans.length <1">
+        <tr>
+          <td colspan="4">There are no registered users.</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="selectedUser!=null && selectedUser.coupans.length >0">
+        <tr *ngFor="let coupan of selectedUser.coupans; let i=index">
+          <td>{{coupan.id}}</td>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="amount" [(ngModel)]="coupan.amount">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field style="width:100%">
+              <mat-select placeholder="{{coupan.courses[0].name}}">
+                <mat-option *ngFor="let course of coupan.courses " disabled>
+                  {{ course.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <form>
+              <mat-form-field>
+                <input matInput placeholder="Course" aria-label="Course" [matAutocomplete]="auto" [formControl]="myControl">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let course of courses" [value]="course.title">
+                    <img style="vertical-align:middle;" aria-hidden src="{{course.image}}" height="25" />
+                    <span>{{ course.title }}</span> |
+                    <small>Price: {{course.price}}</small>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">
+              <i class="fa fa-trash"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="coupanEdit(i)">
               <i class="fa fa-edit"></i>
             </button>
           </td>

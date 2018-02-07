@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { AuthService } from '../../services/auth.service';
+import { courseService } from '../../services/course.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../shared/models/user.model';
 
@@ -15,13 +16,25 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   isLoading = true;
+  selectedUser: User = null;
+  courses = [];
 
   constructor(public auth: AuthService,
     public toast: ToastComponent,
-    private userService: UserService) { }
+    private userService: UserService,
+    private courseService: courseService) { }
 
   ngOnInit() {
     this.getUsers();
+
+    this.courseService.getcourses().subscribe(res => {
+      this.courses = res;
+      console.log(res);
+    });
+  }
+
+  selectUser(user) {
+    this.selectedUser = user;
   }
 
   getUsers() {
@@ -30,6 +43,9 @@ export class UsersComponent implements OnInit {
       error => console.log(error),
       () => this.isLoading = false
     );
+  }
+  coupanEdit() {
+
   }
 
   deleteUser(user: User) {
