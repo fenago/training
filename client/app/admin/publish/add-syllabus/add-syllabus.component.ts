@@ -14,7 +14,7 @@ import { Cloudinary } from '@cloudinary/angular-5.x';
 export class AddSyllabusComponent implements OnInit {
   options: any;
   fileUrl: string;
-  private uploader: FileUploader;
+  public uploader: FileUploader;
   private cloudResponse: any;
   isLoading = false;
 

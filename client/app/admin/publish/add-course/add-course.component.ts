@@ -16,7 +16,7 @@ export class AddCourseComponent implements OnInit {
   @Input()
   course: course = new course();
   imgPreview: string;
-  private uploader: FileUploader;
+  public uploader: FileUploader;
   private cloudResponse: any;
   isLoading = false;
   priceFree: Boolean;
