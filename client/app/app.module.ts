@@ -36,6 +36,10 @@ import { SyllabusComponent } from './syllabus/syllabus.component';
 import { SafePipe } from './shared/safe.pipe';
 import { ContentComponent } from './content/content.component';
 
+export const cloudinaryLib = {
+  Cloudinary: cloudinary
+};
+
 @NgModule({
   declarations: [
     AppComponent,
