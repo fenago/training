@@ -15,7 +15,7 @@ var course_1 = require("../models/course");
 var stripe = require('stripe')('sk_test_HMDGpZwmHEavh8xi8fQCgrwL');
 var multer = require('multer');
 var fs = require('fs');
-var CourseCtrl = /** @class */ (function (_super) {
+var CourseCtrl = (function (_super) {
     __extends(CourseCtrl, _super);
     function CourseCtrl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;

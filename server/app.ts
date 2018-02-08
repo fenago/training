@@ -12,11 +12,11 @@ dotenv.load({ path: '.env' });
 app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
-app.use(bodyParser({limit: '50mb'}));
+app.use(bodyParser({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
- const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
+const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
 
 // let mongodbURI;
 // if (process.env.NODE_ENV === 'test') {
@@ -35,19 +35,19 @@ mongodb
 
     setRoutes(app);
 
-    app.get('/*', function(req, res) {
+    app.get('/*', function (req, res) {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
     if (!module.parent) {
       app.listen(app.get('port'), () => {
-        console.log('Fenago training-app server listening on port ' + app.get('port'));
+        console.log('Fenago training-app server listening on port ' + process.env.path + ':' + app.get('port'));
       });
     }
 
   })
   .catch((err) => {
     console.error(err);
-});
+  });
 
 export { app };

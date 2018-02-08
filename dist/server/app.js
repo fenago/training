@@ -33,7 +33,7 @@ mongodb
     });
     if (!module.parent) {
         app.listen(app.get('port'), function () {
-            console.log('Fenago training-app server listening on port ' + app.get('port'));
+            console.log('Fenago training-app server listening on port ' + process.env.path + ':' + app.get('port'));
         });
     }
 })
