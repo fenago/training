@@ -3,10 +3,6 @@ import { MaterialModule } from './material.module';
 import { FileUploadModule } from 'ng2-file-upload';
 import { QuillModule } from 'ngx-quill';
 
-import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
-import cloudinaryConfiguration from './cloudinary.config';
-import * as cloudinary from 'cloudinary-core';
-
 import { RoutingModule } from './routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
@@ -35,6 +31,9 @@ import { UnPublishedListComponent } from './admin/publish/un-published-list/un-p
 import { SyllabusComponent } from './syllabus/syllabus.component';
 import { SafePipe } from './shared/safe.pipe';
 import { ContentComponent } from './content/content.component';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import cloudinaryConfiguration from './cloudinary.config';
+import { cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
 
 export const cloudinaryLib = {
   Cloudinary: cloudinary
