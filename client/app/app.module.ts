@@ -35,9 +35,6 @@ import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5
 import cloudinaryConfiguration from './cloudinary.config';
 import * as cloudinary from 'cloudinary-core';
 
-export const cloudinaryLib = {
-  Cloudinary: cloudinary
-};
 
 @NgModule({
   declarations: [
@@ -68,7 +65,7 @@ export const cloudinaryLib = {
     BrowserAnimationsModule,
     MaterialModule,
     FileUploadModule,
-    CloudinaryModule.forRoot(cloudinaryLib, cloudinaryConfiguration),
+    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
     QuillModule
   ],
   providers: [
