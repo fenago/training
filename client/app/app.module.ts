@@ -65,7 +65,7 @@ import { ContentComponent } from './content/content.component';
     BrowserAnimationsModule,
     MaterialModule,
     FileUploadModule,
-    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
+    CloudinaryModule.forRoot(cloudinaryLib, cloudinaryConfiguration),
     QuillModule
   ],
   providers: [
