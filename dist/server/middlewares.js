@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var bcrypt = require("bcryptjs");
 var user_1 = require("./models/user");
-var MiddleWare = (function () {
+var MiddleWare = /** @class */ (function () {
     function MiddleWare() {
         this.model = user_1.default;
         this.hash = function (req, res, next) {
