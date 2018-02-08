@@ -33,7 +33,7 @@ import { SafePipe } from './shared/safe.pipe';
 import { ContentComponent } from './content/content.component';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import cloudinaryConfiguration from './cloudinary.config';
-import { cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
+import * as cloudinary from 'cloudinary-core';
 
 export const cloudinaryLib = {
   Cloudinary: cloudinary
