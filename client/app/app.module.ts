@@ -33,7 +33,11 @@ import { SafePipe } from './shared/safe.pipe';
 import { ContentComponent } from './content/content.component';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import cloudinaryConfiguration from './cloudinary.config';
-import * as cloudinary from 'cloudinary-core';
+import { Cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
+
+const cloudinaryLib = {
+  Cloudinary: Cloudinary
+};
 
 
 @NgModule({
@@ -65,7 +69,7 @@ import * as cloudinary from 'cloudinary-core';
     BrowserAnimationsModule,
     MaterialModule,
     FileUploadModule,
-    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
+    CloudinaryModule.forRoot(cloudinaryLib, cloudinaryConfiguration),
     QuillModule
   ],
   providers: [

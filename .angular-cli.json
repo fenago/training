@@ -30,7 +30,8 @@
         "../node_modules/tether/dist/js/tether.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/jquery-resizable-columns/dist/jquery.resizableColumns.min.js"
+        "../node_modules/jquery-resizable-columns/dist/jquery.resizableColumns.min.js",
+        "../node_modules/cloudinary-core/cloudinary-core-shrinkwrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
