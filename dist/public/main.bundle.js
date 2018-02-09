@@ -398,6 +398,7 @@ module.exports = "<mat-tab-group>\r\n  <mat-tab label=\"course\">\r\n    <div cl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cloudinary_angular_5_x__ = __webpack_require__("../../../../@cloudinary/angular-5.x/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cloudinary_angular_5_x___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__cloudinary_angular_5_x__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__cloudinary_config__ = __webpack_require__("../../../../../client/app/cloudinary.config.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -407,6 +408,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -430,7 +432,7 @@ var AddCourseComponent = (function () {
          */
         // Create the file uploader, wire it to upload to your account
         var uploaderOptions = {
-            url: "https://api.cloudinary.com/v1_1/" + this.cloudinary.config().cloud_name + "/upload",
+            url: "https://api.cloudinary.com/v1_1/" + __WEBPACK_IMPORTED_MODULE_7__cloudinary_config__["a" /* default */].cloud_name + "/upload",
             autoUpload: false,
             // Use xhrTransport in favor of iframeTransport
             isHTML5: true,
@@ -685,7 +687,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/publish.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\r\n<app-loading [condition]=\"isLoading\"></app-loading>\r\n<app-toast [message]=\"toast.message\"></app-toast>\r\n<nav class=\"navbar navbar-dark\" mat-tab-nav-bar >\r\n    <a routerLink=\"/publish/new\" class=\"nav-item nav-link\" mat-tab-link  routerLinkActive=\"active\">\r\n      <h5><i class=\"fa fa-plus\"></i> Add</h5>\r\n    </a>\r\n    <a routerLink=\"/publish/unPublishedList\" class=\"nav-item nav-link\" mat-tab-link  routerLinkActive=\"active\">\r\n      <h5><i class=\"fa fa-list\"></i> un-published list</h5>\r\n    </a>\r\n</nav>\r\n<router-outlet></router-outlet>\r\n</div>\r\n"
+module.exports = "<div class=\"content\">\r\n<app-toast [message]=\"toast.message\"></app-toast>\r\n<nav class=\"navbar navbar-dark\" mat-tab-nav-bar >\r\n    <a routerLink=\"/publish/new\" class=\"nav-item nav-link\" mat-tab-link  routerLinkActive=\"active\">\r\n      <h5><i class=\"fa fa-plus\"></i> Add</h5>\r\n    </a>\r\n    <a routerLink=\"/publish/unPublishedList\" class=\"nav-item nav-link\" mat-tab-link  routerLinkActive=\"active\">\r\n      <h5><i class=\"fa fa-list\"></i> un-published list</h5>\r\n    </a>\r\n</nav>\r\n<router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1071,39 +1073,39 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_quill__ = __webpack_require__("../../../../ngx-quill/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloudinary_angular_5_x__ = __webpack_require__("../../../../@cloudinary/angular-5.x/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloudinary_angular_5_x___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__cloudinary_angular_5_x__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cloudinary_config__ = __webpack_require__("../../../../../client/app/cloudinary.config.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cloudinary_core__ = __webpack_require__("../../../../cloudinary-core/cloudinary-core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cloudinary_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_cloudinary_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__routing_module__ = __webpack_require__("../../../../../client/app/routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_shared_module__ = __webpack_require__("../../../../../client/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_course_service__ = __webpack_require__("../../../../../client/app/services/course.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_user_service__ = __webpack_require__("../../../../../client/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_auth_guard_login_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_auth_guard_admin_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-admin.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_component__ = __webpack_require__("../../../../../client/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__course_course_component__ = __webpack_require__("../../../../../client/app/course/course.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__about_about_component__ = __webpack_require__("../../../../../client/app/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__register_register_component__ = __webpack_require__("../../../../../client/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_login_component__ = __webpack_require__("../../../../../client/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__logout_logout_component__ = __webpack_require__("../../../../../client/app/logout/logout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__account_account_component__ = __webpack_require__("../../../../../client/app/account/account.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__not_found_not_found_component__ = __webpack_require__("../../../../../client/app/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__header_header_component__ = __webpack_require__("../../../../../client/app/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__footer_footer_component__ = __webpack_require__("../../../../../client/app/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__dashboard_dashboard_component__ = __webpack_require__("../../../../../client/app/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__admin_users_users_component__ = __webpack_require__("../../../../../client/app/admin/users/users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__admin_publish_publish_component__ = __webpack_require__("../../../../../client/app/admin/publish/publish.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__admin_publish_add_syllabus_add_syllabus_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-syllabus/add-syllabus.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__admin_publish_add_content_add_content_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-content/add-content.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__admin_publish_add_course_add_course_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-course/add-course.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__admin_publish_un_published_list_un_published_list_component__ = __webpack_require__("../../../../../client/app/admin/publish/un-published-list/un-published-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__syllabus_syllabus_component__ = __webpack_require__("../../../../../client/app/syllabus/syllabus.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_safe_pipe__ = __webpack_require__("../../../../../client/app/shared/safe.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__content_content_component__ = __webpack_require__("../../../../../client/app/content/content.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routing_module__ = __webpack_require__("../../../../../client/app/routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__ = __webpack_require__("../../../../../client/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_course_service__ = __webpack_require__("../../../../../client/app/services/course.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_user_service__ = __webpack_require__("../../../../../client/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_login_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_auth_guard_admin_service__ = __webpack_require__("../../../../../client/app/services/auth-guard-admin.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__("../../../../../client/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__course_course_component__ = __webpack_require__("../../../../../client/app/course/course.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__about_about_component__ = __webpack_require__("../../../../../client/app/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__register_register_component__ = __webpack_require__("../../../../../client/app/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__login_login_component__ = __webpack_require__("../../../../../client/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__logout_logout_component__ = __webpack_require__("../../../../../client/app/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__account_account_component__ = __webpack_require__("../../../../../client/app/account/account.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__not_found_not_found_component__ = __webpack_require__("../../../../../client/app/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__header_header_component__ = __webpack_require__("../../../../../client/app/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__footer_footer_component__ = __webpack_require__("../../../../../client/app/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dashboard_dashboard_component__ = __webpack_require__("../../../../../client/app/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__admin_users_users_component__ = __webpack_require__("../../../../../client/app/admin/users/users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__admin_publish_publish_component__ = __webpack_require__("../../../../../client/app/admin/publish/publish.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__admin_publish_add_syllabus_add_syllabus_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-syllabus/add-syllabus.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__admin_publish_add_content_add_content_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-content/add-content.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__admin_publish_add_course_add_course_component__ = __webpack_require__("../../../../../client/app/admin/publish/add-course/add-course.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__admin_publish_un_published_list_un_published_list_component__ = __webpack_require__("../../../../../client/app/admin/publish/un-published-list/un-published-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__syllabus_syllabus_component__ = __webpack_require__("../../../../../client/app/syllabus/syllabus.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_safe_pipe__ = __webpack_require__("../../../../../client/app/shared/safe.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__content_content_component__ = __webpack_require__("../../../../../client/app/content/content.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__cloudinary_angular_5_x__ = __webpack_require__("../../../../@cloudinary/angular-5.x/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__cloudinary_angular_5_x___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_32__cloudinary_angular_5_x__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__cloudinary_config__ = __webpack_require__("../../../../../client/app/cloudinary.config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34_cloudinary_core_cloudinary_core_shrinkwrap__ = __webpack_require__("../../../../cloudinary-core/cloudinary-core-shrinkwrap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34_cloudinary_core_cloudinary_core_shrinkwrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34_cloudinary_core_cloudinary_core_shrinkwrap__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1145,51 +1147,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+var cloudinaryLib = {
+    Cloudinary: __WEBPACK_IMPORTED_MODULE_34_cloudinary_core_cloudinary_core_shrinkwrap__["Cloudinary"]
+};
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__course_course_component__["a" /* courseComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__account_account_component__["a" /* AccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__not_found_not_found_component__["a" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__admin_users_users_component__["a" /* UsersComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__admin_publish_publish_component__["a" /* PublishComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__admin_publish_add_syllabus_add_syllabus_component__["a" /* AddSyllabusComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__admin_publish_add_content_add_content_component__["a" /* AddContentComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__admin_publish_add_course_add_course_component__["a" /* AddCourseComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__admin_publish_un_published_list_un_published_list_component__["a" /* UnPublishedListComponent */],
-                __WEBPACK_IMPORTED_MODULE_32__syllabus_syllabus_component__["a" /* SyllabusComponent */],
-                __WEBPACK_IMPORTED_MODULE_33__shared_safe_pipe__["a" /* SafePipe */],
-                __WEBPACK_IMPORTED_MODULE_34__content_content_component__["a" /* ContentComponent */]
+                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__course_course_component__["a" /* courseComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__about_about_component__["a" /* AboutComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__account_account_component__["a" /* AccountComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__not_found_not_found_component__["a" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__admin_users_users_component__["a" /* UsersComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__admin_publish_publish_component__["a" /* PublishComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__admin_publish_add_syllabus_add_syllabus_component__["a" /* AddSyllabusComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__admin_publish_add_content_add_content_component__["a" /* AddContentComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__admin_publish_add_course_add_course_component__["a" /* AddCourseComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__admin_publish_un_published_list_un_published_list_component__["a" /* UnPublishedListComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__syllabus_syllabus_component__["a" /* SyllabusComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__shared_safe_pipe__["a" /* SafePipe */],
+                __WEBPACK_IMPORTED_MODULE_31__content_content_component__["a" /* ContentComponent */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_7__routing_module__["a" /* RoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_9__shared_shared_module__["a" /* SharedModule */],
-                __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__routing_module__["a" /* RoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__["a" /* SharedModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__material_module__["a" /* MaterialModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ng2_file_upload__["FileUploadModule"],
-                __WEBPACK_IMPORTED_MODULE_4__cloudinary_angular_5_x__["CloudinaryModule"].forRoot(__WEBPACK_IMPORTED_MODULE_6_cloudinary_core__, __WEBPACK_IMPORTED_MODULE_5__cloudinary_config__["a" /* default */]),
+                __WEBPACK_IMPORTED_MODULE_32__cloudinary_angular_5_x__["CloudinaryModule"].forRoot(cloudinaryLib, __WEBPACK_IMPORTED_MODULE_33__cloudinary_config__["a" /* default */]),
                 __WEBPACK_IMPORTED_MODULE_3_ngx_quill__["a" /* QuillModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_12__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_13__services_auth_guard_login_service__["a" /* AuthGuardLogin */],
-                __WEBPACK_IMPORTED_MODULE_14__services_auth_guard_admin_service__["a" /* AuthGuardAdmin */],
-                __WEBPACK_IMPORTED_MODULE_10__services_course_service__["a" /* courseService */],
-                __WEBPACK_IMPORTED_MODULE_11__services_user_service__["a" /* UserService */]
+                __WEBPACK_IMPORTED_MODULE_9__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_login_service__["a" /* AuthGuardLogin */],
+                __WEBPACK_IMPORTED_MODULE_11__services_auth_guard_admin_service__["a" /* AuthGuardAdmin */],
+                __WEBPACK_IMPORTED_MODULE_7__services_course_service__["a" /* courseService */],
+                __WEBPACK_IMPORTED_MODULE_8__services_user_service__["a" /* UserService */]
             ],
             schemas: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["CUSTOM_ELEMENTS_SCHEMA"]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -1486,7 +1491,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" *ngIf=\"!isLoading\">\r\n  <app-toast [message]=\"toast.message\"></app-toast>\r\n  <div class=\"loader\" *ngIf=\"isLoading\"></div>\r\n  <div class=\"buffer50\"></div>\r\n  <div class=\"container\">\r\n    <div class=\"row actions\">\r\n      <div class=\"col-lg-3\">\r\n        <mat-slide-toggle *ngIf=\"!AuthService.isAdmin\" [(ngModel)]=\"myCoursesToggle\" color=\"primary\">\r\n          My courses\r\n        </mat-slide-toggle>\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n      </div>\r\n    </div>\r\n    <div class=\"buffer20\"></div>\r\n    <div class=\"course_container\" *ngFor=\"let course of courses; let i = index\" [hidden]=\"myCoursesToggle && course.users.indexOf(AuthService.currentUser._id) < 0\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-4\">\r\n          <img *ngIf=\"course.image\" width=\"340\" height=\"300\" src=\"{{course.image}}\">\r\n        </div>\r\n        <div class=\"col-lg-8\">\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n              <h1>{{course.title}}</h1>\r\n              <p *ngIf=\"course.coupanFlag\" st> {{course.coupanAmount}}% discount coupon rewarded</p>\r\n            </div>\r\n          </div>\r\n          <div class=\"buffer20\"></div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-3 center\">\r\n              <h5>\r\n                <p *ngIf=\"course.price > 0 && course.coupanFlag !== true\">price: {{course.price}}$</p>\r\n                <p *ngIf=\"course.price < 1 && course.coupanFlag !== true\">price: FREE</p>\r\n                <p *ngIf=\"course.coupanFlag\">price: <del>{{course.price}}$</del> {{course.price - (course.price * course.coupanAmount)/100}}$</p>\r\n              </h5>\r\n            </div>\r\n            <div class=\"col-lg-3 center\">\r\n              <h5>\r\n                <i class=\"fa fa-clock-o\"> Hours :{{course.eta}}</i>\r\n              </h5>\r\n            </div>\r\n            <div class=\"col-lg-3 center\">\r\n              <button [routerLink]=\"['/syllabus',course._id]\" class=\"btn\">View syllabus</button>\r\n            </div>\r\n            <div class=\"col-lg-3 center\">\r\n              <button class=\"btn btn-buy\" *ngIf=\"course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin && course.price > 0\"\r\n                (click)=\"purchase(i)\">Purchase</button>\r\n              <button class=\"btn btn-buy\" [routerLink]=\"['/content',course._id]\" *ngIf=\"(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && AuthService.loggedIn\">View course</button>\r\n              <button class=\"btn btn-buy\" [routerLink]=\"['/register']\" *ngIf=\"(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && !AuthService.loggedIn \">View course</button>\r\n              <button class=\"btn btn-buy\" [routerLink]=\"['/publish/new',course._id]\" *ngIf=\"AuthService.isAdmin\">Edit course</button>\r\n            </div>\r\n          </div>\r\n          <div class=\"buffer50\"></div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n              <p>{{course.description}}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <hr>\r\n      <div class=\"buffer50\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<!-- <div class=\"card-block\">\r\n    <table class=\"table table-bordered table-striped\">\r\n      <thead class=\"\">\r\n        <tr>\r\n          <th>image</th>\r\n          <th>Title</th>\r\n          <th>price</th>\r\n          <th>ETA</th>\r\n          <th>Actions</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody *ngIf=\"courses.length === 0\">\r\n        <tr>\r\n          <td colspan=\"4\">There are no courses in the DB. Add a new course below.</td>\r\n        </tr>\r\n      </tbody>\r\n      <tbody *ngIf=\"!isEditing\">\r\n        <tr *ngFor=\"let course of courses\">\r\n          <td>\r\n            <img *ngIf=\"course.image\" src=\"{{course.image}}\">\r\n          </td>\r\n          <td>{{course.title}}</td>\r\n          <td>{{course.price}}</td>\r\n          <td>{{course.eta}}</td>\r\n          <td>\r\n\r\n            <a [routerLink]=\"['/publish/new', course._id]\" class=\"nav-item nav-link\" routerLinkActive=\"active\">\r\n              <button class=\"btn btn-sm btn-warning\">\r\n                <i class=\"fa fa-pencil\"></i> Edit</button>\r\n            </a>\r\n            <button class=\"btn btn-sm btn-danger\" (click)=\"deletecourse(course)\">\r\n              <i class=\"fa fa-trash\"></i> Delete</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div> -->\r\n"
+module.exports = "<div class=\"content\" *ngIf=\"!isLoading\">\r\n  <app-toast [message]=\"toast.message\"></app-toast>\r\n  <div class=\"loader\" *ngIf=\"isLoading\"></div>\r\n  <div class=\"buffer50\"></div>\r\n  <div class=\"container\">\r\n    <div class=\"row actions\">\r\n      <div class=\"col-lg-3\">\r\n        <mat-slide-toggle *ngIf=\"!AuthService.isAdmin\" [(ngModel)]=\"myCoursesToggle\" color=\"primary\">\r\n          My courses\r\n        </mat-slide-toggle>\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n      </div>\r\n    </div>\r\n    <div class=\"buffer20\"></div>\r\n    <div class=\"course_container\" *ngFor=\"let course of courses; let i = index\" [hidden]=\"myCoursesToggle && course.users.indexOf(AuthService.currentUser._id) < 0\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-4\">\r\n          <img *ngIf=\"course.image\" width=\"340\" height=\"300\" src=\"{{course.image}}\">\r\n        </div>\r\n        <div class=\"col-lg-8\">\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n              <h1>{{course.title}}</h1>\r\n              <p *ngIf=\"course.coupanFlag\" st> {{course.coupanAmount}}% discount coupon rewarded</p>\r\n            </div>\r\n          </div>\r\n          <div class=\"buffer20\"></div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-3 center\">\r\n              <h5>\r\n<<<<<<< HEAD\r\n                <p *ngIf=\"course.price > 0\">price: ${{course.price}}</p>\r\n                <p *ngIf=\"course.price < 1\">price: FREE</p>\r\n=======\r\n                <p *ngIf=\"course.price > 0 && course.coupanFlag !== true\">price: {{course.price}}$</p>\r\n                <p *ngIf=\"course.price < 1 && course.coupanFlag !== true\">price: FREE</p>\r\n                <p *ngIf=\"course.coupanFlag\">price: <del>{{course.price}}$</del> {{course.price - (course.price * course.coupanAmount)/100}}$</p>\r\n>>>>>>> feature-coupan-system\r\n              </h5>\r\n            </div>\r\n            <div class=\"col-lg-3 center\">\r\n              <h5>\r\n                <i class=\"fa fa-clock-o\"> Hours :{{course.eta}}</i>\r\n              </h5>\r\n            </div>\r\n            <div class=\"col-lg-3 center\">\r\n              <button [routerLink]=\"['/syllabus',course._id]\" class=\"btn\">View syllabus</button>\r\n            </div>\r\n            <div class=\"col-lg-3 center\">\r\n              <button class=\"btn btn-buy\" *ngIf=\"course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin && course.price > 0\"\r\n                (click)=\"purchase(i)\">Purchase</button>\r\n              <button class=\"btn btn-buy\" [routerLink]=\"['/content',course._id]\" *ngIf=\"(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && AuthService.loggedIn\">View course</button>\r\n              <button class=\"btn btn-buy\" [routerLink]=\"['/register']\" *ngIf=\"(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && !AuthService.loggedIn \">View course</button>\r\n              <button class=\"btn btn-buy\" [routerLink]=\"['/publish/new',course._id]\" *ngIf=\"AuthService.isAdmin\">Edit course</button>\r\n            </div>\r\n          </div>\r\n          <div class=\"buffer50\"></div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n              <p>{{course.description}}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <hr>\r\n      <div class=\"buffer50\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<!-- <div class=\"card-block\">\r\n    <table class=\"table table-bordered table-striped\">\r\n      <thead class=\"\">\r\n        <tr>\r\n          <th>image</th>\r\n          <th>Title</th>\r\n          <th>price</th>\r\n          <th>ETA</th>\r\n          <th>Actions</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody *ngIf=\"courses.length === 0\">\r\n        <tr>\r\n          <td colspan=\"4\">There are no courses in the DB. Add a new course below.</td>\r\n        </tr>\r\n      </tbody>\r\n      <tbody *ngIf=\"!isEditing\">\r\n        <tr *ngFor=\"let course of courses\">\r\n          <td>\r\n            <img *ngIf=\"course.image\" src=\"{{course.image}}\">\r\n          </td>\r\n          <td>{{course.title}}</td>\r\n          <td>{{course.price}}</td>\r\n          <td>{{course.eta}}</td>\r\n          <td>\r\n\r\n            <a [routerLink]=\"['/publish/new', course._id]\" class=\"nav-item nav-link\" routerLinkActive=\"active\">\r\n              <button class=\"btn btn-sm btn-warning\">\r\n                <i class=\"fa fa-pencil\"></i> Edit</button>\r\n            </a>\r\n            <button class=\"btn btn-sm btn-danger\" (click)=\"deletecourse(course)\">\r\n              <i class=\"fa fa-trash\"></i> Delete</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div> -->\r\n"
 
 /***/ }),
 
@@ -1703,6 +1708,19 @@ var FooterComponent = (function () {
     return FooterComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "../../../../../client/app/globals.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return globals; });
+var globals = {
+    server_url: 'https://fenago-training-server.herokuapp.com'
+    // server_url: ''
+};
 
 
 /***/ }),
@@ -2398,6 +2416,7 @@ var AuthService = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return courseService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__("../../../../../client/app/globals.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2409,55 +2428,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var courseService = (function () {
     function courseService(http) {
         this.http = http;
+        this.url = __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* globals */].server_url;
     }
     courseService.prototype.getcourses = function () {
-        return this.http.get('/api/courses');
+        return this.http.get(this.url + '/api/courses');
     };
     courseService.prototype.getcoursesShallow = function () {
-        return this.http.get('/api/courses/shallow');
+        return this.http.get(this.url + '/api/courses/shallow');
     };
     courseService.prototype.countcourses = function () {
-        return this.http.get('/api/courses/count');
+        return this.http.get(this.url + '/api/courses/count');
     };
     courseService.prototype.addcourse = function (data) {
         console.log('insert', data);
-        return this.http.post('/api/course', data);
+        return this.http.post(this.url + '/api/course', data);
     };
     courseService.prototype.uploadTitleImage = function (file) {
         console.log('image', file);
         var formData = new FormData();
         formData.append('image', file.image);
-        return this.http.post("/api/course/upload/" + file.courseId, formData);
+        return this.http.post(this.url + ("/api/course/upload/" + file.courseId), formData);
     };
     courseService.prototype.payment = function (token) {
         console.log(token);
-        return this.http.post('/api/course/payment', token);
+        return this.http.post(this.url + '/api/course/payment', token);
     };
     courseService.prototype.getcourse = function (courseId) {
-        return this.http.get("/api/course/" + courseId);
+        return this.http.get(this.url + ("/api/course/" + courseId));
     };
     courseService.prototype.getSyllabus = function (courseId) {
-        return this.http.get("/api/course/syllabus/" + courseId);
+        return this.http.get(this.url + ("/api/course/syllabus/" + courseId));
     };
     courseService.prototype.getContent = function (courseId) {
-        return this.http.get("/api/course/content/" + courseId);
+        return this.http.get(this.url + ("/api/course/content/" + courseId));
     };
     courseService.prototype.getUsers = function (courseId) {
-        return this.http.get("/api/course/getUsers/" + courseId);
+        return this.http.get(this.url + ("/api/course/getUsers/" + courseId));
     };
     courseService.prototype.editcourse = function (course) {
         console.log('edit', course);
-        return this.http.put("/api/course/" + course._id, course, { responseType: 'text' });
+        return this.http.put(this.url + ("/api/course/" + course._id), course, { responseType: 'text' });
     };
     courseService.prototype.addUser = function (data) {
         console.log(data);
-        return this.http.put("/api/course/addUser/" + data.courseId, data, { responseType: 'text' });
+        return this.http.put(this.url + ("/api/course/addUser/" + data.courseId), data, { responseType: 'text' });
     };
     courseService.prototype.deletecourse = function (course) {
-        return this.http.delete("/api/course/" + course._id, { responseType: 'text' });
+        return this.http.delete(this.url + ("/api/course/" + course._id), { responseType: 'text' });
     };
     courseService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -2477,6 +2498,7 @@ var courseService = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__("../../../../../client/app/globals.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2488,9 +2510,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
+        this.url = __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* globals */].server_url;
     }
     /*
     * @note: to increase security, the condition is used to prevent
@@ -2499,30 +2523,30 @@ var UserService = (function () {
     */
     UserService.prototype.register = function (user) {
         user.role = user.role === 'admin' ? 'user' : 'user';
-        return this.http.post('/api/user', user);
+        return this.http.post(this.url + '/api/user', user);
     };
     UserService.prototype.login = function (credentials) {
         console.log(credentials);
-        return this.http.post('/api/login', credentials);
+        return this.http.post(this.url + '/api/login', credentials);
     };
     UserService.prototype.getUsers = function () {
-        return this.http.get('/api/users');
+        return this.http.get(this.url + '/api/users');
     };
     UserService.prototype.countUsers = function () {
-        return this.http.get('/api/users/count');
+        return this.http.get(this.url + '/api/users/count');
     };
     UserService.prototype.addUser = function (user) {
-        return this.http.post('/api/user', user);
+        return this.http.post(this.url + '/api/user', user);
     };
     UserService.prototype.getUser = function (user) {
         user = typeof (user) === 'object' ? user._id : user;
-        return this.http.get("/api/user/" + user);
+        return this.http.get(this.url + ("/api/user/" + user));
     };
     UserService.prototype.editUser = function (user) {
-        return this.http.put("/api/user/" + user._id, user, { responseType: 'text' });
+        return this.http.put(this.url + ("/api/user/" + user._id), user, { responseType: 'text' });
     };
     UserService.prototype.deleteUser = function (user) {
-        return this.http.delete("/api/user/" + user._id, { responseType: 'text' });
+        return this.http.delete(this.url + ("/api/user/" + user._id), { responseType: 'text' });
     };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
