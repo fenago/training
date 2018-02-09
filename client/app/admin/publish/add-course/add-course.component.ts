@@ -6,6 +6,7 @@ import { Form } from '@angular/forms/src/directives/form_interface';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { ActivatedRoute } from '@angular/router';
+import cloudinaryConfiguration from './../../../cloudinary.config';
 
 @Component({
   selector: 'app-add-course',
@@ -32,7 +33,7 @@ export class AddCourseComponent implements OnInit {
      */
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
-      url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
+      url: `https://api.cloudinary.com/v1_1/${cloudinaryConfiguration.cloud_name}/upload`,
       autoUpload: false,
       // Use xhrTransport in favor of iframeTransport
       isHTML5: true,
