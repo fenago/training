@@ -34,14 +34,9 @@
           <div class="row">
             <div class="col-lg-3 center">
               <h5>
-<<<<<<< HEAD
-                <p *ngIf="course.price > 0">price: ${{course.price}}</p>
-                <p *ngIf="course.price < 1">price: FREE</p>
-=======
                 <p *ngIf="course.price > 0 && course.coupanFlag !== true">price: {{course.price}}$</p>
                 <p *ngIf="course.price < 1 && course.coupanFlag !== true">price: FREE</p>
                 <p *ngIf="course.coupanFlag">price: <del>{{course.price}}$</del> {{course.price - (course.price * course.coupanAmount)/100}}$</p>
->>>>>>> feature-coupan-system
               </h5>
             </div>
             <div class="col-lg-3 center">
