@@ -7,6 +7,7 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { course } from '../shared/models/course.model';
+import { User } from '../shared/models/user.model';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
   course = new course();
   myCoursesToggle = false;
   self: any;
+  user: User;
 
   courses: course[] = [];
   isLoading = true;
@@ -39,7 +41,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.self = this;
-    this.getcourses();
+    this.UserService.getUser(this.AuthService.currentUser._id).subscribe(res => {
+      this.user = res;
+      this.getcourses();
+    });
+
     this.addcourseForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
@@ -51,7 +57,17 @@ export class DashboardComponent implements OnInit {
     this.CourseService.getcourses().subscribe(
       data => {
         this.courses = data;
-        console.log(data);
+        console.log(this.user);
+        for (let i = 0; i < this.courses.length; i++) {
+          for (let j = 0; j < this.user.coupans.length; j++) {
+            for (let k = 0; k < this.user.coupans[j].courses.length; k++) {
+              if (this.user.coupans[j].courses[k].id == this.courses[i]._id) {
+                this.courses[i]['coupanFlag'] = true;
+                this.courses[i]['coupanAmount'] = this.user.coupans[j].amount;
+              }
+            }
+          }
+        }
       },
       error => console.log(error),
       () => this.isLoading = false

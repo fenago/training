@@ -3,4 +3,12 @@ export class User {
   username?: string;
   email?: string;
   role?: string;
+  coupans: [{
+    id: String,
+    courses: [{
+      id: String,
+      name: String
+    }],
+    amount: Number
+  }];
 }

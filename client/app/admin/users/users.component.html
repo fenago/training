@@ -1,8 +1,37 @@
 <app-toast [message]="toast.message"></app-toast>
 <div class="content" *ngIf="!isLoading">
- <div class="loader" *ngIf="isLoading"></div>
-  <h4 class="card-header">Registered users ({{users.length}}) <a routerLink="/register" class="btn btn-primary"><i class="fa fa-plus"></i> new</a></h4>
+  <div class="loader" *ngIf="isLoading"></div>
+  <h4 class="card-header">Registered users ({{users.length}})
+    <a routerLink="/register" class="btn btn-primary">
+      <i class="fa fa-plus"></i> new</a>
+  </h4>
   <div class="card-block">
+    <!-- <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef> username </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Role">
+          <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginator [pageSize]="4" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+      </mat-paginator>
+    </div> -->
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
         <tr>
@@ -18,7 +47,7 @@
         </tr>
       </tbody>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users" (click)="selectUser(user)">
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
@@ -26,8 +55,79 @@
             <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-trash"></i>
             </button>
-            <button class="btn btn-sm btn-danger"  [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
+            <button class="btn btn-sm btn-danger" [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <legend *ngIf="selectedUser">REWARDED COUPONS ( {{selectedUser.username}} )</legend>
+    <legend *ngIf="!selectedUser">REWARDED COUPONS</legend>
+    <table class="table table-bordered">
+      <thead class="thead-default">
+        <tr>
+          <th>Id</th>
+          <th>amount</th>
+          <th>courses</th>
+          <th>
+            add course
+          </th>
+          <th>Actions
+            <button mat-raised-button color="primary" (click)="save()">
+              <h5>
+                <i class="fa fa-save"></i> save</h5>
+            </button>
+            <button mat-raised-button color="primary" (click)="newCoupan(i)">
+              <h5>
+                <i class="fa fa-plus"></i> add</h5>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="selectedUser==null || selectedUser.coupans.length <1">
+        <tr>
+          <td colspan="4">There are no registered users.</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="selectedUser!=null && selectedUser.coupans.length >0">
+        <tr *ngFor="let coupan of selectedUser.coupans; let i=index">
+          <td>{{coupan.id}}</td>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="amount" [(ngModel)]="coupan.amount">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field style="width:100%">
+              <mat-select placeholder="{{coupan.courses[0].name}}">
+                <mat-option *ngFor="let course of coupan.courses; let j=index" disabled>
+                  {{ course.name}}
+                  <button mat-button color="warn" *ngIf="course.name.length>0" (click)="removeCourseInCoupan(i,j)">
+                    <i class="fa fa-close"></i>
+                  </button>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input pla matInput aria-label="Course" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let course of courses; let i=index" [value]="course.title" (click)="selectCourseInCoupan(course)">
+                  <img style="vertical-align:middle;" aria-hidden src="{{course.image}}" height="25" />
+                  <span>{{ course.title }}</span> |
+                  <small>Price: {{course.price}}</small>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <button mat-button color="primary" (click)="addCourseInCoupan(i)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteCoupan(i)">
+              <i class="fa fa-trash"></i>
             </button>
           </td>
         </tr>

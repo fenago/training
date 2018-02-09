@@ -16,6 +16,7 @@ app.use(bodyParser({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+<<<<<<< HEAD
 const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
 
 // let mongodbURI;
@@ -25,6 +26,17 @@ const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-
 //   mongodbURI = process.env.MONGODB_URI;
 //   app.use(morgan('dev'));
 // }
+=======
+ // const mongodbURI = 'mongodb://admin:valleyforge@ds247587.mlab.com:47587/trainer-app';
+
+let mongodbURI;
+if (process.env.NODE_ENV === 'test') {
+  mongodbURI = process.env.MONGODB_TEST_URI;
+} else {
+  mongodbURI = process.env.MONGODB_URI;
+  app.use(morgan('dev'));
+}
+>>>>>>> feature-coupan-system
 
 mongoose.Promise = global.Promise;
 const mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });

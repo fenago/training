@@ -12,15 +12,20 @@ import {
   MatGridListModule,
   MatListModule,
   MatSliderModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSelectModule,
+  MatAutocompleteModule,
+  MatTableModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     MatButtonModule,
     MatMenuModule,
+    MatTableModule,
     MatToolbarModule,
     MatIconModule,
+    MatSelectModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
@@ -28,7 +33,8 @@ import {
     MatGridListModule,
     MatListModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatButtonModule,
@@ -41,8 +47,11 @@ import {
     MatTabsModule,
     MatGridListModule,
     MatListModule,
+    MatSelectModule,
+    MatTableModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule {}
