@@ -5,7 +5,7 @@ export class User {
   role?: string;
   coupans: [{
     id: String,
-    course: [{
+    courses: [{
       id: String,
       name: String
     }],

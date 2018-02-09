@@ -14,13 +14,15 @@ import {
   MatSliderModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTableModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     MatButtonModule,
     MatMenuModule,
+    MatTableModule,
     MatToolbarModule,
     MatIconModule,
     MatSelectModule,
@@ -46,6 +48,7 @@ import {
     MatGridListModule,
     MatListModule,
     MatSelectModule,
+    MatTableModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatAutocompleteModule

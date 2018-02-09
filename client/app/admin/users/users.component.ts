@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth.service';
 import { courseService } from '../../services/course.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../shared/models/user.model';
+import { MatTableDataSource } from '@angular/material';
+import course from '../../../../server/models/course';
 
 
 @Component({
@@ -18,6 +20,9 @@ export class UsersComponent implements OnInit {
   isLoading = true;
   selectedUser: User = null;
   courses = [];
+  courseToAddInCoupan: any;
+  displayedColumns = ['username', 'Email', 'Role', 'Action'];
+  dataSource: MatTableDataSource<User>;
 
   constructor(public auth: AuthService,
     public toast: ToastComponent,
@@ -39,13 +44,64 @@ export class UsersComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().subscribe(
-      data => this.users = data,
+      (data) => {
+        this.users = data;
+        this.dataSource = new MatTableDataSource(this.users);
+      },
       error => console.log(error),
       () => this.isLoading = false
     );
   }
-  coupanEdit() {
+  save() {
+    console.log(this.selectedUser);
+    this.userService.editUser(this.selectedUser).subscribe(res => {
+      console.log(res);
+    });
+  }
+  removeCourseInCoupan(i, j) {
+    console.log(this.selectedUser.coupans[i].courses[j]);
+    this.selectedUser.coupans[i].courses.splice(j, 1);
+    if (this.selectedUser.coupans[i].courses.length < 1) {
+      this.selectedUser.coupans[i].courses.push({
+        'name': '',
+        'id': ''
+      });
+    }
+  }
+  selectCourseInCoupan(course) {
+    this.courseToAddInCoupan = course;
+  }
+  addCourseInCoupan(i) {
+    if (this.selectedUser.coupans[i].courses[0].id === '') {
+      this.selectedUser.coupans[i].courses.splice(0, 1);
+    }
+    this.selectedUser.coupans[i].courses.push(
+      {
+        id: this.courseToAddInCoupan._id,
+        name: this.courseToAddInCoupan.title
+      });
+  }
+  newCoupan(i) {
+    this.selectedUser.coupans.push({
+      amount: 0,
+      id: this.makeid(),
+      courses: [
+        {
+          'name': '',
+          'id': ''
+        }
+      ]
+    });
+  }
+  makeid() {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
+    for (let i = 0; i < 5; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
   }
 
   deleteUser(user: User) {
@@ -56,6 +112,9 @@ export class UsersComponent implements OnInit {
         () => this.getUsers()
       );
     }
+  }
+  deleteCoupan(i) {
+    this.selectedUser.coupans.splice(i, 1);
   }
 
 }
