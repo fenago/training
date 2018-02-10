@@ -26,6 +26,7 @@ export class AccountComponent implements OnInit {
       if (params['id']) {
         this.userService.getUser(params['id']).subscribe(res => {
           this.getSelectedUser(res);
+          this.isLoading = false;
         });
       } else {
         this.getUser();

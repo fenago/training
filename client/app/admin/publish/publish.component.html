@@ -1,4 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="isLoading">
+    <div class="loader" style="margin-top:20%"></div>
+  </div>
+<div class="content" *ngIf="!isLoading">
 <app-toast [message]="toast.message"></app-toast>
 <nav class="navbar navbar-dark" mat-tab-nav-bar >
     <a routerLink="/publish/new" class="nav-item nav-link" mat-tab-link  routerLinkActive="active">

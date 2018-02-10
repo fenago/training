@@ -18,9 +18,11 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   isLoading = true;
+  innerLoading = false;
   selectedUser: User = null;
   courses = [];
   courseToAddInCoupan: any;
+  addCourseFlag = false;
   displayedColumns = ['username', 'Email', 'Role', 'Action'];
   dataSource: MatTableDataSource<User>;
 
@@ -53,9 +55,10 @@ export class UsersComponent implements OnInit {
     );
   }
   save() {
-    console.log(this.selectedUser);
+    this.innerLoading = true;
     this.userService.editUser(this.selectedUser).subscribe(res => {
-      console.log(res);
+      this.innerLoading = false;
+      this.toast.setMessage('coupan saved.', 'success');
     });
   }
   removeCourseInCoupan(i, j) {
@@ -70,6 +73,8 @@ export class UsersComponent implements OnInit {
   }
   selectCourseInCoupan(course) {
     this.courseToAddInCoupan = course;
+    this.addCourseFlag = true;
+    console.log(this.courseToAddInCoupan);
   }
   addCourseInCoupan(i) {
     if (this.selectedUser.coupans[i].courses[0].id === '') {
@@ -80,6 +85,7 @@ export class UsersComponent implements OnInit {
         id: this.courseToAddInCoupan._id,
         name: this.courseToAddInCoupan.title
       });
+    this.addCourseFlag = false;
   }
   newCoupan(i) {
     if (!this.selectedUser.coupans) {

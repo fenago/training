@@ -1,4 +1,7 @@
 <app-toast [message]="toast.message"></app-toast>
+<div class="content" *ngIf="isLoading">
+  <div class="loader" style="margin-top:20%"></div>
+</div>
 <div class="content" *ngIf="!isLoading">
   <div class="loader" *ngIf="isLoading"></div>
   <h4 class="card-header">Registered users ({{users.length}})
@@ -32,8 +35,8 @@
       <mat-paginator #paginator [pageSize]="4" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
       </mat-paginator>
     </div> -->
-    <table class="table table-bordered table-striped">
-      <thead class="thead-default">
+    <table class="table table-hover">
+      <thead class="mdb-color darken-1">
         <tr>
           <th>Username</th>
           <th>Email</th>
@@ -55,7 +58,7 @@
             <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-trash"></i>
             </button>
-            <button class="btn btn-sm btn-danger" [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
+            <button class="btn btn-sm btn-primary" [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-edit"></i>
             </button>
           </td>
@@ -64,33 +67,37 @@
     </table>
     <legend *ngIf="selectedUser">REWARDED COUPONS ( {{selectedUser.username}} )</legend>
     <legend *ngIf="!selectedUser">REWARDED COUPONS</legend>
-    <table class="table table-bordered">
-      <thead class="thead-default">
+    <table class="table">
+      <thead class="blue-grey lighten-6">
         <tr>
           <th>Id</th>
-          <th>amount</th>
+          <th>amount in %</th>
           <th>courses</th>
           <th>
             add course
           </th>
           <th>Actions
-            <button mat-raised-button color="primary" (click)="save()">
-              <h5>
-                <i class="fa fa-save"></i> save</h5>
+
+          </th>
+          <th>
+            <button class="btn btn-md btn-primary" (click)="save()" disabled="!selectedUser.coupans">
+              <i class="fa fa-save"></i>
             </button>
-            <button mat-raised-button color="primary" (click)="newCoupan(i)">
-              <h5>
-                <i class="fa fa-plus"></i> add</h5>
+            <button class="btn btn-md btn-primary" (click)="newCoupan(i)">
+              <i class="fa fa-plus"></i>
             </button>
           </th>
         </tr>
       </thead>
-      <tbody *ngIf="selectedUser==null || !selectedUser.coupans">
+      <tbody *ngIf="innerLoading">
+        <div class="loader" style="margin-left:30%"></div>
+      </tbody>
+      <tbody *ngIf="selectedUser==null || !selectedUser['coupans'].length > 0 &&!innerLoading">
         <tr>
           <td colspan="4">There are no registered users.</td>
         </tr>
       </tbody>
-      <tbody *ngIf="selectedUser!=null && selectedUser.coupans">
+      <tbody *ngIf="selectedUser!=null && selectedUser.coupans && !innerLoading">
         <tr *ngFor="let coupan of selectedUser.coupans; let i=index">
           <td>{{coupan.id}}</td>
           <td>
@@ -112,7 +119,7 @@
           </td>
           <td>
             <mat-form-field>
-              <input pla matInput aria-label="Course" [matAutocomplete]="auto">
+              <input placeholder="course" matInput aria-label="Course" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let course of courses; let i=index" [value]="course.title" (click)="selectCourseInCoupan(course)">
                   <img style="vertical-align:middle;" aria-hidden src="{{course.image}}" height="25" />
@@ -121,7 +128,7 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
-            <button mat-button color="primary" (click)="addCourseInCoupan(i)">
+            <button mat-button color="primary" (click)="addCourseInCoupan(i)" [disabled]="!addCourseFlag">
               <i class="fa fa-plus"></i>
             </button>
           </td>

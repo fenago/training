@@ -1,11 +1,18 @@
-.header-brand{
-  background-color:white;
+.header-brand {
+  background-color: white;
   padding: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
 }
-.header-inner{
-  width:95%;
+
+.header-inner {
+  width: 95%;
 }
-.nav-item a{
-  font-size:14px;
+
+.nav-item a {
+  font-size: 14px;
+}
+
+h5 {
+  text-align: center;
+  margin-top: 5%;
 }

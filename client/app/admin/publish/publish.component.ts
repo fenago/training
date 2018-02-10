@@ -11,16 +11,16 @@ import { course } from '../../shared/models/course.model';
   styleUrls: ['./publish.component.css']
 })
 export class PublishComponent implements OnInit {
-
+  isLoading = true;
 
   course = new course();
 
   constructor(private courseservice: courseService,
-              private formBuilder: FormBuilder,
-              public toast: ToastComponent) { }
+    private formBuilder: FormBuilder,
+    public toast: ToastComponent) { }
 
   ngOnInit() {
-    this.course._id = 'test';
+    this.isLoading = false;
   }
 
 

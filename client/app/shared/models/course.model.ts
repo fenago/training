@@ -2,11 +2,11 @@ export class course {
   _id?: string;
   title?: String;
   image?: any;
-  price?: Number;
+  price?: number;
   eta?: String;
   description?: String;
   isPublished?: Boolean;
-  userCount?: Number;
+  userCount?: number;
   users?: [String];
   syllabus?: String;
   syllabusFile?: String;

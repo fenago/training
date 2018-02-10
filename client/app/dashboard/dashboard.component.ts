@@ -81,25 +81,32 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  cb(token) {
-    console.log(self);
-    console.log(this);
-    this.CourseService.payment(token).subscribe(res => {
-      console.log(res);
-    });
-  }
   purchase(i) {
     if (this.AuthService.loggedIn) {
+      this.isLoading = true;
+
+      const price: any = this.courses[i]['coupanFlag'] ? Number(this.courses[i].price) - (this.courses[i].price * this.courses[i]['coupanAmount']) / 100 : this.courses[i].price;
       const handler = (<any>window).StripeCheckout.configure({
         key: 'pk_test_ShBXT4xQYOqRbiZCc6VQDOfa',
         locale: 'auto',
+        closed: () => {
+          this.isLoading = false;
+        },
+        opened: () => {
+          this.isLoading = false;
+        },
         token: (token) => {
-          token.price = Number(this.courses[i].price) * 100;
+          setTimeout(() => {
+            this.isLoading = true;
+          }, 0);
+          token.price = Number(price) * 100;
           token.currency = 'usd';
           token.description = 'single course purchase - ' + this.courses[i].title;
+
           this.CourseService.payment(token).subscribe(res => {
             if (res.failure_code) {
               this.toast.setMessage('transaction failed please try again or contact administrator.', 'warning');
+              this.isLoading = false;
             } else {
               const payload = {
                 courseId: this.courses[i]._id,
@@ -109,8 +116,10 @@ export class DashboardComponent implements OnInit {
                 if (res2) {
                   this.courses[i].users.push(payload.userId);
                   this.toast.setMessage('course purchased.', 'success');
+                  this.isLoading = false;
                 } else {
                   this.toast.setMessage('failed to purchase he course please contact administrator.', 'warning');
+                  this.isLoading = false;
                 }
               });
             }
@@ -121,8 +130,9 @@ export class DashboardComponent implements OnInit {
       handler.open({
         name: this.courses[i].title,
         description: 'single course purchase',
-        amount: Number(this.courses[i].price) * 100
+        amount: Number(price) * 100
       });
+
     } else {
       this.router.navigate(['register']);
     }
