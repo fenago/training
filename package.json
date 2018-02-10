@@ -13,7 +13,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build -aot --prod",
-    "start": "node dist/server/app.js",
+    "start": "",
     "dev": "ng serve -pc proxy.conf.json --open",
     "prod": "ng build",
     "test": "ng test",
