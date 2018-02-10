@@ -27,3 +27,7 @@ img{
   max-width: 15%;
   max-height: 15%;
 }
+video{
+  max-width: 35%;
+  max-height: 35%;
+}

@@ -22,7 +22,7 @@ export class AddContentComponent implements OnInit {
   isLoading = false;
   chapterIndex: number;
   lessonIndex: number;
-  imgPreview; String;
+  imgPreview: String;
 
   constructor(private courseService: courseService,
     private toast: ToastComponent,
@@ -66,11 +66,12 @@ export class AddContentComponent implements OnInit {
       this.cloudResponse = JSON.parse(response);
       if (this.cloudResponse.format === 'jpg' || this.cloudResponse.format === 'png') {
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].image = this.cloudResponse.url;
+      } else if (this.cloudResponse.format === 'mp4') {
+        this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].video = this.cloudResponse.url;
       } else {
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].contentFile = this.cloudResponse.url;
       }
       this.isLoading = false;
-      console.log(this.course);
       this.toast.setMessage('file uploaded successfully.', 'success');
     };
 
@@ -84,7 +85,6 @@ export class AddContentComponent implements OnInit {
         chapters: []
       };
     }
-    console.log(this.course);
   }
 
   previewImage(i, j) {
@@ -98,11 +98,21 @@ export class AddContentComponent implements OnInit {
       reader.onload = (e: any) => {
         this.imgPreview = reader.result;
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].imagePreview = reader.result;
+        this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].videoPreview = null;
       };
+    } else if (this.uploader.queue[this.uploader.queue.length - 1]._file.type.split('/')[0] === 'video') {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.uploader.queue[this.uploader.queue.length - 1]._file);
+      reader.onload = (e: any) => {
+        this.imgPreview = reader.result;
+        this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].videoPreview = reader.result;
+        this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].imagePreview = null;
+      };
+      this.imgPreview = ' uploaded';
     } else {
-      this.fileUrl = this.uploader.queue[this.uploader.queue.length - 1]._file.name;
+      this.toast.setMessage('format not supported please use jpg,png or mp4.', 'warning');
     }
-    console.log(this.uploader.queue[this.uploader.queue.length - 1]._file);
+
 
   }
 

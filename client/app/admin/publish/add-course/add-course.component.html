@@ -1,6 +1,7 @@
 <mat-tab-group>
   <mat-tab label="course">
-    <div class="course-form">
+    <div class="loader" *ngIf="isLoading"></div>
+    <div class="course-form" *ngIf="!isLoading">
       <legend>Course details</legend>
       <mat-form-field class="row">
         <textarea matInput [(ngModel)]="course.title" placeholder="Title"></textarea>
@@ -50,8 +51,10 @@
   </mat-tab>
   <mat-tab label="content">
     <div style="min-height:200px">
-      <app-add-content [course]="course"></app-add-content>
+      <div class="loader" *ngIf="isLoading"></div>
+      <app-add-content [course]="course" *ngIf="!isLoading"></app-add-content>
     </div>
+
   </mat-tab>
 </mat-tab-group>
 <div style=" height:20px">

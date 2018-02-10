@@ -186,7 +186,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n.buffer{\r\n  height:30px;\r\n}\r\nimg{\r\n  max-width: 15%;\r\n  max-height: 15%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n.buffer{\r\n  height:30px;\r\n}\r\nimg{\r\n  max-width: 15%;\r\n  max-height: 15%;\r\n}\r\nvideo{\r\n  max-width: 35%;\r\n  max-height: 35%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -199,7 +199,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/add-content/add-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"course-form\" aria-label=\"syllabus\">\r\n  <legend>chapters</legend>\r\n  <br>\r\n  <mat-tab-group>\r\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\r\n      <ng-template mat-tab-label>\r\n        {{i+1}}-\r\n        <input matInput [(ngModel)]=\"chapter.title\">\r\n      </ng-template>\r\n      <legend>lessons</legend>\r\n      <mat-tab-group>\r\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\r\n          <ng-template mat-tab-label>\r\n            {{i+1}}.{{j+1}}-\r\n            <input matInput [(ngModel)]=\"lesson.title\">\r\n          </ng-template>\r\n          <quill-editor [(ngModel)]=\"lesson.content\" theme=\"snow\"></quill-editor>\r\n          <br>\r\n          <a *ngIf=\"lesson.contentFile\" href=\"{{lesson.contentFile}}\" target=\"_blank\">view file</a>\r\n          <div class=\"buffer\"></div>\r\n          <div *ngIf=\"!isLoading\" class=\"form_line\">\r\n            <div class=\"form_controls\">\r\n              <div class=\"upload_button_holder\">\r\n                <label class=\"upload_button\" for=\"fileupload\">choose file</label>\r\n                <input type=\"file\" id=\"fileupload\" #fileInput ng2FileSelect [style.display]=\"'none'\" [uploader]=\"uploader\" (change)=\"previewImage(i,j)\"\r\n                  multiple />\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"isLoading\" class=\"loader\">loading..</div>\r\n          <p>{{fileUrl}}</p>\r\n          <div *ngIf=\"!isLoading\" class=\"form_line\">\r\n            <div class=\"form_controls\">\r\n              <div class=\"upload_button_holder\">\r\n                <label class=\"upload_button\" for=\"fileupload\">choose image</label>\r\n                <input type=\"file\" id=\"fileupload\" #fileInput ng2FileSelect [style.display]=\"'none'\" [uploader]=\"uploader\" (change)=\"previewImage(i,j)\"\r\n                  multiple />\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <img src=\"{{lesson.imagePreview}}\">\r\n          <img *ngIf=\"!lesson.imagePreview\" src=\"{{lesson.image}}\">\r\n          <br>\r\n          <br>\r\n          <button class=\"btn\" [disabled]=\"!fileUrl && !imgPreview\" *ngIf=\"!isLoading\" (click)=\"uploadFile()\">upload</button>\r\n          <br>\r\n        </mat-tab>\r\n        <mat-tab>\r\n          <ng-template mat-tab-label>\r\n            <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"lessonName\" />\r\n            <button class=\"btn\" (click)=\"addLesson(i)\">\r\n              <i class=\"fa fa-plus\"></i>\r\n            </button>\r\n          </ng-template>\r\n        </mat-tab>\r\n\r\n      </mat-tab-group>\r\n    </mat-tab>\r\n    <mat-tab>\r\n      <ng-template mat-tab-label>\r\n        <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"chapterName\" />\r\n        <button class=\"btn\" (click)=\"addChapter()\">\r\n          <i class=\"fa fa-plus\"></i>\r\n        </button>\r\n      </ng-template>\r\n    </mat-tab>\r\n  </mat-tab-group>\r\n\r\n</div>\r\n"
+module.exports = "\r\n<div class=\"course-form\" aria-label=\"syllabus\" >\r\n  <legend>chapters</legend>\r\n  <br>\r\n  <mat-tab-group>\r\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\r\n      <ng-template mat-tab-label>\r\n        {{i+1}}-\r\n        <input matInput [(ngModel)]=\"chapter.title\">\r\n      </ng-template>\r\n      <legend>lessons</legend>\r\n      <mat-tab-group>\r\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\r\n          <ng-template mat-tab-label>\r\n            {{i+1}}.{{j+1}}-\r\n            <input matInput [(ngModel)]=\"lesson.title\">\r\n          </ng-template>\r\n          <quill-editor [(ngModel)]=\"lesson.content\" theme=\"snow\"></quill-editor>\r\n          <br>\r\n          <a *ngIf=\"lesson.contentFile\" href=\"{{lesson.contentFile}}\" target=\"_blank\">view file</a>\r\n          <div class=\"buffer\"></div>\r\n          <div *ngIf=\"!isLoading\" class=\"form_line\">\r\n            <div class=\"form_controls\">\r\n              <div class=\"upload_button_holder\">\r\n                <label class=\"upload_button\" for=\"fileupload\">choose file</label>\r\n                <input type=\"file\" id=\"fileupload\" #fileInput ng2FileSelect [style.display]=\"'none'\" [uploader]=\"uploader\" (change)=\"previewImage(i,j)\"\r\n                  multiple />\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"isLoading\" class=\"loader\">loading..</div>\r\n          <p>{{fileUrl}}</p>\r\n          <div *ngIf=\"!isLoading\" class=\"form_line\">\r\n            <div class=\"form_controls\">\r\n              <div class=\"upload_button_holder\">\r\n                <label class=\"upload_button\" for=\"fileupload\">choose image or video</label>\r\n                <input type=\"file\" id=\"fileupload\" #fileInput ng2FileSelect [style.display]=\"'none'\" [uploader]=\"uploader\" (change)=\"previewImage(i,j)\"\r\n                  multiple />\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <img src=\"{{lesson.imagePreview}}\">\r\n          <img *ngIf=\"!lesson.imagePreview\" src=\"{{lesson.image}}\">\r\n          <video controls *ngIf=\"lesson.videoPreview\">\r\n              <source type=\"video/webm\" src=\"{{lesson.videoPreview}}\">\r\n            </video>\r\n            <video controls *ngIf=\"lesson.video && !lesson.videoPreview\">\r\n                <source type=\"video/webm\" src=\"{{lesson.video}}\">\r\n              </video>\r\n          <br>\r\n          <br>\r\n          <button class=\"btn\" [disabled]=\"!fileUrl && !imgPreview && !videoPreview \" *ngIf=\"!isLoading\" (click)=\"uploadFile()\">upload</button>\r\n          <br>\r\n        </mat-tab>\r\n        <mat-tab>\r\n          <ng-template mat-tab-label>\r\n            <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"lessonName\" />\r\n            <button class=\"btn\" (click)=\"addLesson(i)\">\r\n              <i class=\"fa fa-plus\"></i>\r\n            </button>\r\n          </ng-template>\r\n        </mat-tab>\r\n\r\n      </mat-tab-group>\r\n    </mat-tab>\r\n    <mat-tab>\r\n      <ng-template mat-tab-label>\r\n        <input matInput (focus)=\"removePlaceholder($event)\" [(ngModel)]=\"chapterName\" />\r\n        <button class=\"btn\" (click)=\"addChapter()\">\r\n          <i class=\"fa fa-plus\"></i>\r\n        </button>\r\n      </ng-template>\r\n    </mat-tab>\r\n  </mat-tab-group>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -274,11 +274,13 @@ var AddContentComponent = (function () {
             if (_this.cloudResponse.format === 'jpg' || _this.cloudResponse.format === 'png') {
                 _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].image = _this.cloudResponse.url;
             }
+            else if (_this.cloudResponse.format === 'mp4') {
+                _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].video = _this.cloudResponse.url;
+            }
             else {
                 _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].contentFile = _this.cloudResponse.url;
             }
             _this.isLoading = false;
-            console.log(_this.course);
             _this.toast.setMessage('file uploaded successfully.', 'success');
         };
         this.options = {
@@ -291,7 +293,6 @@ var AddContentComponent = (function () {
                 chapters: []
             };
         }
-        console.log(this.course);
     };
     AddContentComponent.prototype.previewImage = function (i, j) {
         var _this = this;
@@ -304,12 +305,22 @@ var AddContentComponent = (function () {
             reader_1.onload = function (e) {
                 _this.imgPreview = reader_1.result;
                 _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].imagePreview = reader_1.result;
+                _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].videoPreview = null;
             };
         }
-        else {
-            this.fileUrl = this.uploader.queue[this.uploader.queue.length - 1]._file.name;
+        else if (this.uploader.queue[this.uploader.queue.length - 1]._file.type.split('/')[0] === 'video') {
+            var reader_2 = new FileReader();
+            reader_2.readAsDataURL(this.uploader.queue[this.uploader.queue.length - 1]._file);
+            reader_2.onload = function (e) {
+                _this.imgPreview = reader_2.result;
+                _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].videoPreview = reader_2.result;
+                _this.course.content.chapters[_this.chapterIndex].lessons[_this.lessonIndex].imagePreview = null;
+            };
+            this.imgPreview = ' uploaded';
         }
-        console.log(this.uploader.queue[this.uploader.queue.length - 1]._file);
+        else {
+            this.toast.setMessage('format not supported please use jpg,png or mp4.', 'warning');
+        }
     };
     AddContentComponent.prototype.uploadFile = function () {
         this.isLoading = true;
@@ -381,7 +392,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/publish/add-course/add-course.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-tab-group>\r\n  <mat-tab label=\"course\">\r\n    <div class=\"course-form\">\r\n      <legend>Course details</legend>\r\n      <mat-form-field class=\"row\">\r\n        <textarea matInput [(ngModel)]=\"course.title\" placeholder=\"Title\"></textarea>\r\n      </mat-form-field>\r\n      <div class=\"row\">\r\n        <mat-slide-toggle [(ngModel)]=\"priceFree\" color=\"primary\">\r\n          Free\r\n        </mat-slide-toggle>\r\n      </div>\r\n      <div class=\"row\" *ngIf=\"!priceFree\">\r\n        <mat-form-field>\r\n          <input matInput type=\"number\" [(ngModel)]=\"course.price\" placeholder=\"Price in USD\">\r\n        </mat-form-field>\r\n      </div>\r\n      <mat-form-field class=\"row\">\r\n        <input matInput type=\"number\" [(ngModel)]=\"course.eta\" placeholder=\"Estimated time in hours\">\r\n      </mat-form-field>\r\n      <mat-form-field class=\"row\">\r\n        <textarea matInput [(ngModel)]=\"course.description\" placeholder=\"Description\"></textarea>\r\n      </mat-form-field>\r\n      <div class=\"row\">\r\n        <div class=\"form_line\">\r\n          <div class=\"form_controls\">\r\n            <div class=\"upload_button_holder\">\r\n              <label class=\"upload_button\" for=\"fileupload\">Choose course logo</label>\r\n\r\n              <input type=\"file\" id=\"fileupload\" #fileInput ng2FileSelect [style.display]=\"'none'\" [uploader]=\"uploader\" (change)=\"previewImage($event)\"\r\n                multiple />\r\n            </div>\r\n            <div *ngIf=\"isLoading\" class=\"loader\">loading..</div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"imgPreview && !isLoading\" class=\"row\">\r\n        <br>\r\n        <img [src]=\"imgPreview\">\r\n        <br>\r\n      </div>\r\n      <div class=\"row\">\r\n        <button *ngIf=\"imgPreview && !isLoading\" class=\"btn\" (click)=\"uploadImage()\">upload course logo</button>\r\n      </div>\r\n      <div class=\"buffer\"></div>\r\n    </div>\r\n  </mat-tab>\r\n  <mat-tab label=\"syllabus\">\r\n    <app-add-syllabus [course]=\"course\"></app-add-syllabus>\r\n  </mat-tab>\r\n  <mat-tab label=\"content\">\r\n    <div style=\"min-height:200px\">\r\n      <app-add-content [course]=\"course\"></app-add-content>\r\n    </div>\r\n  </mat-tab>\r\n</mat-tab-group>\r\n<div style=\" height:20px\">\r\n\r\n</div>\r\n<p style=\"margin-left:5%\">\r\n  <i class=\"fa fa-warning\"> Make it sure to upload all files and images before pressing Save</i>\r\n</p>\r\n<div class=\"row\">\r\n  <div class=\"col-md-5\">\r\n  </div>\r\n  <div class=\"col-md-1\" >\r\n    <button class=\"submit btn btn-primary\" style=\"text-align:center\" (click)=\"submit(false)\"> SAVE</button>\r\n  </div>\r\n  <div class=\"col-md-2\">\r\n    <button class=\"submit btn btn-primary\" (click)=\"submit(true)\"> SAVE & PUBLISH</button>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n  </div>\r\n</div>\r\n<div style=\" height:20px\">\r\n\r\n</div>\r\n"
+module.exports = "<mat-tab-group>\r\n  <mat-tab label=\"course\">\r\n    <div class=\"loader\" *ngIf=\"isLoading\"></div>\r\n    <div class=\"course-form\" *ngIf=\"!isLoading\">\r\n      <legend>Course details</legend>\r\n      <mat-form-field class=\"row\">\r\n        <textarea matInput [(ngModel)]=\"course.title\" placeholder=\"Title\"></textarea>\r\n      </mat-form-field>\r\n      <div class=\"row\">\r\n        <mat-slide-toggle [(ngModel)]=\"priceFree\" color=\"primary\">\r\n          Free\r\n        </mat-slide-toggle>\r\n      </div>\r\n      <div class=\"row\" *ngIf=\"!priceFree\">\r\n        <mat-form-field>\r\n          <input matInput type=\"number\" [(ngModel)]=\"course.price\" placeholder=\"Price in USD\">\r\n        </mat-form-field>\r\n      </div>\r\n      <mat-form-field class=\"row\">\r\n        <input matInput type=\"number\" [(ngModel)]=\"course.eta\" placeholder=\"Estimated time in hours\">\r\n      </mat-form-field>\r\n      <mat-form-field class=\"row\">\r\n        <textarea matInput [(ngModel)]=\"course.description\" placeholder=\"Description\"></textarea>\r\n      </mat-form-field>\r\n      <div class=\"row\">\r\n        <div class=\"form_line\">\r\n          <div class=\"form_controls\">\r\n            <div class=\"upload_button_holder\">\r\n              <label class=\"upload_button\" for=\"fileupload\">Choose course logo</label>\r\n\r\n              <input type=\"file\" id=\"fileupload\" #fileInput ng2FileSelect [style.display]=\"'none'\" [uploader]=\"uploader\" (change)=\"previewImage($event)\"\r\n                multiple />\r\n            </div>\r\n            <div *ngIf=\"isLoading\" class=\"loader\">loading..</div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"imgPreview && !isLoading\" class=\"row\">\r\n        <br>\r\n        <img [src]=\"imgPreview\">\r\n        <br>\r\n      </div>\r\n      <div class=\"row\">\r\n        <button *ngIf=\"imgPreview && !isLoading\" class=\"btn\" (click)=\"uploadImage()\">upload course logo</button>\r\n      </div>\r\n      <div class=\"buffer\"></div>\r\n    </div>\r\n  </mat-tab>\r\n  <mat-tab label=\"syllabus\">\r\n    <app-add-syllabus [course]=\"course\"></app-add-syllabus>\r\n  </mat-tab>\r\n  <mat-tab label=\"content\">\r\n    <div style=\"min-height:200px\">\r\n      <div class=\"loader\" *ngIf=\"isLoading\"></div>\r\n      <app-add-content [course]=\"course\" *ngIf=\"!isLoading\"></app-add-content>\r\n    </div>\r\n\r\n  </mat-tab>\r\n</mat-tab-group>\r\n<div style=\" height:20px\">\r\n\r\n</div>\r\n<p style=\"margin-left:5%\">\r\n  <i class=\"fa fa-warning\"> Make it sure to upload all files and images before pressing Save</i>\r\n</p>\r\n<div class=\"row\">\r\n  <div class=\"col-md-5\">\r\n  </div>\r\n  <div class=\"col-md-1\" >\r\n    <button class=\"submit btn btn-primary\" style=\"text-align:center\" (click)=\"submit(false)\"> SAVE</button>\r\n  </div>\r\n  <div class=\"col-md-2\">\r\n    <button class=\"submit btn btn-primary\" (click)=\"submit(true)\"> SAVE & PUBLISH</button>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n  </div>\r\n</div>\r\n<div style=\" height:20px\">\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -424,7 +435,7 @@ var AddCourseComponent = (function () {
         this.route = route;
         this.cloudinary = cloudinary;
         this.course = new __WEBPACK_IMPORTED_MODULE_1__shared_models_course_model__["a" /* course */]();
-        this.isLoading = false;
+        this.isLoading = true;
     }
     AddCourseComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -470,8 +481,13 @@ var AddCourseComponent = (function () {
             if (typeof (params['id']) === 'string') {
                 _this.CourseService.getcourse(params['id']).subscribe(function (res) {
                     _this.course = res;
+                    console.log(_this.course);
                     _this.imgPreview = _this.course.image;
+                    _this.isLoading = false;
                 });
+            }
+            else {
+                _this.isLoading = false;
             }
         });
     };
@@ -494,9 +510,13 @@ var AddCourseComponent = (function () {
     AddCourseComponent.prototype.submit = function (publish) {
         var _this = this;
         this.course.price = this.priceFree ? 0 : this.course.price;
+        this.isLoading = true;
+        console.log(this.isLoading);
         if (typeof (this.course._id) === 'string') {
             this.CourseService.editcourse(this.course).subscribe(function (res) {
                 _this.toast.setMessage('course edited successfully.', 'success');
+                _this.isLoading = false;
+                console.log(_this.isLoading);
             }, function (error) { return console.log(error); });
         }
         else {
@@ -504,6 +524,8 @@ var AddCourseComponent = (function () {
             this.CourseService.addcourse(this.course).subscribe(function (res) {
                 _this.course = res;
                 _this.toast.setMessage('course added successfully.', 'success');
+                _this.isLoading = false;
+                console.log(_this.isLoading);
             }, function (error) { return console.log(error); });
         }
     };
@@ -1247,7 +1269,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#material {\r\n  height: 600px;\r\n  overflow: scroll;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n\r\n#image{\r\n  position: relative;\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\nimg{\r\n  max-width: 100%;\r\n}\r\n\r\n#divider{\r\n  height: 500px;\r\n  background-color: black;\r\n}\r\n\r\nmat-slider{\r\n  width:100%;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "#material {\r\n  height: 600px;\r\n  overflow: scroll;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n\r\n#image {\r\n  position: relative;\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\nimg {\r\n  max-width: 100%;\r\n}\r\n\r\nvideo {\r\n  max-width: 100%;\r\n}\r\n\r\n#divider {\r\n  height: 500px;\r\n  background-color: black;\r\n}\r\n\r\nmat-slider {\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1260,7 +1282,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/content/content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" *ngIf=\"course\">\n  <mat-tab-group>\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\n      <ng-template mat-tab-label>\n        {{i+1}}-{{chapter.title}}\n      </ng-template>\n      <mat-tab-group>\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\n          <ng-template mat-tab-label>\n            {{i+1}}.{{j+1}}-{{lesson.title}}\n          </ng-template>\n          <div class=\"buffer20\">\n          </div>\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-lg-4\"></div>\n              <div class=\"col-lg-4\">\n                <mat-slider min=\"1\" [(ngModel)]=\"dividerRatio\" tickInterval=\"1\" max=\"11\" step=\"1\" thumb-label=\"true\"></mat-slider>\n              </div>\n              <div class=\"col-lg-4\"></div>\n            </div>\n            <br>\n            <div class=\"row\">\n              <div class=\"col-lg-{{dividerRatio}}\" id=\"material\">\n                <div *ngIf=\"lesson.content\" [innerHTML]=\"lesson.content\"></div>\n                <iframe class=\"frame\" [src]=\"lesson.contentFile | safe\" *ngIf=\"lesson.contentFile\" frameborder=\"0\"></iframe>\n              </div>\n              <div class=\"col-lg-{{12-dividerRatio}}\" id=\"image\">\n                <img *ngIf=\"lesson.image\" src=\"{{lesson.image}}\">\n              </div>\n            </div>\n\n            <div class=\"buffer50\"></div>\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-tab>\n  </mat-tab-group>\n</div>\n"
+module.exports = "<div class=\"content\" *ngIf=\"course\">\n  <mat-tab-group>\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\n      <ng-template mat-tab-label>\n        {{i+1}}-{{chapter.title}}\n      </ng-template>\n      <mat-tab-group>\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\n          <ng-template mat-tab-label>\n            {{i+1}}.{{j+1}}-{{lesson.title}}\n          </ng-template>\n          <div class=\"buffer20\">\n          </div>\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-lg-4\"></div>\n              <div class=\"col-lg-4\">\n                <mat-slider min=\"1\" [(ngModel)]=\"dividerRatio\" tickInterval=\"1\" max=\"11\" step=\"1\" thumb-label=\"true\"></mat-slider>\n              </div>\n              <div class=\"col-lg-4\"></div>\n            </div>\n            <br>\n            <div class=\"row\">\n              <div class=\"col-lg-{{dividerRatio}}\" id=\"material\">\n                <div *ngIf=\"lesson.content\" [innerHTML]=\"lesson.content\"></div>\n                <iframe class=\"frame\" [src]=\"lesson.contentFile | safe\" *ngIf=\"lesson.contentFile\" frameborder=\"0\"></iframe>\n              </div>\n              <div class=\"col-lg-{{12-dividerRatio}}\" id=\"image\">\n                <img *ngIf=\"lesson.image\" src=\"{{lesson.image}}\">\n                <video controls *ngIf=\"lesson.video\">\n                    <source type=\"video/webm\" src=\"{{lesson.video}}\">\n                  </video>\n              </div>\n            </div>\n\n            <div class=\"buffer50\"></div>\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-tab>\n  </mat-tab-group>\n</div>\n"
 
 /***/ }),
 
