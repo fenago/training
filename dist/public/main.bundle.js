@@ -185,7 +185,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n.buffer{\r\n  height:30px;\r\n}\r\nimg{\r\n  max-width: 15%;\r\n  max-height: 15%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 30px 30px 30px 30px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n.col{\r\n  width:50%;\r\n}\r\n.chaptersList{\r\n  width: 10%;\r\n}\r\n.buffer{\r\n  height:30px;\r\n}\r\nimg{\r\n  max-width: 15%;\r\n  max-height: 15%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -367,7 +367,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.submit{\r\n  margin-left: 90%;\r\n  text-align:center;\r\n}\r\n\r\nimg{\r\n  max-width: 15%;\r\n  max-height: 15%;\r\n  margin-bottom:2px;\r\n}\r\n.buffer{\r\n  height:50px;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n.col{\r\n  width:50%;\r\n}\r\n.submit{\r\n  margin-left: 90%;\r\n  text-align:center;\r\n}\r\nimg{\r\n  max-width: 15%;\r\n  max-height: 15%;\r\n  margin-bottom:2px;\r\n}\r\n.buffer{\r\n  height:50px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -536,7 +536,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.content{\r\n  border:solid #00ADBB;\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n\r\n.col{\r\n  width:50%;\r\n}\r\n.buffer{\r\n  height:20px;\r\n}\r\n.actions{\r\n  width:50%;\r\n}\r\n", ""]);
+exports.push([module.i, ".course-form{\r\n  width:90%;\r\n  height: 90%;\r\n  margin-top:2%;\r\n  margin-left:5%;\r\n  padding: 50px 50px 50px 50px;\r\n  background-color: white;\r\n  border-radius:5px 5px 5px 5px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n}\r\n.content{\r\n  border:solid #00ADBB;\r\n}\r\n.row{\r\n  width:100%;\r\n}\r\n.col{\r\n  width:50%;\r\n}\r\n.buffer{\r\n  height:20px;\r\n}\r\n.actions{\r\n  width:50%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1238,7 +1238,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#material {\r\n  height: 600px;\r\n  overflow: scroll;\r\n  padding: 20px 20px 20px 20px;\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n#image{\r\n  position: relative;\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\nimg{\r\n  max-width: 100%;\r\n}\r\n#divider{\r\n  height: 500px;\r\n  background-color: black;\r\n}\r\nmat-slider{\r\n  width:100%;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "#material {\r\n  height: 600px;\r\n  overflow: scroll;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n\r\n#image{\r\n  position: relative;\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\nimg{\r\n  max-width: 100%;\r\n}\r\n\r\n#divider{\r\n  height: 500px;\r\n  background-color: black;\r\n}\r\n\r\nmat-slider{\r\n  width:100%;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -1492,7 +1492,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "img {\r\n  box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);\r\n  border: solid 10px white;\r\n}\r\n\r\n.center {\r\n  text-align: center;\r\n  border-bottom: solid 3px #00AD88;\r\n  height: 50px;\r\n}\r\n.actions{\r\n  border-bottom:3px solid #df8930;\r\n  padding-bottom: 5px;\r\n}\r\n.btn {\r\n  background-color: #00AD88;\r\n  width: 100%;\r\n  height: 90%;\r\n  border-radius: 50px 50px 50px 50px;\r\n  font-size: 18px;\r\n  border: solid 1px #00AD88;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\n.btn:hover {\r\n  background-color: white;\r\n  color: #00AD88;\r\n  border: solid 1px #00AD88;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\n.btn-buy {\r\n  background-color: #4d9de0;\r\n  width: 100%;\r\n  height: 90%;\r\n  color: white;\r\n  border-radius: 50px 50px 50px 50px;\r\n  font-size: 18px;\r\n  border: solid 1px #4d9de0;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\n.btn-buy:hover {\r\n  background-color: white;\r\n  color: #4d9de0;\r\n  border: solid 1px #4d9de0;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\nh5 {\r\n  margin-top: 10px;\r\n}\r\n", ""]);
+exports.push([module.i, "img {\r\n  -webkit-box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);\r\n  border: solid 10px white;\r\n}\r\n\r\n.center {\r\n  text-align: center;\r\n  border-bottom: solid 3px #00AD88;\r\n  height: 50px;\r\n}\r\n\r\n.actions{\r\n  border-bottom:3px solid #df8930;\r\n  padding-bottom: 5px;\r\n}\r\n\r\n.btn {\r\n  background-color: #00AD88;\r\n  width: 100%;\r\n  height: 90%;\r\n  border-radius: 50px 50px 50px 50px;\r\n  font-size: 18px;\r\n  border: solid 1px #00AD88;\r\n  -webkit-transition: background-color 200ms linear;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\n.btn:hover {\r\n  background-color: white;\r\n  color: #00AD88;\r\n  border: solid 1px #00AD88;\r\n  -webkit-transition: background-color 200ms linear;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\n.btn-buy {\r\n  background-color: #4d9de0;\r\n  width: 100%;\r\n  height: 90%;\r\n  color: white;\r\n  border-radius: 50px 50px 50px 50px;\r\n  font-size: 18px;\r\n  border: solid 1px #4d9de0;\r\n  -webkit-transition: background-color 200ms linear;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\n.btn-buy:hover {\r\n  background-color: white;\r\n  color: #4d9de0;\r\n  border: solid 1px #4d9de0;\r\n  -webkit-transition: background-color 200ms linear;\r\n  transition: background-color 200ms linear;\r\n}\r\n\r\nh5 {\r\n  margin-top: 10px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1831,7 +1831,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".form {\r\n  background-color: white;\r\n  border-radius: 5px 5px 5px 5px;\r\n  margin-top: 10%;\r\n  padding: 30px 30px 30px 30px;\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n\r\n}\r\n\r\n.text {\r\n  text-align: center;\r\n  color:#DF9830;\r\n}\r\n\r\n.btn {\r\n  width: 100%;\r\n}\r\n\r\nimg {\r\n  width: 30%;\r\n  height: 20%;\r\n  margin-left: 70%;\r\n  float: right;\r\n  z-index: 12;\r\n}\r\n", ""]);
+exports.push([module.i, ".form {\r\n  background-color: white;\r\n  border-radius: 5px 5px 5px 5px;\r\n  margin-top: 10%;\r\n  padding: 30px 30px 30px 30px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n\r\n}\r\n\r\n.text {\r\n  text-align: center;\r\n  color:#DF9830;\r\n}\r\n\r\n.btn {\r\n  width: 100%;\r\n}\r\n\r\nimg {\r\n  width: 30%;\r\n  height: 20%;\r\n  margin-left: 70%;\r\n  float: right;\r\n  z-index: 12;\r\n}\r\n", ""]);
 
 // exports
 
@@ -2075,7 +2075,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\r\n  background-color: white;\r\n  border-radius: 2px 2px 2px 2px;\r\n  margin-top: 10%;\r\n  padding: 30px 30px 30px 30px;\r\nbox-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n\r\n}\r\n\r\n.text {\r\n  text-align: center;\r\n  color:#DF9830;\r\n}\r\n\r\n.btn {\r\n  width: 100%;\r\n}\r\n", ""]);
+exports.push([module.i, "form {\r\n  background-color: white;\r\n  border-radius: 2px 2px 2px 2px;\r\n  margin-top: 10%;\r\n  padding: 30px 30px 30px 30px;\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\nbox-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);\r\n\r\n}\r\n\r\n.text {\r\n  text-align: center;\r\n  color:#DF9830;\r\n}\r\n\r\n.btn {\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -2834,7 +2834,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".syllabus {\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n", ""]);
+exports.push([module.i, ".syllabus {\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 23px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n", ""]);
 
 // exports
 
