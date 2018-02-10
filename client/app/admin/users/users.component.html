@@ -55,11 +55,15 @@
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
           <td>
-            <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
-              <i class="fa fa-trash"></i>
+            <button mat-button color="warn" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
+              <h4>
+                <i class="fa fa-trash"></i>
+              </h4>
             </button>
-            <button class="btn btn-sm btn-primary" [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
-              <i class="fa fa-edit"></i>
+            <button mat-button color="primary" [routerLink]="['/account',user._id]" [disabled]="auth.currentUser._id === user._id">
+              <h4>
+                <i class="fa fa-edit"></i>
+              </h4>
             </button>
           </td>
         </tr>
@@ -80,7 +84,7 @@
 
           </th>
           <th>
-            <button class="btn btn-md btn-primary" (click)="save()" disabled="!selectedUser.coupans">
+            <button class="btn btn-md btn-primary" (click)="save()" [disabled]="selectedUser.coupans.length<1">
               <i class="fa fa-save"></i>
             </button>
             <button class="btn btn-md btn-primary" (click)="newCoupan(i)">
@@ -117,8 +121,8 @@
               </mat-select>
             </mat-form-field>
           </td>
-          <td>
-            <mat-form-field>
+          <td id="auto-complete">
+            <mat-form-field style="width:100%">
               <input placeholder="course" matInput aria-label="Course" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let course of courses; let i=index" [value]="course.title" (click)="selectCourseInCoupan(course)">
@@ -128,13 +132,17 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
-            <button mat-button color="primary" (click)="addCourseInCoupan(i)" [disabled]="!addCourseFlag">
-              <i class="fa fa-plus"></i>
-            </button>
           </td>
           <td>
-            <button class="btn btn-sm btn-danger" (click)="deleteCoupan(i)">
-              <i class="fa fa-trash"></i>
+            <button mat-button color="primary" (click)="addCourseInCoupan(i)" [disabled]="!addCourseFlag">
+              <h4>
+                <i class="fa fa-plus"></i>
+              </h4>
+            </button>
+            <button mat-button color="primary" (click)="deleteCoupan(i)">
+              <h4>
+                <i class="fa fa-trash"></i>
+              </h4>
             </button>
           </td>
         </tr>

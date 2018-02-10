@@ -1,32 +1,35 @@
-.course-form{
-  width:90%;
+.course-form {
+  width: 90%;
   height: 90%;
-  margin-top:2%;
-  margin-left:5%;
+  margin-top: 2%;
+  margin-left: 5%;
   padding: 50px 50px 50px 50px;
   background-color: white;
-  border-radius:5px 5px 5px 5px;
-  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
-  -moz-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
-  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
-}
-.row{
-  width:100%;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
 }
 
-.col{
-  width:50%;
-}
-.submit{
-  margin-left: 90%;
-  text-align:center;
+.row {
+  width: 100%;
 }
 
-img{
+.col {
+  width: 50%;
+}
+
+.submit {
+  text-align: center;
+  width: 100%;
+}
+
+img {
   max-width: 15%;
   max-height: 15%;
-  margin-bottom:2px;
+  margin-bottom: 2px;
 }
-.buffer{
-  height:50px;
+
+.buffer {
+  height: 50px;
 }

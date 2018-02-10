@@ -12,4 +12,6 @@ td {
 legend {
   font-family: 'Trebuchet MS';
 }
-
+#auto-complete{
+  width:30%;
+}
