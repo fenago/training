@@ -6,7 +6,7 @@ import { courseService } from '../../services/course.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../shared/models/user.model';
 import { MatTableDataSource } from '@angular/material';
-import course from '../../../../server/models/course';
+import { course } from '../../shared/models/course.model';
 
 
 @Component({
