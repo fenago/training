@@ -41,10 +41,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.self = this;
-    this.UserService.getUser(this.AuthService.currentUser._id).subscribe(res => {
-      this.user = res;
+    if (this.AuthService.loggedIn) {
+      this.UserService.getUser(this.AuthService.currentUser._id).subscribe(res => {
+        this.user = res;
+        this.getcourses();
+      });
+    } else {
       this.getcourses();
-    });
+    }
 
     this.addcourseForm = this.formBuilder.group({
       name: this.name,
@@ -57,13 +61,15 @@ export class DashboardComponent implements OnInit {
     this.CourseService.getcourses().subscribe(
       data => {
         this.courses = data;
-        if (this.user.coupans) {
-          for (let i = 0; i < this.courses.length; i++) {
-            for (let j = 0; j < this.user.coupans.length; j++) {
-              for (let k = 0; k < this.user.coupans[j].courses.length; k++) {
-                if (this.user.coupans[j].courses[k].id == this.courses[i]._id) {
-                  this.courses[i]['coupanFlag'] = true;
-                  this.courses[i]['coupanAmount'] = this.user.coupans[j].amount;
+        if (this.user) {
+          if (this.user.coupans) {
+            for (let i = 0; i < this.courses.length; i++) {
+              for (let j = 0; j < this.user.coupans.length; j++) {
+                for (let k = 0; k < this.user.coupans[j].courses.length; k++) {
+                  if (this.user.coupans[j].courses[k].id == this.courses[i]._id) {
+                    this.courses[i]['coupanFlag'] = true;
+                    this.courses[i]['coupanAmount'] = this.user.coupans[j].amount;
+                  }
                 }
               }
             }

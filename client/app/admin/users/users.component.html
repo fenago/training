@@ -85,12 +85,12 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngIf="selectedUser==null || selectedUser.coupans.length <1">
+      <tbody *ngIf="selectedUser==null || !selectedUser.coupans">
         <tr>
           <td colspan="4">There are no registered users.</td>
         </tr>
       </tbody>
-      <tbody *ngIf="selectedUser!=null && selectedUser.coupans.length >0">
+      <tbody *ngIf="selectedUser!=null && selectedUser.coupans">
         <tr *ngFor="let coupan of selectedUser.coupans; let i=index">
           <td>{{coupan.id}}</td>
           <td>

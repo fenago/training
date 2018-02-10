@@ -82,6 +82,9 @@ export class UsersComponent implements OnInit {
       });
   }
   newCoupan(i) {
+    if (!this.selectedUser.coupans) {
+      this.selectedUser.coupans = [];
+    }
     this.selectedUser.coupans.push({
       amount: 0,
       id: this.makeid(),
