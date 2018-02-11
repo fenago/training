@@ -24,6 +24,7 @@ h5 {
 }
 
 nav {
-  width: 75%;
+  width: 80%;
   display: inline-block;
+  padding-left:20px;
 }
