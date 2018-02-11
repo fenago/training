@@ -1,6 +1,9 @@
 <div class="content" *ngIf="isLoading">
   <div class="loader" style="margin-top:20%"></div>
 </div>
+<div id="embed-api-auth-container"></div>
+<div id="chart-container"></div>
+<div id="view-selector-container"></div>
 <div class="content" *ngIf="!isLoading">
   <app-toast [message]="toast.message"></app-toast>
 
@@ -37,7 +40,7 @@
           <div class="row">
             <div class="col-lg-3 center">
               <h5>
-                <p *ngIf="course.price > 0 && course.coupanFlag !== true">price: {{course.price}}$</p>
+                <p *ngIf="course.price > 0 && course.coupanFlag !== true">price: ${{course.price}}</p>
                 <p *ngIf="course.price < 1 && course.coupanFlag !== true">price: FREE</p>
                 <p *ngIf="course.coupanFlag">price:
                   <del>${{course.price}}</del> ${{course.price - (course.price * course.coupanAmount)/100}}</p>
