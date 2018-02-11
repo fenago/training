@@ -109,11 +109,11 @@
               <input matInput placeholder="amount" [(ngModel)]="coupan.amount">
             </mat-form-field>
           </td>
-          <td>
+          <td class="auto-complete">
             <mat-form-field style="width:100%">
               <mat-select placeholder="{{coupan.courses[0].name}}">
                 <mat-option *ngFor="let course of coupan.courses; let j=index" disabled>
-                  {{ course.name}}
+                  {{ course.name}} - ${{course.price-(course.price*coupan.amount)/100}}
                   <button mat-button color="warn" *ngIf="course.name.length>0" (click)="removeCourseInCoupan(i,j)">
                     <i class="fa fa-close"></i>
                   </button>
@@ -121,7 +121,7 @@
               </mat-select>
             </mat-form-field>
           </td>
-          <td id="auto-complete">
+          <td class="auto-complete">
             <mat-form-field style="width:100%">
               <input placeholder="course" matInput aria-label="Course" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete">

@@ -12,6 +12,9 @@ td {
 legend {
   font-family: 'Trebuchet MS';
 }
-#auto-complete{
+.auto-complete{
   width:30%;
+}
+mat-option{
+  overflow: visible;
 }

@@ -7,8 +7,9 @@ export class User {
     id: String,
     courses: [{
       id: String,
-      name: String
+      name: String,
+      price: number
     }],
-    amount: Number
+    amount: number
   }];
 }

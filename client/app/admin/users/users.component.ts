@@ -67,7 +67,8 @@ export class UsersComponent implements OnInit {
     if (this.selectedUser.coupans[i].courses.length < 1) {
       this.selectedUser.coupans[i].courses.push({
         'name': '',
-        'id': ''
+        'id': '',
+        'price': 0
       });
     }
   }
@@ -83,10 +84,12 @@ export class UsersComponent implements OnInit {
     this.selectedUser.coupans[i].courses.push(
       {
         id: this.courseToAddInCoupan._id,
-        name: this.courseToAddInCoupan.title
+        name: this.courseToAddInCoupan.title,
+        price: this.courseToAddInCoupan.price
       });
     this.addCourseFlag = false;
   }
+
   newCoupan(i) {
     if (!this.selectedUser.coupans) {
       this.selectedUser.coupans = [{
@@ -95,7 +98,8 @@ export class UsersComponent implements OnInit {
         courses: [
           {
             'name': '',
-            'id': ''
+            'id': '',
+            'price': 0
           }
         ]
       }];
@@ -106,7 +110,8 @@ export class UsersComponent implements OnInit {
         courses: [
           {
             'name': '',
-            'id': ''
+            'id': '',
+            'price': 0
           }
         ]
       });
