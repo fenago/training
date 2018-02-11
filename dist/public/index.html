@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113884030-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113884030-1');
+
+  </script>
+  <script>
+    (function (w, d, s, g, js, fs) {
+      g = w.gapi || (w.gapi = {});
+      g.analytics = {
+        q: [],
+        ready: function (f) {
+          this.q.push(f);
+        }
+      };
+      js = d.createElement(s);
+      fs = d.getElementsByTagName(s)[0];
+      js.src = 'https://apis.google.com/js/platform.js';
+      fs.parentNode.insertBefore(js, fs);
+      js.onload = function () {
+        g.load('analytics');
+      };
+    }(window, document, 'script'));
+
+  </script>
+  <script>
+    gapi.analytics.ready(function () {
+
+      /**
+       * Authorize the user immediately if the user has already granted access.
+       * If no access has been created, render an authorize button inside the
+       * element with the ID "embed-api-auth-container".
+       */
+      gapi.analytics.auth.authorize({
+        container: 'embed-api-auth-container',
+        clientid: '309132701992-nb3o0gi5uc4dq8e5dcpaq7opif3di2cn.apps.googleusercontent.com'
+      });
+
+
+      /**
+       * Create a new ViewSelector instance to be rendered inside of an
+       * element with the id "view-selector-container".
+       */
+      var viewSelector = new gapi.analytics.ViewSelector({
+        container: 'view-selector-container'
+      });
+
+      // Render the view selector to the page.
+      viewSelector.execute();
+
+
+      /**
+       * Create a new DataChart instance with the given query parameters
+       * and Google chart options. It will be rendered inside an element
+       * with the id "chart-container".
+       */
+      var dataChart = new gapi.analytics.googleCharts.DataChart({
+        query: {
+          metrics: 'ga:sessions',
+          dimensions: 'ga:date',
+          'start-date': '30daysAgo',
+          'end-date': 'yesterday'
+        },
+        chart: {
+          container: 'chart-container',
+          type: 'LINE',
+          options: {
+            width: '100%'
+          }
+        }
+      });
+
+
+      /**
+       * Render the dataChart on the page whenever a new view is selected.
+       */
+      viewSelector.on('change', function (ids) {
+        dataChart.set({
+          query: {
+            ids: ids
+          }
+        }).execute();
+      });
+
+    });
+
+  </script>
+
+  <meta charset="utf-8">
+  <title>FeNAgO Training</title>
+  <base href="/">
+  <meta name="author" content="Davide Violante">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link href="https://cdn.quilljs.com/1.2.2/quill.snow.css" rel="stylesheet">
+  <link href="https://cdn.quilljs.com/1.2.2/quill.bubble.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css" rel="stylesheet">
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+</head>
+
+<body class="page page-header-primary navbar-layout-default">
+  <div id="embed-api-auth-container"></div>
+  <div id="chart-container"></div>
+  <div id="view-selector-container"></div>
+  <app-root>Loading...</app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
+</html>
