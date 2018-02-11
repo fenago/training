@@ -34,6 +34,7 @@ import { ContentComponent } from './content/content.component';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import cloudinaryConfiguration from './cloudinary.config';
 import { Cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
+import { AnalyticsComponent } from './admin/analytics/analytics.component';
 
 const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -61,7 +62,8 @@ const cloudinaryLib = {
     UnPublishedListComponent,
     SyllabusComponent,
     SafePipe,
-    ContentComponent
+    ContentComponent,
+    AnalyticsComponent
   ],
   imports: [
     RoutingModule,

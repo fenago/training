@@ -11,6 +11,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { UsersComponent } from './admin/users/users.component';
 import { PublishComponent } from './admin/publish/publish.component';
+import { AnalyticsComponent } from './admin/analytics/analytics.component';
 import { AddCourseComponent } from './admin/publish/add-course/add-course.component';
 import { AddSyllabusComponent } from './admin/publish/add-syllabus/add-syllabus.component';
 import { AddContentComponent } from './admin/publish/add-content/add-content.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'content/:id', component: ContentComponent, canActivate: [AuthGuardLogin] },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin] },
+  { path: 'analytics', component: AnalyticsComponent, canActivate: [AuthGuardAdmin] },
   {
     path: 'publish', component: PublishComponent, children: [
       { path: '', component: UnPublishedListComponent },
