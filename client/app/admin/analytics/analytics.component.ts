@@ -11,7 +11,7 @@ export class AnalyticsComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.events.subscribe((res) => {
+    this.router.events.subscribe((res: any) => {
       if (res.url === "/analytics") {
         console.log(res);
         this.initGA();
