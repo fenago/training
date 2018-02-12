@@ -2010,7 +2010,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".header-brand {\r\n  background-color: white;\r\n  padding: 10px 10px 10px 10px;\r\n  border-radius: 10px 10px 10px 10px;\r\n  width: 15%;\r\n  margin-left:-30px;\r\n}\r\n\r\n\r\n.header-inner {\r\n  width: 95%;\r\n}\r\n\r\n\r\n.nav-item a {\r\n  font-size: 10px;\r\n}\r\n\r\n\r\nh5 {\r\n  text-align: center;\r\n  margin-top: 5%;\r\n}\r\n\r\n\r\nnav {\r\n  display: inline-block;\r\n  padding-left:20px;\r\n}\r\n", ""]);
+exports.push([module.i, ".header-brand {\r\n  background-color: white;\r\n  padding: 10px 10px 10px 10px;\r\n  border-radius: 10px 10px 10px 10px;\r\n  width: 20%;\r\n  margin-left: -30px;\r\n}\r\n\r\n.header-inner {\r\n  width: 95%;\r\n}\r\n\r\n.nav-item a {\r\n  font-size: 10px;\r\n}\r\n\r\nh5 {\r\n  text-align: center;\r\n  margin-top: 5%;\r\n}\r\n\r\nimg {\r\n  width: 100%;\r\n}\r\n\r\nnav {\r\n  display: inline-block;\r\n  padding-left: 20px;\r\n}\r\n", ""]);
 
 // exports
 
