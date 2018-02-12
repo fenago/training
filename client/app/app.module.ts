@@ -35,6 +35,10 @@ import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5
 import cloudinaryConfiguration from './cloudinary.config';
 import { Cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
 import { AnalyticsComponent } from './admin/analytics/analytics.component';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
 
 const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -72,7 +76,11 @@ const cloudinaryLib = {
     MaterialModule,
     FileUploadModule,
     CloudinaryModule.forRoot(cloudinaryLib, cloudinaryConfiguration),
-    QuillModule
+    QuillModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   providers: [
     AuthService,

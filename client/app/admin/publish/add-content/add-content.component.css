@@ -1,33 +1,49 @@
-.course-form{
-  width:90%;
+.course-form {
+  width: 90%;
   height: 90%;
-  margin-top:2%;
-  margin-left:5%;
+  margin-top: 2%;
+  margin-left: 5%;
   padding: 30px 30px 30px 30px;
   background-color: white;
-  border-radius:5px 5px 5px 5px;
-  -webkit-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
-  -moz-box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
-  box-shadow: -1px 2px 69px -15px rgba(0,0,0,0.35);
-}
-.row{
-  width:100%;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
 }
 
-.col{
-  width:50%;
+.row {
+  width: 100%;
 }
-.chaptersList{
+
+.col {
+  width: 50%;
+}
+
+.chaptersList {
   width: 10%;
 }
-.buffer{
-  height:30px;
+
+.upload_button {
+  border: solid 3px #DF8930;
+  width: 100%;
+  padding: 5px 5px 5px 5px;
+  color: #DF8930;
 }
-img{
-  max-width: 15%;
-  max-height: 15%;
+
+.buffer {
+  height: 30px;
 }
-video{
-  max-width: 35%;
-  max-height: 35%;
+
+img {
+  max-height: 200px;
+  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+}
+
+video {
+  max-height: 200px;
+  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
 }

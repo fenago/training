@@ -91,12 +91,14 @@ export class AddContentComponent implements OnInit {
     this.chapterIndex = i;
     this.lessonIndex = j;
     this.lessonName = j;
+    this.isLoading = true;
 
     if (this.uploader.queue[this.uploader.queue.length - 1]._file.type.split('/')[0] === 'image') {
       const reader = new FileReader();
       reader.readAsDataURL(this.uploader.queue[this.uploader.queue.length - 1]._file);
       reader.onload = (e: any) => {
         this.imgPreview = reader.result;
+        this.isLoading = false;
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].imagePreview = reader.result;
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].videoPreview = null;
       };
@@ -104,12 +106,13 @@ export class AddContentComponent implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(this.uploader.queue[this.uploader.queue.length - 1]._file);
       reader.onload = (e: any) => {
-        this.imgPreview = reader.result;
+        this.isLoading = false;
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].videoPreview = reader.result;
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].imagePreview = null;
       };
       this.imgPreview = ' uploaded';
     } else {
+      this.isLoading = false;
       this.toast.setMessage('format not supported please use jpg,png or mp4.', 'warning');
     }
 
