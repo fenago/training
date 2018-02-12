@@ -4,11 +4,17 @@
 </div>
 <div class="content" *ngIf="!isLoading">
   <div class="loader" *ngIf="isLoading"></div>
+
   <h4 class="card-header">Registered users ({{users.length}})
     <a routerLink="/register" class="btn btn-primary">
       <i class="fa fa-plus"></i> new</a>
   </h4>
   <div class="card-block">
+    <a routerLink="/account" class="nav-item nav-link">
+      <h5>
+        <i class="fa fa-user"></i> Profile</h5>
+    </a>
+    <br>
     <!-- <div class="example-container mat-elevation-z8">
       <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="username">

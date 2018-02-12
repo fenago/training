@@ -8,7 +8,7 @@
         <!--branding/logo -->
         <div class="header-brand headerScroll">
           <a href="/" title="Home">
-            <img src="../assets/img/logo.png" width="125">
+            <img src="../assets/img/logo.png" >
           </a>
         </div>
 
@@ -38,7 +38,7 @@
               <h5>
                 <i class="fa fa-user-plus"></i> Register</h5>
             </a>
-            <a routerLink="/account" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+            <a routerLink="/account" mat-tab-link class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && !auth.isAdmin">
               <h5>
                 <i class="fa fa-user"></i> Profile</h5>
             </a>
