@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { course } from '../shared/models/course.model';
 import { User } from '../shared/models/user.model';
+import { setInterval } from 'core-js/library/web/timers';
 
 
 @Component({
@@ -25,6 +26,9 @@ export class DashboardComponent implements OnInit {
   courses: course[] = [];
   isLoading = true;
   isEditing = false;
+  couponFlag = false;
+  couponLoading = false;
+
 
   addcourseForm: FormGroup;
   name = new FormControl('', Validators.required);
@@ -57,6 +61,38 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  useCoupon(i) {
+    this.courses[i]['useCouponFlag'] = !this.courses[i]['useCouponFlag'];
+    console.log(this.course[i]);
+  }
+
+  verifyCoupon(i) {
+    console.log(i);
+    console.log(this.courses[i]);
+    this.couponLoading = true;
+    if (this.courses[i].coupons) {
+      for (let j = 0; j < this.courses[i].coupons.length; j++) {
+        if (this.courses[i]['coupon'] === this.courses[i].coupons[j].id) {
+
+          setTimeout(() => {
+            this.toast.setMessage('coupon approved', 'success');
+            this.courses[i]['couponFlag'] = true;
+            this.courses[i]['couponAmount'] = this.courses[i].coupons[j].amount;
+            this.couponLoading = false;
+          }, 1000);
+
+        }
+      }
+    }
+
+    setTimeout(() => {
+      if (this.couponLoading) {
+        this.toast.setMessage('invalid coupon', 'warning');
+        this.couponLoading = false;
+      }
+    }, 2000);
+  }
+
   getcourses() {
     this.CourseService.getcourses().subscribe(
       data => {
@@ -84,8 +120,9 @@ export class DashboardComponent implements OnInit {
   purchase(i) {
     if (this.AuthService.loggedIn) {
       this.isLoading = true;
+      console.log(this.courses[i]);
 
-      const price: any = this.courses[i]['coupanFlag'] ? Number(this.courses[i].price) - (this.courses[i].price * this.courses[i]['coupanAmount']) / 100 : this.courses[i].price;
+      const price: any = this.courses[i]['couponFlag'] ? Number(this.courses[i].price) - (this.courses[i].price * this.courses[i]['couponAmount']) / 100 : this.courses[i].price;
       const handler = (<any>window).StripeCheckout.configure({
         key: 'pk_test_ShBXT4xQYOqRbiZCc6VQDOfa',
         locale: 'auto',
@@ -104,6 +141,7 @@ export class DashboardComponent implements OnInit {
           token.description = 'single course purchase - ' + this.courses[i].title;
 
           this.CourseService.payment(token).subscribe(res => {
+            console.log(res);
             if (res.failure_code) {
               this.toast.setMessage('transaction failed please try again or contact administrator.', 'warning');
               this.isLoading = false;
@@ -126,7 +164,7 @@ export class DashboardComponent implements OnInit {
           });
         }
       });
-
+      console.log(price);
       handler.open({
         name: this.courses[i].title,
         description: 'single course purchase',

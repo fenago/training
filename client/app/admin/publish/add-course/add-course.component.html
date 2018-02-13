@@ -19,6 +19,32 @@
       <mat-form-field class="row">
         <input matInput type="number" [(ngModel)]="course.eta" placeholder="Estimated time in hours">
       </mat-form-field>
+      <div class="container-fluid">
+        <div class="row" *ngFor="let coupon of course.coupons;let i=index">
+          <div class="col-lg-4">
+            <mat-form-field>
+              <input matInput [(ngModel)]="coupon.id" placeholder="code">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-2">
+            <button class="btn">
+              <i class="fa fa-refresh" (click)="refreshCouponId(i)"></i>
+            </button>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field>
+              <input matInput type="number" [(ngModel)]="coupon.amount" placeholder="amount">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-2">
+            <button class="btn" (click)="deleteCoupon(i)">
+              <i class="fa fa-close"></i>
+            </button>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+      <button class="btn couponbtn row" (click)="generateCoupon()">Generate coupon</button>
       <mat-form-field class="row">
         <textarea matInput [(ngModel)]="course.description" placeholder="Description"></textarea>
       </mat-form-field>
@@ -54,7 +80,6 @@
       <div class="loader" *ngIf="isLoading"></div>
       <app-add-content [course]="course" *ngIf="!isLoading"></app-add-content>
     </div>
-
   </mat-tab>
 </mat-tab-group>
 <div style=" height:20px">
@@ -66,7 +91,7 @@
 <div class="row">
   <div class="col-md-5">
   </div>
-  <div class="col-md-1" >
+  <div class="col-md-1">
     <button class="submit btn btn-primary" style="text-align:center" (click)="submit(false)"> SAVE</button>
   </div>
   <div class="col-md-2">

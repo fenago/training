@@ -98,6 +98,38 @@ export class AddCourseComponent implements OnInit {
 
   }
 
+  generateCoupon() {
+    if (!this.course.coupons) {
+      this.course.coupons = [{
+        id: this.makeid(),
+        amount: 0
+      }];
+    } else {
+      this.course.coupons.push({
+        id: this.makeid(),
+        amount: 0
+      });
+    }
+    console.log(this.course);
+  }
+  deleteCoupon(i) {
+    this.course.coupons.splice(i, 1);
+  }
+  refreshCouponId(i) {
+    console.log(i);
+    this.course.coupons[i].id = this.makeid();
+  }
+  makeid() {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+    for (let i = 0; i < 5; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+  }
+
   uploadImage() {
     this.isLoading = true;
     this.uploader.queue[this.uploader.queue.length - 1].upload();

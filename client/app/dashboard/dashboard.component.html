@@ -27,23 +27,27 @@
     <div class="course_container" *ngFor="let course of courses; let i = index" [hidden]="myCoursesToggle && course.users.indexOf(AuthService.currentUser._id) < 0">
       <div class="row">
         <div class="col-lg-4">
-          <img *ngIf="course.image" width="340" height="300" src="{{course.image}}">
+          <div class="image">
+            <img id="image" *ngIf="course.image" width="340" height="300" src="{{course.image}}">
+            <div [routerLink]="['/syllabus',course._id]" class="btn overlay-button">view syllabus</div>
+          </div>
+
         </div>
         <div class="col-lg-8">
           <div class="row">
             <div class="col-lg-12">
               <h1>{{course.title}}</h1>
-              <p *ngIf="course.coupanFlag" st> {{course.coupanAmount}}% discount coupon rewarded</p>
+              <p *ngIf="course.couponFlag" st> {{course.couponAmount}}% discount coupon rewarded</p>
             </div>
           </div>
           <div class="buffer20"></div>
           <div class="row">
             <div class="col-lg-3 center">
               <h5>
-                <p *ngIf="course.price > 0 && course.coupanFlag !== true">price: ${{course.price}}</p>
-                <p *ngIf="course.price < 1 && course.coupanFlag !== true">price: FREE</p>
-                <p *ngIf="course.coupanFlag">price:
-                  <del>${{course.price}}</del> ${{course.price - (course.price * course.coupanAmount)/100}}</p>
+                <p *ngIf="course.price > 0 && course.couponFlag !== true">price: ${{course.price}}</p>
+                <p *ngIf="course.price < 1 && course.couponFlag !== true">price: FREE</p>
+                <p *ngIf="course.couponFlag">price:
+                  <del>${{course.price}}</del> ${{course.price - (course.price * course.couponAmount)/100}}</p>
               </h5>
             </div>
             <div class="col-lg-3 center">
@@ -52,17 +56,30 @@
               </h5>
             </div>
             <div class="col-lg-3 center">
-              <button [routerLink]="['/syllabus',course._id]" class="my-btn">View syllabus</button>
-            </div>
-            <div class="col-lg-3 center">
               <button class="btn-buy" *ngIf="course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin && course.price > 0"
                 (click)="purchase(i)">Purchase</button>
+
               <button class="btn-buy" [routerLink]="['/content',course._id]" *ngIf="(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && AuthService.loggedIn">View course</button>
               <button class="btn-buy" [routerLink]="['/register']" *ngIf="(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && !AuthService.loggedIn ">View course</button>
               <button class="btn-buy" [routerLink]="['/publish/new',course._id]" *ngIf="AuthService.isAdmin">Edit course</button>
             </div>
+            <div class="col-lg-3 center">
+              <button class="btn-buy" (click)="useCoupon(i)" *ngIf="course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin && course.price > 0">Use Coupon</button>
+            </div>
           </div>
           <div class="buffer50"></div>
+          <div class="row" *ngIf="course.useCouponFlag">
+            <div class="loader" *ngIf="couponLoading"></div>
+            <div class="col-lg-3" *ngIf="!couponLoading">
+              <mat-form-field>
+                <input matInput placeholder="code" [(ngModel)]="course.coupon">
+              </mat-form-field>
+            </div>
+            <div class="col-lg-3" *ngIf="!couponLoading">
+              <button class="btn" (click)="verifyCoupon(i)">use</button>
+            </div>
+            <div class="col-lg-3"></div>
+          </div>
           <div class="row">
             <div class="col-lg-12">
               <p>{{course.description}}</p>
@@ -75,42 +92,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- <div class="card-block">
-    <table class="table table-bordered table-striped">
-      <thead class="">
-        <tr>
-          <th>image</th>
-          <th>Title</th>
-          <th>price</th>
-          <th>ETA</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody *ngIf="courses.length === 0">
-        <tr>
-          <td colspan="4">There are no courses in the DB. Add a new course below.</td>
-        </tr>
-      </tbody>
-      <tbody *ngIf="!isEditing">
-        <tr *ngFor="let course of courses">
-          <td>
-            <img *ngIf="course.image" src="{{course.image}}">
-          </td>
-          <td>{{course.title}}</td>
-          <td>{{course.price}}</td>
-          <td>{{course.eta}}</td>
-          <td>
-
-            <a [routerLink]="['/publish/new', course._id]" class="nav-item nav-link" routerLinkActive="active">
-              <button class="btn btn-sm btn-warning">
-                <i class="fa fa-pencil"></i> Edit</button>
-            </a>
-            <button class="btn btn-sm btn-danger" (click)="deletecourse(course)">
-              <i class="fa fa-trash"></i> Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->

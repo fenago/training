@@ -10,6 +10,12 @@ export class course {
   users?: [String];
   syllabus?: String;
   syllabusFile?: String;
+  coupons?: [
+    {
+      id: String,
+      amount: number
+    }
+  ];
   content?: {
     chapters: [{
       title: String,

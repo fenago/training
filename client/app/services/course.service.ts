@@ -27,6 +27,10 @@ export class courseService {
     console.log('insert', data);
     return this.http.post<course>(this.url + '/api/course', data);
   }
+  verifyCoupon(data): Observable<course> {
+    console.log('insert', data);
+    return this.http.post<course>(this.url + '/api/course/coupon', data);
+  }
 
   uploadTitleImage(file): Observable<any> {
     console.log('image', file);
