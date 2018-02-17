@@ -4,6 +4,7 @@ import { course } from '../../../shared/models/course.model';
 import { ToastComponent } from '../../../shared/toast/toast.component';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
+declare var $: any;
 
 @Component({
   selector: 'app-add-content',
@@ -27,9 +28,13 @@ export class AddContentComponent implements OnInit {
   constructor(private courseService: courseService,
     private toast: ToastComponent,
     private cloudinary: Cloudinary) { }
+  valuechange($event) {
+    console.log($event);
+  }
 
   ngOnInit() {
-
+    window.scrollTo(0, 0);
+    $('.lessonName').off('keydown');
     /*
      * Cloudinary configuration
      */

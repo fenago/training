@@ -25,6 +25,7 @@ export class AddSyllabusComponent implements OnInit {
     private cloudinary: Cloudinary) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     /*
      * Cloudinary configuration
      */

@@ -12,6 +12,7 @@ import { course } from '../../shared/models/course.model';
 })
 export class PublishComponent implements OnInit {
   isLoading = true;
+  resourcesFlag = false;
 
   course = new course();
 
@@ -21,6 +22,9 @@ export class PublishComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = false;
+  }
+  showResources() {
+    this.resourcesFlag = this.resourcesFlag ? false : true;
   }
 
 

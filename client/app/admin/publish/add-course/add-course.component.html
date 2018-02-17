@@ -1,8 +1,13 @@
 <mat-tab-group>
   <mat-tab label="course">
     <div class="loader" *ngIf="isLoading"></div>
+    <br>
+    <h1 style="text-align:center">
+      <b>{{course.title}}</b>
+    </h1>
     <div class="course-form" *ngIf="!isLoading">
-      <legend>Course details</legend>
+      <legend>Course details
+      </legend>
       <mat-form-field class="row">
         <textarea matInput [(ngModel)]="course.title" placeholder="Title"></textarea>
       </mat-form-field>
@@ -86,7 +91,7 @@
 
 </div>
 <p style="margin-left:5%">
-  <i class="fa fa-warning"> Make it sure to upload all files and images before pressing Save</i>
+  <i class="fa fa-warning"> Make sure to upload all files and images before pressing Save</i>
 </p>
 <div class="row">
   <div class="col-md-5">

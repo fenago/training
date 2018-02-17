@@ -1,15 +1,33 @@
 <div class="content" *ngIf="isLoading">
-    <div class="loader" style="margin-top:20%"></div>
-  </div>
+  <div class="loader" style="margin-top:20%"></div>
+</div>
 <div class="content" *ngIf="!isLoading">
-<app-toast [message]="toast.message"></app-toast>
-<nav class="navbar navbar-dark" mat-tab-nav-bar >
-    <a routerLink="/publish/new" class="nav-item nav-link" mat-tab-link  routerLinkActive="active">
-      <h5><i class="fa fa-plus"></i> Add</h5>
+  <app-toast [message]="toast.message"></app-toast>
+  <nav class="navbar navbar-dark" mat-tab-nav-bar>
+    <a routerLink="/publish/new" class="nav-item nav-link" mat-tab-link routerLinkActive="active">
+      <h5>
+        <i class="fa fa-plus"></i> Add</h5>
     </a>
-    <a routerLink="/publish/unPublishedList" class="nav-item nav-link" mat-tab-link  routerLinkActive="active">
-      <h5><i class="fa fa-list"></i> un-published list</h5>
+    <a routerLink="/publish/unPublishedList" class="nav-item nav-link" mat-tab-link routerLinkActive="active">
+      <h5>
+        <i class="fa fa-list"></i> un-published list</h5>
     </a>
-</nav>
-<router-outlet></router-outlet>
+    <a (click)="showResources()" class="nav-item nav-link" mat-tab-link routerLinkActive="active">
+      <h5>
+        <i class="fa fa-link"></i> Resources</h5>
+    </a>
+  </nav>
+  <div class="buffer20" *ngIf="resourcesFlag"></div>
+  <ul *ngIf="resourcesFlag">
+    <li>
+      <a style="color:blue" href="http://www.free-screencast.com/">http://www.free-screencast.com/</a>
+    </li>
+    <li>
+      <a style="color:blue" href="https://screencast-capture.en.softonic.com/">https://screencast-capture.en.softonic.com/</a>
+    </li>
+    <li>
+      <a style="color:blue" href="https://screencast-capture.en.softonic.com/">https://screencast-capture.en.softonic.com/</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
 </div>

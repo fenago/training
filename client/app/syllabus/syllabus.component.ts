@@ -14,6 +14,7 @@ export class SyllabusComponent implements OnInit {
   constructor(private route: ActivatedRoute, private CourseService: courseService) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.route.params.subscribe(params => {
       if (typeof (params['id']) === 'string') {
         this.CourseService.getSyllabus(params['id']).subscribe(res => {
