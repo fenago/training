@@ -138,6 +138,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   submit(publish) {
+    this.course.isPublished = publish;
     this.course.price = this.priceFree ? 0 : this.course.price;
     this.isLoading = true;
     console.log(this.isLoading);
@@ -149,7 +150,6 @@ export class AddCourseComponent implements OnInit {
       },
         error => console.log(error));
     } else {
-      this.course.isPublished = publish;
       this.CourseService.addcourse(this.course).subscribe(
         res => {
           this.course = res;
