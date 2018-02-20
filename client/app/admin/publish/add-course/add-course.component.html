@@ -94,15 +94,18 @@
   <i class="fa fa-warning"> Make sure to upload all files and images before pressing Save</i>
 </p>
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-3">
   </div>
-  <div class="col-md-1">
-    <button class="submit btn btn-primary" style="text-align:center" (click)="submit(false)"> SAVE</button>
+  <div class="col-md-2">
+    <button class="submit btn btn-primary" style="text-align:center" (click)="submit(false)"> SAVE WITHOUT PUBLISHING</button>
   </div>
   <div class="col-md-2">
     <button class="submit btn btn-primary" (click)="submit(true)"> SAVE & PUBLISH</button>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
+      <button class="submit btn btn-primary" (click)="delete(course)"> DELETE</button>
+    </div>
+  <div class="col-md-3">
   </div>
 </div>
 <div style=" height:20px">

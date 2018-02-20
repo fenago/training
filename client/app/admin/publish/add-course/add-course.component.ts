@@ -6,6 +6,7 @@ import { Form } from '@angular/forms/src/directives/form_interface';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import cloudinaryConfiguration from './../../../cloudinary.config';
 
 @Component({
@@ -25,6 +26,7 @@ export class AddCourseComponent implements OnInit {
   constructor(private CourseService: courseService,
     private toast: ToastComponent,
     private route: ActivatedRoute,
+    private router: Router,
     private cloudinary: Cloudinary) { }
 
   ngOnInit() {
@@ -135,6 +137,15 @@ export class AddCourseComponent implements OnInit {
   uploadImage() {
     this.isLoading = true;
     this.uploader.queue[this.uploader.queue.length - 1].upload();
+  }
+
+  delete(course) {
+    this.isLoading = true;
+    this.CourseService.deletecourse(course).subscribe(res => {
+      this.isLoading=false;
+      this.router.navigateByUrl('/dashboard');
+      this.toast.setMessage('course deleted!', 'success');
+    });
   }
 
   submit(publish) {
