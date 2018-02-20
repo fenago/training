@@ -15,6 +15,7 @@
             <input matInput [(ngModel)]="lesson.title">
           </ng-template>
           <div class="container">
+            <div class="buffer20"></div>
             <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-3" style="text-align:center">
@@ -53,9 +54,9 @@
               <div class="col-lg-4"></div>
               <div class="col-lg-4">
                 <p>{{fileUrl}}</p>
-                <img *ngIf="lesson.imagePreview && !lesson.videoPreview && !lesson.video" src="{{lesson.imagePreview}}">
+                <img *ngIf="lesson.imagePreview && !lesson.videoPreview" src="{{lesson.imagePreview}}">
                 <img *ngIf="lesson.image && !lesson.imagePreview&& !lesson.videoPreview " src="{{lesson.image}}">
-                <video controls *ngIf="lesson.videoPreview && !lesson.imagePreview && !lesson.image">
+                <video controls *ngIf="lesson.videoPreview && !lesson.imagePreview">
                   <source type="video/webm" src="{{lesson.videoPreview}}">
                 </video>
                 <video controls *ngIf="lesson.video && !lesson.videoPreview && !lesson.imagePreview && !lesson.image">
@@ -68,6 +69,7 @@
             <div class="row" style="text-align:center">
               <button class="btn" [disabled]="!fileUrl && !imgPreview && !videoPreview " *ngIf="!isLoading" (click)="uploadFile()">upload</button>
             </div>
+            {{isLoading}}
             <div class="row" *ngIf="isLoading">
               <div class="col-lg-3"></div>
               <div class="col-lg-6" style="text-align:center">

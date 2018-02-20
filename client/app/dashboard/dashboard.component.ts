@@ -77,7 +77,11 @@ export class DashboardComponent implements OnInit {
           setTimeout(() => {
             this.toast.setMessage('coupon approved', 'success');
             this.courses[i]['couponFlag'] = true;
-            this.courses[i]['couponAmount'] = this.courses[i].coupons[j].amount;
+            var amount = this.courses[i].coupons[j].amount;
+            this.courses[i]['couponAmount'] = amount;
+            if (amount === 100) {
+              this.courses[i].price = 0;
+            }
             this.couponLoading = false;
           }, 1000);
 

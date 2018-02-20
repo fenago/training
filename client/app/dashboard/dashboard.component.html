@@ -45,8 +45,8 @@
             <div class="col-lg-3 center">
               <h5>
                 <p *ngIf="course.price > 0 && course.couponFlag !== true">price: ${{course.price}}</p>
-                <p *ngIf="course.price < 1 && course.couponFlag !== true">price: FREE</p>
-                <p *ngIf="course.couponFlag">price:
+                <p *ngIf="course.price < 1 && (course.couponFlag !== true || course.couponAmount===100)">price: FREE</p>
+                <p *ngIf="course.couponFlag && course.couponAmount < 100">price:
                   <del>${{course.price}}</del> ${{course.price - (course.price * course.couponAmount)/100}}</p>
               </h5>
             </div>

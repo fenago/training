@@ -69,6 +69,7 @@ export class AddContentComponent implements OnInit {
     // on upload callback of image
     this.uploader.onCompleteItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) => {
       this.cloudResponse = JSON.parse(response);
+      console.log(this.cloudResponse);
       if (this.cloudResponse.format === 'jpg' || this.cloudResponse.format === 'png') {
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].image = this.cloudResponse.url;
       } else if (this.cloudResponse.format === 'mp4') {
@@ -116,9 +117,13 @@ export class AddContentComponent implements OnInit {
         this.course.content.chapters[this.chapterIndex].lessons[this.lessonIndex].imagePreview = null;
       };
       this.imgPreview = ' uploaded';
+    } else if (this.uploader.queue[this.uploader.queue.length - 1]._file.type.split('/')[1] === 'pdf') {
+      this.isLoading = false;
+      this.fileUrl = this.uploader.queue[this.uploader.queue.length - 1]._file.name;
+      this.toast.setMessage('file added', 'success');
     } else {
       this.isLoading = false;
-      this.toast.setMessage('format not supported please use jpg,png or mp4.', 'warning');
+      this.toast.setMessage('invalid format, supported formats are mp4, png, jpg and pdf', 'warning');
     }
 
 
