@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { courseComponent } from './course/course.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
+import { BlogReadComponent } from './blogs/blog-read/blog-read.component';
+import { UnPublishedBlogsComponent } from './blogs/un-published-blogs/un-published-blogs.component';
+import { BlogDashboardComponent } from './blogs/blog-dashboard/blog-dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { SyllabusComponent } from './syllabus/syllabus.component';
@@ -28,6 +33,16 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
+  {
+    path: 'blog', component: BlogsComponent, children: [
+      { path: '', component: BlogDashboardComponent },
+      { path: 'new', component: AddBlogComponent, canActivate: [AuthGuardLogin] },
+      { path: 'new/:id', component: AddBlogComponent, canActivate: [AuthGuardLogin] },
+      { path: 'dashboard', component: BlogDashboardComponent },
+      { path: 'read/:id', component: BlogReadComponent },
+      { path: 'un-published', component: UnPublishedBlogsComponent, canActivate: [AuthGuardLogin, AuthGuardAdmin] },
+    ]
+  },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
   { path: 'account/:id', component: AccountComponent, canActivate: [AuthGuardLogin, AuthGuardAdmin] },
   { path: 'syllabus/:id', component: SyllabusComponent, canActivate: [AuthGuardLogin] },

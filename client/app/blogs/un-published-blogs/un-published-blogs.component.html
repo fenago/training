@@ -1,0 +1,48 @@
+<div class="content" *ngIf="isLoading">
+  <div class="loader" style="margin-top:20%"></div>
+</div>
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">{{blog._id}}</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th class="img">image</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Author</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="blogs.length === 0">
+        <tr>
+          <td colspan="4">There are no blogs in the DB. Add a new blog below.</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let blog of blogs">
+          <td class="img">
+            <img *ngIf="blog.image" src="{{blog.image}}">
+          </td>
+          <td>{{blog.title}}</td>
+          <td>{{blog.description}}</td>
+          <td *ngIf="blog.author">{{blog.author.username}}</td>
+          <td>{{blog.date}}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" (click)="publish(blog)">
+              <i class="fa fa-check"></i> publish
+            </button>
+
+            <a [routerLink]="['/blog/new', blog._id]" class="nav-item nav-link" routerLinkActive="active">
+              <button class="btn btn-sm btn-primary">
+                <i class="fa fa-pencil"></i> Edit</button>
+            </a>
+            <button class="btn btn-sm btn-danger" (click)="deleteblog(blog)">
+              <i class="fa fa-trash"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

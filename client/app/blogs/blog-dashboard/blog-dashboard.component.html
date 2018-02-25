@@ -1,0 +1,54 @@
+<div class="content" *ngIf="isLoading">
+  <div class="loader" style="margin-top:20%"></div>
+</div>
+<div class="content" *ngIf="!isLoading">
+  <app-toast [message]="toast.message"></app-toast>
+
+  <div class="buffer50"></div>
+  <div class="container">
+    <div class="div" *ngFor="let blog of blogs; let i = index">
+      <div class="blog-container hvr hvr-bob">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="image">
+              <img id="image" *ngIf="blog.image" height="500" src="{{blog.image}}">
+            </div>
+          </div>
+        </div>
+        <div class="buffer20"></div>
+        <div class="row title">
+          <div class="col-lg-12">
+            <h1>{{blog.title}}</h1>
+          </div>
+        </div>
+        <div class="row actions title">
+          <div class="col-lg-4">
+            <p>
+              <i class="fa fa-user"></i> {{blog.author.username}}</p>
+          </div>
+          <div class="col-lg-8">
+            <p>
+              <i class="fa fa-calendar"></i> {{blog.date}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 desc">
+            <p id="desc">{{blog.description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5"></div>
+          <div class="col-lg-4">
+            <button class="btn my-btn" *ngIf="auth.isAdmin" [routerLink]="['/blog/new',blog._id]">edit</button>
+            <button class="btn my-btn" [routerLink]="['/blog/read',blog._id]">READ</button>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
+        <div class="buffer20"></div>
+      </div>
+      <div class="buffer50"></div>
+    </div>
+    <div class="buffer50"></div>
+  </div>
+</div>
+<!-- <button class="btn btn-primary" [routerLink]="['/blog/new',blog._id]">edit</button> -->

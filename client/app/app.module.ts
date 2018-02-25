@@ -39,6 +39,12 @@ import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
+import { BlogsComponent } from './blogs/blogs.component';
+import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
+import { BlogDashboardComponent } from './blogs/blog-dashboard/blog-dashboard.component';
+import { BlogService } from './services/blog.service';
+import { UnPublishedBlogsComponent } from './blogs/un-published-blogs/un-published-blogs.component';
+import { BlogReadComponent } from './blogs/blog-read/blog-read.component';
 
 const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -67,7 +73,12 @@ const cloudinaryLib = {
     SyllabusComponent,
     SafePipe,
     ContentComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    BlogsComponent,
+    AddBlogComponent,
+    BlogDashboardComponent,
+    UnPublishedBlogsComponent,
+    BlogReadComponent
   ],
   imports: [
     RoutingModule,
@@ -87,7 +98,8 @@ const cloudinaryLib = {
     AuthGuardLogin,
     AuthGuardAdmin,
     courseService,
-    UserService
+    UserService,
+    BlogService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

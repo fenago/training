@@ -1,0 +1,21 @@
+<div class="content" *ngIf="isLoading">
+  <div class="loader" style="margin-top:20%"></div>
+</div>
+<div class="content" *ngIf="!isLoading">
+  <app-toast [message]="toast.message"></app-toast>
+  <nav class="navbar navbar-dark" mat-tab-nav-bar>
+    <a routerLink="/blog/dashboard" class="nav-item nav-link" mat-tab-link routerLinkActive="active">
+      <h5>
+        <i class="fa fa-paperclip"></i> Dashboard</h5>
+    </a>
+    <a routerLink="/blog/new" class="nav-item nav-link" mat-tab-link routerLinkActive="active" (click)="routeToLogin()">
+      <h5>
+        <i class="fa fa-pencil"></i> Add</h5>
+    </a>
+    <a routerLink="/blog/un-published" class="nav-item nav-link" mat-tab-link routerLinkActive="active" *ngIf="auth.isAdmin">
+      <h5>
+        <i class="fa fa-check"></i> un-published</h5>
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
