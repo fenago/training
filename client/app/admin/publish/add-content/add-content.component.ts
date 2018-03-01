@@ -19,11 +19,15 @@ export class AddContentComponent implements OnInit {
   lessonName: String = 'Add title';
   fileUrl: string;
   private uploader: FileUploader;
+  private resourcesUploader: FileUploader;
   private cloudResponse: any;
   isLoading = false;
+  isLoading2 = false;
   chapterIndex: number;
   lessonIndex: number;
   imgPreview: String;
+  resourcesEnabled = false;
+  uploaded = false;
 
   constructor(private courseService: courseService,
     private toast: ToastComponent,
@@ -44,6 +48,21 @@ export class AddContentComponent implements OnInit {
       autoUpload: false,
       // Use xhrTransport in favor of iframeTransport
       isHTML5: true,
+      removeAfterUpload: true,
+      // XHR request headers
+      headers: [
+        {
+          name: 'X-Requested-With',
+          value: 'XMLHttpRequest'
+        }
+      ]
+    };
+    const uploaderOptions2: FileUploaderOptions = {
+      url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
+      autoUpload: true,
+      // Use xhrTransport in favor of iframeTransport
+      isHTML5: true,
+      removeAfterUpload: true,
       // XHR request headers
       headers: [
         {
@@ -54,8 +73,20 @@ export class AddContentComponent implements OnInit {
     };
     // initialize uploader
     this.uploader = new FileUploader(uploaderOptions);
+    this.resourcesUploader = new FileUploader(uploaderOptions2);
 
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      // Add Cloudinary's unsigned upload preset to the upload form
+      form.append('upload_preset', this.cloudinary.config().upload_preset);
+      // Add file to upload
+      form.append('file', fileItem);
+
+      // Use default "withCredentials" value for CORS requests
+      fileItem.withCredentials = false;
+      return { fileItem, form };
+    };
+
+    this.resourcesUploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       // Add Cloudinary's unsigned upload preset to the upload form
       form.append('upload_preset', this.cloudinary.config().upload_preset);
       // Add file to upload
@@ -79,6 +110,12 @@ export class AddContentComponent implements OnInit {
       }
       this.isLoading = false;
       this.toast.setMessage('file uploaded successfully.', 'success');
+    };
+
+    this.resourcesUploader.onCompleteItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) => {
+      var file = JSON.parse(response);
+      this.course.content.chapters[this.chapterIndex].resources.push({ name: file.original_filename, link: file.url });
+
     };
 
     this.options = {
@@ -128,6 +165,9 @@ export class AddContentComponent implements OnInit {
 
 
   }
+  selectResources(i) {
+    this.chapterIndex = i;
+  }
 
   uploadFile() {
     this.isLoading = true;
@@ -143,6 +183,8 @@ export class AddContentComponent implements OnInit {
   addChapter() {
     this.course.content.chapters.push({
       title: this.chapterName,
+      isPreview: false,
+      resources: [],
       lessons: []
     });
     this.chapterName = 'Add title';
@@ -159,6 +201,9 @@ export class AddContentComponent implements OnInit {
 
   removePlaceholder(event) {
     event.target.value = event.target.value === 'Add title' ? '' : event.target.value;
+  }
+  removeResource(indices) {
+    this.course.content.chapters[indices.chapter].resources.splice(indices.resource, 1);
   }
 
 

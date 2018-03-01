@@ -1,9 +1,21 @@
-<div class="content" *ngIf="course">
+<div class="content container-fluid" *ngIf="course">
   <mat-tab-group>
     <mat-tab *ngFor="let chapter of course.content.chapters; let i = index">
       <ng-template mat-tab-label>
         {{i+1}}-{{chapter.title}}
       </ng-template>
+      <div class="buffer50"></div>
+      <button type="button" class="btn btn-info btn-lg" (click)="resourcesToggle()">DOWNLOADABLE RESOURCES</button>
+      <br>
+      <div id="resources" *ngIf="toggle">
+        <div class="row" *ngFor="let resource of chapter.resources;let k=index">
+          <div class="col-lg-2" id="resource">
+            <a href="{{resource.link}}" download="">{{resource.name}}</a>
+          </div>
+          <div class="col-lg-10"></div>
+        </div>
+      </div>
+      <div class="buffer50"></div>
       <mat-tab-group>
         <mat-tab *ngFor="let lesson of chapter.lessons; let j = index">
           <ng-template mat-tab-label>
@@ -11,7 +23,7 @@
           </ng-template>
           <div class="buffer20">
           </div>
-          <div class="container-fluid">
+          <div class="">
             <div class="row">
               <div class="col-lg-4"></div>
               <div class="col-lg-4">

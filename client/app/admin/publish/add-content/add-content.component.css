@@ -28,10 +28,25 @@
   width: 100%;
   padding: 5px 5px 5px 5px;
   color: #DF8930;
+  background-color: white;
 }
 
 .buffer {
   height: 30px;
+}
+
+#resource {
+  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
+  border: solid transparent;
+  margin-bottom: 20px;
+}
+
+#resource h6 {
+  font-size: 18px;
+  font-weight: 800;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 img {

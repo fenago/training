@@ -15,12 +15,13 @@ export class ContentComponent implements OnInit {
   elem: HTMLTableElement;
   dividerRatio = 6;
   courseId: string;
+  toggle = false;
   constructor(private route: ActivatedRoute, private CourseService: courseService, private AuthService: AuthService) { }
 
   ngOnInit() {
     if (this.canActivate()) {
       this.getData();
-    }else {
+    } else {
     }
   }
   getData() {
@@ -30,6 +31,10 @@ export class ContentComponent implements OnInit {
         console.log(this.course);
       });
     }
+  }
+
+  resourcesToggle() {
+    this.toggle = this.toggle ? false : true;
   }
   canActivate(): Boolean {
     console.log('canActivate');

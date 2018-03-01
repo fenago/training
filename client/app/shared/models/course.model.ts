@@ -19,6 +19,8 @@ export class course {
   content?: {
     chapters: [{
       title: String,
+      isPreview: Boolean,
+      resources: [String],
       lessons: [{
         title: String,
         content: String,
