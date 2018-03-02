@@ -4,6 +4,7 @@ import { courseService } from '../services/course.service';
 import { AuthService } from '../services/auth.service';
 import { course } from '../shared/models/course.model';
 import { CanActivate } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-content',
@@ -35,6 +36,13 @@ export class ContentComponent implements OnInit {
 
   resourcesToggle() {
     this.toggle = this.toggle ? false : true;
+    if (this.toggle) {
+      $('#main').addClass('hide');
+      $('#resources').removeClass('hide');
+    }else{
+      $('#main').removeClass('hide');
+      $('#resources').addClass('hide');
+    }
   }
   canActivate(): Boolean {
     console.log('canActivate');

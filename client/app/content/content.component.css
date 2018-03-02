@@ -13,11 +13,29 @@
 }
 
 #resource {
-  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
-  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);
-  border: solid transparent;
-  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#resource a {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#resources {
+  border: solid;
+  z-index: 100;
+  margin-left: 40vw;
+  margin-top: 20vh;
+  width: 20%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.hide {
+  display: none;
 }
 
 #image {
@@ -44,4 +62,9 @@ video {
 
 mat-slider {
   width: 100%;
+}
+
+.mat-tab-body-content {
+  width: 100%;
+  overflow: hidden;
 }

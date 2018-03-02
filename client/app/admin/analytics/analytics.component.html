@@ -1,7 +1,7 @@
 <div class="content">
-  <div class="container">
-      <div class="buffer20">
-        </div>
+  <div class="container-fluid">
+    <div class="buffer20">
+    </div>
     <div class="row">
       <div class="col-lg-12">
         <section id="auth-button"></section>
@@ -10,25 +10,41 @@
     <div class="buffer20">
     </div>
     <div class="row session-chart shadow">
-      <div class="col-lg-3">
-        <section id="view-selector"></section>
+      <div class="session-chart">
+        <div class="col-lg-2">
+          <section id="view-selector"></section>
+        </div>
+        <div class="col-lg-4">
+          <legend>SESSIONS</legend>
+          <section id="timeline"></section>
+        </div>
       </div>
-      <div class="col-lg-9">
-        <section id="timeline"></section>
+      <div class="country-chart">
+        <div class="col-lg-2">
+          <div id="view-selector-1-container"></div>
+        </div>
+        <div class="col-lg-4">
+          <legend>SESSIONS BY COUNTRY</legend>
+          <div id="chart-1-container"></div>
+        </div>
       </div>
     </div>
-    <div class="buffer20">
-
+    <div class="buffer20"></div>
+    <div class="row shadow">
+      <div class="col-lg-2">
+        <legend>SESSION COUNT FOR EACH USER</legend>
+        <section id="view-selector2"></section>
       </div>
-    <div class="row country-chart shadow">
-      <div class="col-lg-3">
-        <div id="view-selector-1-container"></div>
+      <div class="col-lg-4">
+        <section id="timeline2"></section>
       </div>
-      <div class="col-lg-9">
-        <div id="chart-1-container"></div>
+      <div class="col-lg-2">
+        <div id="view-selector-2-container"></div>
+      </div>
+      <div class="col-lg-4">
+        <legend>USERS BY TYPE</legend>
+        <div id="chart-2-container"></div>
       </div>
     </div>
-    <div class="buffer20">
-      </div>
   </div>
 </div>

@@ -199,7 +199,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/admin/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n  <div class=\"container\">\n      <div class=\"buffer20\">\n        </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <section id=\"auth-button\"></section>\n      </div>\n    </div>\n    <div class=\"buffer20\">\n    </div>\n    <div class=\"row session-chart shadow\">\n      <div class=\"col-lg-3\">\n        <section id=\"view-selector\"></section>\n      </div>\n      <div class=\"col-lg-9\">\n        <section id=\"timeline\"></section>\n      </div>\n    </div>\n    <div class=\"buffer20\">\n\n      </div>\n    <div class=\"row country-chart shadow\">\n      <div class=\"col-lg-3\">\n        <div id=\"view-selector-1-container\"></div>\n      </div>\n      <div class=\"col-lg-9\">\n        <div id=\"chart-1-container\"></div>\n      </div>\n    </div>\n    <div class=\"buffer20\">\n      </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"content\">\n  <div class=\"container-fluid\">\n    <div class=\"buffer20\">\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <section id=\"auth-button\"></section>\n      </div>\n    </div>\n    <div class=\"buffer20\">\n    </div>\n    <div class=\"row session-chart shadow\">\n      <div class=\"session-chart\">\n        <div class=\"col-lg-2\">\n          <section id=\"view-selector\"></section>\n        </div>\n        <div class=\"col-lg-4\">\n          <legend>SESSIONS</legend>\n          <section id=\"timeline\"></section>\n        </div>\n      </div>\n      <div class=\"country-chart\">\n        <div class=\"col-lg-2\">\n          <div id=\"view-selector-1-container\"></div>\n        </div>\n        <div class=\"col-lg-4\">\n          <legend>SESSIONS BY COUNTRY</legend>\n          <div id=\"chart-1-container\"></div>\n        </div>\n      </div>\n    </div>\n    <div class=\"buffer20\"></div>\n    <div class=\"row shadow\">\n      <div class=\"col-lg-2\">\n        <legend>SESSION COUNT FOR EACH USER</legend>\n        <section id=\"view-selector2\"></section>\n      </div>\n      <div class=\"col-lg-4\">\n        <section id=\"timeline2\"></section>\n      </div>\n      <div class=\"col-lg-2\">\n        <div id=\"view-selector-2-container\"></div>\n      </div>\n      <div class=\"col-lg-4\">\n        <legend>USERS BY TYPE</legend>\n        <div id=\"chart-2-container\"></div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -247,6 +247,12 @@ var AnalyticsComponent = (function () {
             var viewSelector1 = new gapi.analytics.ViewSelector({
                 container: 'view-selector-1-container'
             });
+            var viewSelector2 = new gapi.analytics.ViewSelector({
+                container: 'view-selector2'
+            });
+            var viewSelector3 = new gapi.analytics.ViewSelector({
+                container: 'view-selector-2-container'
+            });
             var timeline = new gapi.analytics.googleCharts.DataChart({
                 reportType: 'ga',
                 query: {
@@ -260,11 +266,24 @@ var AnalyticsComponent = (function () {
                     container: 'timeline'
                 }
             });
+            var timeline2 = new gapi.analytics.googleCharts.DataChart({
+                reportType: 'ga',
+                query: {
+                    'dimensions': 'ga:sessionCount',
+                    'metrics': 'ga:users',
+                    'start-date': '30daysAgo',
+                    'end-date': 'yesterday',
+                },
+                chart: {
+                    type: 'BAR',
+                    container: 'timeline2'
+                }
+            });
             // Render both view selectors to the page.
             var dataChart1 = new gapi.analytics.googleCharts.DataChart({
                 query: {
-                    metrics: 'ga:sessions',
-                    dimensions: 'ga:country',
+                    'metrics': 'ga:sessions',
+                    'dimensions': 'ga:country',
                     'start-date': '30daysAgo',
                     'end-date': 'yesterday',
                     'max-results': 6,
@@ -279,10 +298,30 @@ var AnalyticsComponent = (function () {
                     }
                 }
             });
+            var dataChart2 = new gapi.analytics.googleCharts.DataChart({
+                query: {
+                    metrics: 'ga:users',
+                    dimensions: 'ga:userType',
+                    'start-date': '30daysAgo',
+                    'end-date': 'yesterday',
+                    'max-results': 6,
+                    sort: '-ga:users'
+                },
+                chart: {
+                    container: 'chart-2-container',
+                    type: 'PIE',
+                    options: {
+                        width: '100%',
+                        pieHole: 4 / 9
+                    }
+                }
+            });
             // Step 6: Hook up the components to work together.
             gapi.analytics.auth.on('success', function (response) {
                 viewSelector.execute();
                 viewSelector1.execute();
+                viewSelector2.execute();
+                viewSelector3.execute();
             });
             viewSelector.on('change', function (ids) {
                 var newIds = {
@@ -292,8 +331,19 @@ var AnalyticsComponent = (function () {
                 };
                 timeline.set(newIds).execute();
             });
+            viewSelector2.on('change', function (ids) {
+                var newIds = {
+                    query: {
+                        ids: ids
+                    }
+                };
+                timeline2.set(newIds).execute();
+            });
             viewSelector1.on('change', function (ids) {
                 dataChart1.set({ query: { ids: ids } }).execute();
+            });
+            viewSelector3.on('change', function (ids) {
+                dataChart2.set({ query: { ids: ids } }).execute();
             });
         });
     };
@@ -307,6 +357,12 @@ var AnalyticsComponent = (function () {
         var viewSelector1 = new gapi.analytics.ViewSelector({
             container: 'view-selector-1-container'
         });
+        var viewSelector2 = new gapi.analytics.ViewSelector({
+            container: 'view-selector2'
+        });
+        var viewSelector3 = new gapi.analytics.ViewSelector({
+            container: 'view-selector-2-container'
+        });
         var timeline = new gapi.analytics.googleCharts.DataChart({
             reportType: 'ga',
             query: {
@@ -318,6 +374,19 @@ var AnalyticsComponent = (function () {
             chart: {
                 type: 'LINE',
                 container: 'timeline'
+            }
+        });
+        var timeline2 = new gapi.analytics.googleCharts.DataChart({
+            reportType: 'ga',
+            query: {
+                'dimensions': 'ga:sessionDurationBucket',
+                'metrics': 'ga:sessions',
+                'start-date': '30daysAgo',
+                'end-date': 'yesterday',
+            },
+            chart: {
+                type: 'LINE',
+                container: 'timeline2'
             }
         });
         // Render both view selectors to the page.
@@ -339,9 +408,29 @@ var AnalyticsComponent = (function () {
                 }
             }
         });
+        var dataChart2 = new gapi.analytics.googleCharts.DataChart({
+            query: {
+                metrics: 'ga:users',
+                dimensions: 'ga:userType',
+                'start-date': '30daysAgo',
+                'end-date': 'yesterday',
+                'max-results': 6,
+                sort: '-ga:users'
+            },
+            chart: {
+                container: 'chart-2-container',
+                type: 'PIE',
+                options: {
+                    width: '100%',
+                    pieHole: 4 / 9
+                }
+            }
+        });
         // Step 6: Hook up the components to work together.
         viewSelector.execute();
         viewSelector1.execute();
+        viewSelector2.execute();
+        viewSelector3.execute();
         viewSelector.on('change', function (ids) {
             var newIds = {
                 query: {
@@ -350,8 +439,19 @@ var AnalyticsComponent = (function () {
             };
             timeline.set(newIds).execute();
         });
+        viewSelector2.on('change', function (ids) {
+            var newIds = {
+                query: {
+                    ids: ids
+                }
+            };
+            timeline2.set(newIds).execute();
+        });
         viewSelector1.on('change', function (ids) {
             dataChart1.set({ query: { ids: ids } }).execute();
+        });
+        viewSelector3.on('change', function (ids) {
+            dataChart2.set({ query: { ids: ids } }).execute();
         });
     };
     AnalyticsComponent = __decorate([
@@ -2065,7 +2165,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#material {\r\n  height: 600px;\r\n  overflow: scroll;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n\r\n#resource {\r\n  -webkit-box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);\r\n  box-shadow: -1px 2px 69px -15px rgba(0, 0, 0, 0.35);\r\n  border: solid transparent;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n#image {\r\n  position: relative;\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\nimg {\r\n  max-width: 100%;\r\n}\r\n\r\nvideo {\r\n  max-width: 100%;\r\n}\r\n\r\n#divider {\r\n  height: 500px;\r\n  background-color: black;\r\n}\r\n\r\nmat-slider {\r\n  width: 100%;\r\n}\r\n", ""]);
+exports.push([module.i, "#material {\r\n  height: 600px;\r\n  overflow: scroll;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\n.frame {\r\n  width: 100%;\r\n  min-height: 600px;\r\n}\r\n\r\n#resource {\r\n  text-align: center;\r\n  width: 100%;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#resource a {\r\n  color: black;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n#resources {\r\n  border: solid;\r\n  z-index: 100;\r\n  margin-left: 40vw;\r\n  margin-top: 20vh;\r\n  width: 20%;\r\n  text-align: center;\r\n  padding-top: 20px;\r\n}\r\n\r\n.hide {\r\n  display: none;\r\n}\r\n\r\n#image {\r\n  position: relative;\r\n  min-height: 600px;\r\n  padding: 20px 20px 20px 20px;\r\n  -webkit-box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.42);\r\n}\r\n\r\nimg {\r\n  max-width: 100%;\r\n}\r\n\r\nvideo {\r\n  max-width: 100%;\r\n}\r\n\r\n#divider {\r\n  height: 500px;\r\n  background-color: black;\r\n}\r\n\r\nmat-slider {\r\n  width: 100%;\r\n}\r\n\r\n.mat-tab-body-content {\r\n  width: 100%;\r\n  overflow: hidden;\r\n}\r\n", ""]);
 
 // exports
 
@@ -2078,7 +2178,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/content/content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content container-fluid\" *ngIf=\"course\">\n  <mat-tab-group>\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\">\n      <ng-template mat-tab-label>\n        {{i+1}}-{{chapter.title}}\n      </ng-template>\n      <div class=\"buffer50\"></div>\n      <button type=\"button\" class=\"btn btn-info btn-lg\" (click)=\"resourcesToggle()\">DOWNLOADABLE RESOURCES</button>\n      <br>\n      <div id=\"resources\" *ngIf=\"toggle\">\n        <div class=\"row\" *ngFor=\"let resource of chapter.resources;let k=index\">\n          <div class=\"col-lg-2\" id=\"resource\">\n            <a href=\"{{resource.link}}\" download=\"\">{{resource.name}}</a>\n          </div>\n          <div class=\"col-lg-10\"></div>\n        </div>\n      </div>\n      <div class=\"buffer50\"></div>\n      <mat-tab-group>\n        <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\">\n          <ng-template mat-tab-label>\n            {{i+1}}.{{j+1}}-{{lesson.title}}\n          </ng-template>\n          <div class=\"buffer20\">\n          </div>\n          <div class=\"\">\n            <div class=\"row\">\n              <div class=\"col-lg-4\"></div>\n              <div class=\"col-lg-4\">\n                <mat-slider min=\"1\" [(ngModel)]=\"dividerRatio\" tickInterval=\"1\" max=\"11\" step=\"1\" thumb-label=\"true\"></mat-slider>\n              </div>\n              <div class=\"col-lg-4\"></div>\n            </div>\n            <br>\n            <div class=\"row\">\n              <div class=\"col-lg-{{dividerRatio}}\" id=\"material\">\n                <div *ngIf=\"lesson.content\" [innerHTML]=\"lesson.content\"></div>\n                <iframe class=\"frame\" [src]=\"lesson.contentFile | safe\" *ngIf=\"lesson.contentFile\" frameborder=\"0\"></iframe>\n              </div>\n              <div class=\"col-lg-{{12-dividerRatio}}\" id=\"image\">\n                <img *ngIf=\"lesson.image && !lesson.video\" src=\"{{lesson.image}}\">\n                <div *ngIf=\"lesson.video\">\n                  <vg-player>\n                    <vg-overlay-play></vg-overlay-play>\n                    <vg-buffering></vg-buffering>\n\n                    <vg-scrub-bar>\n                      <vg-scrub-bar-current-time></vg-scrub-bar-current-time>\n                      <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>\n                    </vg-scrub-bar>\n\n                    <vg-controls>\n                      <vg-play-pause></vg-play-pause>\n                      <vg-playback-button></vg-playback-button>\n\n                      <vg-time-display vgProperty=\"current\" vgFormat=\"mm:ss\"></vg-time-display>\n\n                      <vg-scrub-bar style=\"pointer-events: none;\"></vg-scrub-bar>\n\n                      <vg-time-display vgProperty=\"left\" vgFormat=\"mm:ss\"></vg-time-display>\n                      <vg-time-display vgProperty=\"total\" vgFormat=\"mm:ss\"></vg-time-display>\n\n                      <vg-track-selector></vg-track-selector>\n                      <vg-mute></vg-mute>\n                      <vg-volume></vg-volume>\n\n                      <vg-fullscreen></vg-fullscreen>\n                    </vg-controls>\n                    <video controls [vgMedia]=\"media\" #media id=\"singleVideo\" preload=\"auto\" crossorigin>\n                      <source type=\"video/webm\" src=\"{{lesson.video}}\">\n                    </video>\n                  </vg-player>\n                </div>\n              </div>\n            </div>\n\n            <div class=\"buffer50\"></div>\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-tab>\n  </mat-tab-group>\n</div>\n"
+module.exports = "<div class=\"content container-fluid\" *ngIf=\"course\">\n  <mat-tab-group>\n    <mat-tab *ngFor=\"let chapter of course.content.chapters; let i = index\" style=\"overflow:hidden\">\n      <ng-template mat-tab-label>\n        {{i+1}}-{{chapter.title}}\n      </ng-template>\n      <div id=\"resources\" class=\"hide\">\n        <div class=\"row\" *ngFor=\"let resource of chapter.resources;let k=index\">\n          <div class=\"col-lg-2\" id=\"resource\">\n            <a href=\"{{resource.link}}\" download=\"\">{{resource.name}}</a>\n          </div>\n          <div class=\"col-lg-10\"></div>\n        </div>\n        <button class=\"btn btn-warning\" (click)=\"resourcesToggle()\">\n          <i class=\"fa fa-close\"></i>\n        </button>\n      </div>\n      <div id=\"main\" *ngIf=\"!toggle\">\n        <mat-tab-group>\n          <mat-tab *ngFor=\"let lesson of chapter.lessons; let j = index\" style=\"border:solid\">\n            <ng-template mat-tab-label>\n              {{i+1}}.{{j+1}}-{{lesson.title}}\n            </ng-template>\n            <div class=\"buffer20\">\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-4\"></div>\n              <div class=\"col-lg-4\">\n                <mat-slider min=\"1\" [(ngModel)]=\"dividerRatio\" tickInterval=\"1\" max=\"11\" step=\"1\" thumb-label=\"true\"></mat-slider>\n              </div>\n              <div class=\"col-lg-4\"></div>\n            </div>\n            <br>\n            <div class=\"row\">\n              <div class=\"col-lg-{{dividerRatio}}\" id=\"material\">\n                <div *ngIf=\"lesson.content\" [innerHTML]=\"lesson.content\"></div>\n                <iframe class=\"frame\" [src]=\"lesson.contentFile | safe\" *ngIf=\"lesson.contentFile\" frameborder=\"0\"></iframe>\n              </div>\n              <div class=\"col-lg-{{12-dividerRatio}}\" id=\"image\">\n                <img *ngIf=\"lesson.image && !lesson.video\" src=\"{{lesson.image}}\">\n                <div *ngIf=\"lesson.video\">\n                  <vg-player>\n                    <vg-overlay-play></vg-overlay-play>\n                    <vg-buffering></vg-buffering>\n\n                    <vg-scrub-bar>\n                      <vg-scrub-bar-current-time></vg-scrub-bar-current-time>\n                      <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>\n                    </vg-scrub-bar>\n\n                    <vg-controls>\n                      <vg-play-pause></vg-play-pause>\n                      <vg-playback-button></vg-playback-button>\n\n                      <vg-time-display vgProperty=\"current\" vgFormat=\"mm:ss\"></vg-time-display>\n\n                      <vg-scrub-bar style=\"pointer-events: none;\"></vg-scrub-bar>\n\n                      <vg-time-display vgProperty=\"left\" vgFormat=\"mm:ss\"></vg-time-display>\n                      <vg-time-display vgProperty=\"total\" vgFormat=\"mm:ss\"></vg-time-display>\n\n                      <vg-track-selector></vg-track-selector>\n                      <vg-mute></vg-mute>\n                      <vg-volume></vg-volume>\n\n                      <vg-fullscreen></vg-fullscreen>\n                    </vg-controls>\n                    <video controls [vgMedia]=\"media\" #media id=\"singleVideo\" preload=\"auto\" crossorigin>\n                      <source type=\"video/webm\" src=\"{{lesson.video}}\">\n                    </video>\n                  </vg-player>\n                </div>\n              </div>\n            </div>\n\n            <div class=\"buffer50\"></div>\n          </mat-tab>\n        </mat-tab-group>\n      </div>\n      <div class=\"buffer20\"></div>\n      <div class=\"row\">\n        <div class=\"col-lg-5\"></div>\n        <div class=\"col-lg-2\">\n          <button type=\"button\" class=\"btn btn-info btn-lg\" *ngIf=\"!toggle\" (click)=\"resourcesToggle()\">DOWNLOADABLE RESOURCES</button>\n        </div>\n        <div class=\"col-lg-5\"></div>\n      </div>\n      <div class=\"buffer20\"></div>\n    </mat-tab>\n  </mat-tab-group>\n</div>\n"
 
 /***/ }),
 
@@ -2130,6 +2230,14 @@ var ContentComponent = (function () {
     };
     ContentComponent.prototype.resourcesToggle = function () {
         this.toggle = this.toggle ? false : true;
+        if (this.toggle) {
+            $('#main').addClass('hide');
+            $('#resources').removeClass('hide');
+        }
+        else {
+            $('#main').removeClass('hide');
+            $('#resources').addClass('hide');
+        }
     };
     ContentComponent.prototype.canActivate = function () {
         var _this = this;

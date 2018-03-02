@@ -36,6 +36,12 @@ export class AnalyticsComponent implements OnInit {
       let viewSelector1 = new gapi.analytics.ViewSelector({
         container: 'view-selector-1-container'
       });
+      let viewSelector2 = new gapi.analytics.ViewSelector({
+        container: 'view-selector2'
+      });
+      let viewSelector3 = new gapi.analytics.ViewSelector({
+        container: 'view-selector-2-container'
+      });
 
 
       let timeline = new gapi.analytics.googleCharts.DataChart({
@@ -51,12 +57,24 @@ export class AnalyticsComponent implements OnInit {
           container: 'timeline'
         }
       });
-
+      let timeline2 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'dimensions': 'ga:sessionCount',
+          'metrics': 'ga:users',
+          'start-date': '30daysAgo',
+          'end-date': 'yesterday',
+        },
+        chart: {
+          type: 'BAR',
+          container: 'timeline2'
+        }
+      });
       // Render both view selectors to the page.
       let dataChart1 = new gapi.analytics.googleCharts.DataChart({
         query: {
-          metrics: 'ga:sessions',
-          dimensions: 'ga:country',
+          'metrics': 'ga:sessions',
+          'dimensions': 'ga:country',
           'start-date': '30daysAgo',
           'end-date': 'yesterday',
           'max-results': 6,
@@ -72,11 +90,32 @@ export class AnalyticsComponent implements OnInit {
         }
       });
 
+      let dataChart2 = new gapi.analytics.googleCharts.DataChart({
+        query: {
+          metrics: 'ga:users',
+          dimensions: 'ga:userType',
+          'start-date': '30daysAgo',
+          'end-date': 'yesterday',
+          'max-results': 6,
+          sort: '-ga:users'
+        },
+        chart: {
+          container: 'chart-2-container',
+          type: 'PIE',
+          options: {
+            width: '100%',
+            pieHole: 4 / 9
+          }
+        }
+      });
+
       // Step 6: Hook up the components to work together.
 
       gapi.analytics.auth.on('success', function (response) {
         viewSelector.execute();
         viewSelector1.execute();
+        viewSelector2.execute();
+        viewSelector3.execute();
       });
 
       viewSelector.on('change', function (ids) {
@@ -87,8 +126,21 @@ export class AnalyticsComponent implements OnInit {
         }
         timeline.set(newIds).execute();
       });
+
+      viewSelector2.on('change', function (ids) {
+        let newIds = {
+          query: {
+            ids: ids
+          }
+        }
+        timeline2.set(newIds).execute();
+      });
+
       viewSelector1.on('change', function (ids) {
         dataChart1.set({ query: { ids: ids } }).execute();
+      });
+      viewSelector3.on('change', function (ids) {
+        dataChart2.set({ query: { ids: ids } }).execute();
       });
     });
   }
@@ -106,6 +158,12 @@ export class AnalyticsComponent implements OnInit {
     let viewSelector1 = new gapi.analytics.ViewSelector({
       container: 'view-selector-1-container'
     });
+    let viewSelector2 = new gapi.analytics.ViewSelector({
+      container: 'view-selector2'
+    });
+    let viewSelector3 = new gapi.analytics.ViewSelector({
+      container: 'view-selector-2-container'
+    });
 
 
     let timeline = new gapi.analytics.googleCharts.DataChart({
@@ -119,6 +177,20 @@ export class AnalyticsComponent implements OnInit {
       chart: {
         type: 'LINE',
         container: 'timeline'
+      }
+    });
+
+    let timeline2 = new gapi.analytics.googleCharts.DataChart({
+      reportType: 'ga',
+      query: {
+        'dimensions': 'ga:sessionDurationBucket',
+        'metrics': 'ga:sessions',
+        'start-date': '30daysAgo',
+        'end-date': 'yesterday',
+      },
+      chart: {
+        type: 'LINE',
+        container: 'timeline2'
       }
     });
 
@@ -142,10 +214,31 @@ export class AnalyticsComponent implements OnInit {
       }
     });
 
+    let dataChart2 = new gapi.analytics.googleCharts.DataChart({
+      query: {
+        metrics: 'ga:users',
+        dimensions: 'ga:userType',
+        'start-date': '30daysAgo',
+        'end-date': 'yesterday',
+        'max-results': 6,
+        sort: '-ga:users'
+      },
+      chart: {
+        container: 'chart-2-container',
+        type: 'PIE',
+        options: {
+          width: '100%',
+          pieHole: 4 / 9
+        }
+      }
+    });
+
     // Step 6: Hook up the components to work together.
 
     viewSelector.execute();
     viewSelector1.execute();
+    viewSelector2.execute();
+    viewSelector3.execute();
 
     viewSelector.on('change', function (ids) {
       let newIds = {
@@ -155,8 +248,19 @@ export class AnalyticsComponent implements OnInit {
       }
       timeline.set(newIds).execute();
     });
+    viewSelector2.on('change', function (ids) {
+      let newIds = {
+        query: {
+          ids: ids
+        }
+      }
+      timeline2.set(newIds).execute();
+    });
     viewSelector1.on('change', function (ids) {
       dataChart1.set({ query: { ids: ids } }).execute();
+    });
+    viewSelector3.on('change', function (ids) {
+      dataChart2.set({ query: { ids: ids } }).execute();
     });
   }
 
