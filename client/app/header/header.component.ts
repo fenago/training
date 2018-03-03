@@ -19,10 +19,10 @@ export class HeaderComponent implements OnInit {
   }
 
   scroll() {
-    if (document.documentElement.scrollTop < 40) {
-      document.getElementById('header').style.opacity = '1';
+    if (document.documentElement.scrollTop < 100) {
+      document.getElementById('header').style.display='block'
     } else {
-      document.getElementById('header').style.opacity = '0.8';
+      document.getElementById('header').style.display='none';
     }
   }
 }

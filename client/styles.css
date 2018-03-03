@@ -1,62 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
- @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("assets/styles/theme-style.css");
 @import url("assets/styles/theme-color.css");
-
-
 .input-group {
   margin-bottom: 15px;
 }
-.bg-white{
-}
-.upload_button{
-  border:solid 3px #DF8930;
-  width:15%;
+.upload_button {
+  border: solid 3px #902B23;
+  width: 15%;
   padding: 5px 5px 5px 5px;
-  color:#DF8930;
+  color: #902B23;
 }
-.content{
+
+.content {
   position: relative;
   height: 100%;
   min-height: 80vh;
-  margin-top:115px;
+  margin-top: 118px;
 }
-.colored{
-  background-color: #DF9830
+
+.colored {
+  background-color: #902B23
 }
-.btn{
-  background-color: #DF9830;
-  color:white;
+
+.btn {
+  background-color: #902B23 !important;
+  color: white !important;
+  border: none !important;
 }
-.buffer200{
+
+button {
+  background-color: #902B23 !important;
+  color: white !important;
+  border: none !important;
+}
+
+button:hover {
+  background-color: #212121 !important;
+}
+
+.buffer200 {
   height: 200px;
 }
-.buffer150{
+
+.buffer150 {
   height: 150px;
 }
-.buffer100{
+
+.buffer100 {
   height: 100px;
 }
-.buffer50{
+
+.buffer50 {
   height: 50px;
 }
-.buffer20{
+
+.buffer20 {
   height: 20px;
 }
+
 /*
 loader
 */
+
 .loader,
 .loader:before,
 .loader:after {
-  background: #DF8930;
+  background: #902B23;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
+
 .loader {
-  color: #DF8930;
+  color: #902B23;
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;
@@ -67,20 +86,24 @@ loader
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
+
 .loader:before,
 .loader:after {
   position: absolute;
   top: 0;
   content: '';
 }
+
 .loader:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
+
 .loader:after {
   left: 1.5em;
 }
+
 @-webkit-keyframes load1 {
   0%,
   80%,
@@ -93,6 +116,7 @@ loader
     height: 5em;
   }
 }
+
 @keyframes load1 {
   0%,
   80%,
