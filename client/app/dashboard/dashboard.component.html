@@ -42,7 +42,7 @@
           </div>
           <div class="buffer20"></div>
           <div class="row">
-            <div class="col-lg-3 center">
+            <div class="col-lg-2 center">
               <h5>
                 <p *ngIf="course.price > 0 && course.couponFlag !== true">price: ${{course.price}}</p>
                 <p *ngIf="course.price < 1 && (course.couponFlag !== true || course.couponAmount===100)">price: FREE</p>
@@ -50,10 +50,10 @@
                   <del>${{course.price}}</del> ${{course.price - (course.price * course.couponAmount)/100}}</p>
               </h5>
             </div>
-            <div class="col-lg-3 center">
-              <h5>
-                <i class="fa fa-clock-o"> Hours :{{course.eta}}</i>
-              </h5>
+            <div class="col-lg-1 center">
+
+                <i class="fa fa-clock-o"> {{course.eta}}hrs</i>
+
             </div>
             <div class="col-lg-3 center">
               <button class="btn-buy" *ngIf="course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin && course.price > 0"
@@ -62,6 +62,9 @@
               <button class="btn-buy" [routerLink]="['/content',course._id]" *ngIf="(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && AuthService.loggedIn">View course</button>
               <button class="btn-buy" [routerLink]="['/register']" *ngIf="(course.users.indexOf(AuthService.currentUser._id)>= 0||course.price < 1) && !AuthService.isAdmin && !AuthService.loggedIn ">View course</button>
               <button class="btn-buy" [routerLink]="['/publish/new',course._id]" *ngIf="AuthService.isAdmin">Edit course</button>
+            </div>
+            <div class="col-lg-3 center">
+              <button class="btn-buy" [routerLink]="['/content',course._id,true]">Preview</button>
             </div>
             <div class="col-lg-3 center">
               <button class="btn-buy" (click)="useCoupon(i)" *ngIf="course.users.indexOf(AuthService.currentUser._id) < 0 && !AuthService.isAdmin && course.price > 0">Use Coupon</button>

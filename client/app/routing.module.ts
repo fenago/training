@@ -47,6 +47,7 @@ const routes: Routes = [
   { path: 'account/:id', component: AccountComponent, canActivate: [AuthGuardLogin, AuthGuardAdmin] },
   { path: 'syllabus/:id', component: SyllabusComponent, canActivate: [AuthGuardLogin] },
   { path: 'content/:id', component: ContentComponent, canActivate: [AuthGuardLogin] },
+  { path: 'content/:id/:preview', component: ContentComponent, canActivate: [AuthGuardLogin] },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin] },
   { path: 'analytics', component: AnalyticsComponent, canActivate: [AuthGuardAdmin] },

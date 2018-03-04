@@ -183,7 +183,7 @@ export class AddContentComponent implements OnInit {
   addChapter() {
     this.course.content.chapters.push({
       title: this.chapterName,
-      isPreview: false,
+      preview: false,
       resources: [],
       lessons: []
     });

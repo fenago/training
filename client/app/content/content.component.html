@@ -1,4 +1,6 @@
 <div class="content container-fluid" *ngIf="course">
+  <div class="buffer20"></div>
+  <p *ngIf="course.content.chapters.length<1">No chapter available for preview</p>
   <mat-tab-group>
     <mat-tab *ngFor="let chapter of course.content.chapters; let i = index" style="overflow:hidden">
       <ng-template mat-tab-label>
