@@ -2469,6 +2469,7 @@ module.exports = "<div class=\"content\" *ngIf=\"isLoading\">\r\n  <div class=\"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_toast_toast_component__ = __webpack_require__("../../../../../client/app/shared/toast/toast.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_models_course_model__ = __webpack_require__("../../../../../client/app/shared/models/course.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__globals__ = __webpack_require__("../../../../../client/app/globals.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2478,6 +2479,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -2586,7 +2588,7 @@ var DashboardComponent = (function () {
             console.log(this.courses[i]);
             var price_1 = this.courses[i]['couponFlag'] ? Number(this.courses[i].price) - (this.courses[i].price * this.courses[i]['couponAmount']) / 100 : this.courses[i].price;
             var handler = window.StripeCheckout.configure({
-                key: 'pk_test_ShBXT4xQYOqRbiZCc6VQDOfa',
+                key: __WEBPACK_IMPORTED_MODULE_8__globals__["a" /* globals */].stripe_prod_key,
                 locale: 'auto',
                 closed: function () {
                     _this.isLoading = false;
@@ -2735,7 +2737,9 @@ var FooterComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return globals; });
 var globals = {
-    server_url: 'https://fenago-training-server.herokuapp.com'
+    server_url: 'https://fenago-training-server.herokuapp.com',
+    stripe_test_key: 'pk_test_ShBXT4xQYOqRbiZCc6VQDOfa',
+    stripe_prod_key: 'pk_live_VPpmd6FA8dA6x46YSH39qynM'
     // server_url: ''
 };
 
@@ -3083,7 +3087,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-toast [message]=\"toast.message\"></app-toast>\r\n<div class=\"content\">\r\n  <div class=\"container\">\r\n    <!-- signup form -->\r\n    <form class=\"form-login form-wrapper form-narrow\" [formGroup]=\"registerForm\" (ngSubmit)=\"register()\">\r\n      <h3 class=\"text\">Signup</h3>\r\n      <br>\r\n      <div class=\"form-group\" [ngClass]=\"setClassUsername()\">\r\n          <label class=\"sr-only\" for=\"login-email-page\">Username</label>\r\n        <input class=\"form-control\" type=\"text\" name=\"username\" formControlName=\"username\" placeholder=\"Username\" autofocus>\r\n      </div>\r\n      <div class=\"form-group\" [ngClass]=\"setClassEmail()\">\r\n        <label class=\"sr-only\" for=\"login-email-page\">Email</label>\r\n        <input type=\"email\" id=\"login-email-page\" class=\"email\" formControlName=\"email\" placeholder=\"Email\" placeholder=\"Email\">\r\n      </div>\r\n      <div class=\"form-group\" [ngClass]=\"setClassPassword()\">\r\n        <label class=\"sr-only\" for=\"login-password-page\" [ngClass]=\"setClassPassword()\">Password</label>\r\n        <input type=\"password\" id=\"login-password-page\" class=\"password\" name=\"password\" formControlName=\"password\"\r\n          placeholder=\"Password\">\r\n      </div>\r\n      <button type=\"submit\" class=\"btn\">signup</button>\r\n      <br><br>\r\n    <p>Already have an account? <a  routerLink=\"/login\"> Login</a></p>\r\n    </form>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<app-toast [message]=\"toast.message\"></app-toast>\r\n<div class=\"content\">\r\n  <div class=\"container\">\r\n    <!-- signup form -->\r\n    <div class=\"buffer20\"></div>\r\n    <form class=\"form-login form-wrapper form-narrow\" [formGroup]=\"registerForm\" (ngSubmit)=\"register()\">\r\n      <h3 class=\"text\">Signup</h3>\r\n      <br>\r\n      <div class=\"form-group\" [ngClass]=\"setClassUsername()\">\r\n          <label class=\"sr-only\" for=\"login-email-page\">Username</label>\r\n        <input class=\"form-control\" type=\"text\" name=\"username\" formControlName=\"username\" placeholder=\"Username\" autofocus>\r\n      </div>\r\n      <div class=\"form-group\" [ngClass]=\"setClassEmail()\">\r\n        <label class=\"sr-only\" for=\"login-email-page\">Email</label>\r\n        <input type=\"email\" id=\"login-email-page\" class=\"email\" formControlName=\"email\" placeholder=\"Email\" placeholder=\"Email\">\r\n      </div>\r\n      <div class=\"form-group\" [ngClass]=\"setClassPassword()\">\r\n        <label class=\"sr-only\" for=\"login-password-page\" [ngClass]=\"setClassPassword()\">Password</label>\r\n        <input type=\"password\" id=\"login-password-page\" class=\"password\" name=\"password\" formControlName=\"password\"\r\n          placeholder=\"Password\">\r\n      </div>\r\n      <button type=\"submit\" class=\"btn\">signup</button>\r\n      <br><br>\r\n    <p>Already have an account? <a  routerLink=\"/login\"> Login</a></p>\r\n    </form>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 

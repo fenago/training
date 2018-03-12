@@ -9,6 +9,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { course } from '../shared/models/course.model';
 import { User } from '../shared/models/user.model';
 import { setInterval } from 'core-js/library/web/timers';
+import { globals } from '../globals';
 
 
 @Component({
@@ -128,7 +129,7 @@ export class DashboardComponent implements OnInit {
 
       const price: any = this.courses[i]['couponFlag'] ? Number(this.courses[i].price) - (this.courses[i].price * this.courses[i]['couponAmount']) / 100 : this.courses[i].price;
       const handler = (<any>window).StripeCheckout.configure({
-        key: 'pk_test_ShBXT4xQYOqRbiZCc6VQDOfa',
+        key: globals.stripe_prod_key,
         locale: 'auto',
         closed: () => {
           this.isLoading = false;
